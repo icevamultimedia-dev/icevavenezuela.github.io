@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* 1. Importación de Fuente Local (Blacksword) */
+@font-face {
+  font-family: 'Blacksword';
+  /* Ajusta la extensión a .ttf si tu archivo descargado es ttf */
+  src: url('/fonts/Blacksword.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2. Configuración del Tema Tailwind v4 */
+@theme {
+  --color-smoke-900: #0a0a0c;
+  --color-smoke-800: #141417;
+  --color-smoke-700: #1f1f24;
+  --color-gold: #D4AF37;
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Blacksword", cursive; 
+}
+
+/* Estilos de Scroll Suave (Lenis) y utilidades globales */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0c; }
+::-webkit-scrollbar-thumb { background: #1f1f24; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+
+/* Efecto destello azul global (Contrastante con Dorado) */
+.flare-bg {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(96,165,250,0.12) 0%, rgba(96,165,250,0) 70%);
+    filter: blur(60px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 🌟 Cursor Magnético de Alta Gama (Aura) 🌟 */
+.cursor-aura {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--color-gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    display: none; /* Oculto por defecto */
+    backdrop-filter: blur(0.8px); /* Un ligero efecto de cristal */
+}
+
+/* Solo se activa en dispositivos que tienen un puntero preciso (mouse) */
+@media (pointer: fine) {
+    .cursor-aura { display: block; }
+    /* Opcional: Si quieres ocultar la flecha normal, descomenta la siguiente línea */
+    /* body, a, button { cursor: none !important; } */
+}
