@@ -7,53 +7,45 @@
             <div class="gsap-reveal">
                 <h2 class="text-4xl font-serif text-white mb-6">Ponte en contacto</h2>
                 
-                <!-- CAMBIO AQUÍ: Usamos FormSubmit y debes poner el correo de la Iglesia -->
-                <form action="https://formsubmit.co/icevamultimedia@gmail.com" method="POST" class="space-y-6">
+                <!-- Añadido accept-charset="UTF-8" para máxima compatibilidad con caracteres especiales -->
+                <form action="https://formsubmit.co/icevavenezuela@gmail.com" method="POST" accept-charset="UTF-8" class="space-y-6">
                     
-                    <!-- CONFIGURACIONES OCULTAS (MAGIA DEL BACKEND) -->
-                    <!-- 1. Asunto del correo que te llegará a ti -->
+                    <!-- CONFIGURACIONES OCULTAS -->
                     <input type="hidden" name="_subject" value="¡Nuevo mensaje desde la web de ICEVA!">
-                    
-                    <!-- 2. Evitar el captcha para que el usuario no tenga que marcar semáforos -->
                     <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
                     
-                    <!-- 🌟 4. EL CORREO AUTOMÁTICO DE AGRADECIMIENTO PARA EL USUARIO 🌟 -->
-                    <!-- FormSubmit detecta el campo name="email" y le envía este texto automáticamente -->
-                    <input type="hidden" name="_autoresponse" value="¡Hola! Hemos recibido tu mensaje con éxito. Gracias por contactar a la Iglesia Cristiana Evangélica Vida en Abundancia (ICEVA). Un miembro de nuestro equipo pastoral leerá tu petición y te responderemos muy pronto. ¡Bendiciones!">
+                    <!-- REDIRECCIÓN -->
+                    <!-- Recuerda poner aquí tu dominio final de Vercel -->
+                    <input type="hidden" name="_next" value="https://icevavenezuela.vercel.app/#contacto">
+
+                    <!-- EL CORREO AUTOMÁTICO DE AGRADECIMIENTO -->
+                    <input type="hidden" name="_autoresponse" value="Hemos recibido tu mensaje con exito. Gracias por contactar a la Iglesia Cristiana Evangelica Vida en Abundancia (ICEVA). Un miembro de nuestro equipo leera tu peticion y te responderemos muy pronto. Bendiciones.">
                     
                     <!-- CAMPOS VISIBLES -->
                     <div>
                         <label for="nombre" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Nombre completo</label>
-                        <!-- Atributo 'name' y 'required' añadidos -->
                         <input type="text" id="nombre" name="nombre" required class="w-full bg-smoke-800 border border-smoke-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold font-sans">
                     </div>
                     <div>
-                        <label for="nombre" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Teléfono</label>
-                        <!-- Atributo 'name' y 'required' añadidos -->
-                        <input type="text" id="telefono" name="tele fono" required class="w-full bg-smoke-800 border border-smoke-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold font-sans">
-                    </div>
-                    <div>
                         <label for="email" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Correo electrónico</label>
-                        <!-- Atributo 'name' y 'required' añadidos -->
                         <input type="email" id="email" name="email" required class="w-full bg-smoke-800 border border-smoke-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold font-sans">
                     </div>
                     <div>
-                        <label for="mensaje" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Mensaje o Petición de  Oración</label>
-                        <!-- Atributo 'name' y 'required' añadidos -->
+                        <label for="mensaje" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Mensaje o Petición</label>
                         <textarea id="mensaje" name="mensaje" rows="4" required class="w-full bg-smoke-800 border border-smoke-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold font-sans"></textarea>
                     </div>
-                    <!-- Botón actualizado con los colores solicitados -->
+                    
                     <button type="submit" class="w-full bg-blue-950 text-white font-semibold py-4 rounded-lg hover:bg-blue-900 shadow-lg shadow-white/20 font-sans transition-all duration-300">
                         Enviar Mensaje
                     </button>
                 </form>
-
             </div>
 
             <div class="gsap-reveal flex flex-col h-full">
                 <h2 class="text-4xl font-serif text-white mb-6">Nuestra Ubicación</h2>
                 <div class="w-full flex-grow rounded-xl overflow-hidden border border-smoke-700 min-h-[300px] mb-8 relative">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2405.515499179366!2d-67.3499757577601!3d9.899854902199923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2aab00548a6753%3A0x28418a91a3db1357!2sICEVA%20Iglesia%20Cristiana!5e0!3m2!1ses!2sve!4v1773245689062!5m2!1ses!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.3734685025985!2d-67.3556!3d9.9161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTQnNTguMCJOIDY3wrDIxScyMC4yIlc!5e0!3m2!1ses!2sve!4v1680000000000!5m2!1ses!2sve" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
