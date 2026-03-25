@@ -81,17 +81,10 @@ const {
             import { gsap } from 'gsap';
             import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-            // 🌟 VARIABLES GLOBALES PARA PODER LIMPIARLAS 🌟
-            let lenis: any;
-            let lenisRaf: any;
-
             // 🌟 AQUÍ COLOCAS EL LIMPIADOR 🌟
         document.addEventListener("astro:before-swap", () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         });
-
-        // 🌟 Y AQUÍ ENVUELVES EL RESTO DE TUS ANIMACIONES 🌟
-        document.addEventListener("astro:page-load", () => {
 
             // 1. Inicializar Lenis
             const lenis = new Lenis({
@@ -142,8 +135,6 @@ const {
             }
 
             ScrollTrigger.refresh();
-
-        });
         </script>
     </body>
 </html>
