@@ -23,15 +23,31 @@ import Footer from '../components/Footer.astro';
                 </p>
             </div>
 
-            <!-- 🌟 FORMULARIO DE REGISTRO 🌟 -->
-            <div class="bg-smoke-800/80 backdrop-blur-md border border-smoke-700 p-8 md:p-12 rounded-3xl shadow-2xl gsap-reveal">
-                <form action="https://formsubmit.co/icevamultimedia@gmail.com" method="POST" accept-charset="UTF-8" class="space-y-6">
+            <!-- 🌟 CONTENEDOR DEL FORMULARIO Y MENSAJE DE ÉXITO 🌟 -->
+            <div class="relative bg-smoke-800/80 backdrop-blur-md border border-smoke-700 p-8 md:p-12 rounded-3xl shadow-2xl gsap-reveal overflow-hidden">
+                
+                <!-- 🌟 MENSAJE DE ÉXITO (Oculto por defecto) 🌟 -->
+                <div id="success-message" class="hidden absolute inset-0 z-50 bg-smoke-800/95 backdrop-blur-md flex flex-col items-center justify-center text-center p-8">
+                    <div class="w-20 h-20 bg-green-500/10 border border-green-500 rounded-full flex items-center justify-center text-green-400 mb-6 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
+                        <i class="fa-solid fa-check text-4xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-serif text-white mb-4">¡Registro Exitoso!</h3>
+                    <p class="text-gray-400 font-light max-w-md mx-auto mb-8 font-sans">
+                        Hemos recibido tus datos correctamente. Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo muy pronto. ¡Bendiciones!
+                    </p>
+                    <button id="btn-volver" type="button" class="inline-block bg-transparent border border-gold text-gold font-bold uppercase tracking-widest text-xs px-8 py-3 rounded-full hover:bg-gold hover:text-smoke-900 transition-colors duration-300">
+                        Enviar otro registro
+                    </button>
+                </div>
+
+                <!-- 🌟 FORMULARIO DE REGISTRO 🌟 -->
+                <!-- Se agregó el ID 'registro-form' y se eliminó el input '_next' -->
+                <form id="registro-form" action="https://formsubmit.co/icevamultimedia@gmail.com" method="POST" accept-charset="UTF-8" class="space-y-6">
                     
                     <!-- CONFIGURACIONES OCULTAS FORMSUBMIT -->
                     <input type="hidden" name="_subject" value="¡Nuevo Registro / Mensaje desde la web de ICEVA!">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_next" value="https://icevavenezuela.vercel.app/registro">
                     <input type="hidden" name="_autoresponse" value="Hemos recibido tu registro con éxito. Gracias por contactar a la Iglesia Cristiana Evangélica Vida en Abundancia (ICEVA). Un miembro de nuestro equipo procesará tu solicitud y te contactará muy pronto. Bendiciones.">
 
                     <!-- Fila 1: Nombre y Teléfono -->
@@ -57,7 +73,7 @@ import Footer from '../components/Footer.astro';
                             <div class="relative">
                                 <select id="motivo" name="motivo" required class="w-full bg-smoke-900 border border-smoke-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-gold transition-colors shadow-inner appearance-none cursor-pointer">
                                     <option value="" disabled selected>Selecciona una opción...</option>
-                                    <option value="Registro para Evento (Bikurim / Aniversario)">Asistir a Bikurim (Fiesta de Primicias)</option>
+                                    <option value="Registro para Evento (Bikurim / Aniversario)">Asistir a Bikurim (Fiesta de Primicias ICEVA 2026)</option>
                                     <option value="Petición de Oración">Petición de Oración</option>
                                     <option value="Información sobre Horarios y Actividades">Información de Horarios y Actividades</option>
                                     <option value="Deseo Bautizarme">Deseo Bautizarme</option>
@@ -81,8 +97,8 @@ import Footer from '../components/Footer.astro';
 
                     <!-- Botón de Envío -->
                     <div class="pt-6 text-center">
-                        <button type="submit" class="inline-block bg-gold text-smoke-900 font-bold uppercase tracking-widest text-sm px-12 py-4 rounded-full hover:scale-105 hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(212,175,55,0.2)] w-full sm:w-auto">
-                            Enviar Registro
+                        <button id="submit-btn" type="submit" class="inline-flex items-center justify-center bg-gold text-smoke-900 font-bold uppercase tracking-widest text-sm px-12 py-4 rounded-full hover:scale-105 hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(212,175,55,0.2)] w-full sm:w-auto">
+                            <span id="btn-text">Enviar Registro</span>
                         </button>
                     </div>
                 </form>
@@ -93,7 +109,7 @@ import Footer from '../components/Footer.astro';
     
     <Footer />
 
-    <!-- 🌟 SCRIPT DE ANIMACIÓN BÁSICA 🌟 -->
+    <!-- 🌟 SCRIPT DE ANIMACIÓN Y ENVÍO AJAX 🌟 -->
     <script>
         import { gsap } from 'gsap';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -101,7 +117,7 @@ import Footer from '../components/Footer.astro';
 
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Si el modo rendimiento lo permite, hacemos un fade in suave del formulario
+            // 1. Animaciones de entrada (ScrollTrigger)
             let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
 
             if (animationsEnabled) {
@@ -122,6 +138,72 @@ import Footer from '../components/Footer.astro';
             } else {
                 gsap.set('.gsap-reveal', { autoAlpha: 1, y: 0 });
             }
+
+            // 2. Lógica del Envío del Formulario (AJAX)
+            const form = document.getElementById('registro-form') as HTMLFormElement;
+            const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+            const btnText = document.getElementById('btn-text');
+            const successMsg = document.getElementById('success-message');
+            const btnVolver = document.getElementById('btn-volver');
+
+            if (form && submitBtn && btnText && successMsg) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault(); // Evita que la página recargue
+                    
+                    // Estado de Carga
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-70', 'cursor-wait');
+                    btnText.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Enviando...';
+
+                    try {
+                        const formData = new FormData(form);
+                        
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (response.ok) {
+                            // Éxito: Limpiar formulario y mostrar mensaje
+                            form.reset();
+                            successMsg.classList.remove('hidden');
+                            gsap.fromTo(successMsg, 
+                                { opacity: 0, scale: 0.95 }, 
+                                { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" }
+                            );
+                        } else {
+                            // Error del servidor FormSubmit
+                            alert("Hubo un problema al procesar tu solicitud. Por favor intenta nuevamente.");
+                        }
+                    } catch (error) {
+                        // Error de conexión
+                        alert("Error de conexión. Revisa tu internet e intenta de nuevo.");
+                    } finally {
+                        // Restaurar Botón
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-70', 'cursor-wait');
+                        btnText.innerHTML = 'Enviar Registro';
+                    }
+                });
+            }
+
+            // 3. Lógica para "Enviar otro registro" (Ocultar el mensaje de éxito)
+            if (btnVolver && successMsg) {
+                btnVolver.addEventListener('click', () => {
+                    gsap.to(successMsg, { 
+                        opacity: 0, 
+                        scale: 0.95, 
+                        duration: 0.3, 
+                        onComplete: () => {
+                            successMsg.classList.add('hidden');
+                        }
+                    });
+                });
+            }
+
         });
     </script>
 </Layout>
