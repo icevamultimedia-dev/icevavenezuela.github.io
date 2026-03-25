@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
         <section id="hero-jesus" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800">
             <div class="absolute inset-0 z-0">
                 <!-- Sin loading lazy porque es el LCP -->
-                <img src="/jesus-hero.jpg" alt="Fondo" class="w-full h-full object-cover object-center opacity-20 blur-sm" onerror="this.style.display='none'" />
+                <img src="/jesus-hero.jpg" alt="Fondo" class="will-change-transform w-full h-full object-cover object-center opacity-20 blur-sm" onerror="this.style.display='none'" />
                 <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/90 via-smoke-900/60 to-smoke-900"></div>
             </div>
 
@@ -28,7 +28,7 @@ import Footer from '../components/Footer.astro';
                         </defs>
                     </svg>
                     <!-- Al ser el hero, esta imagen tampoco lleva lazy -->
-                    <img id="jesus-sketch" src="/jesus-pencil.png" alt="Boceto de Jesús" class="w-auto h-[40vh] md:h-[50vh] object-contain invisible opacity-0 p-4" style="mask-image: url(#pencil-mask); -webkit-mask-image: url(#pencil-mask);"/>
+                    <img id="jesus-sketch" src="/jesus-pencil.png" alt="Boceto de Jesús" class="will-change-transform w-auto h-[40vh] md:h-[50vh] object-contain invisible opacity-0 p-4" style="mask-image: url(#pencil-mask); -webkit-mask-image: url(#pencil-mask);"/>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@ import Footer from '../components/Footer.astro';
                                 </defs>
                             </svg>
                             <!-- 🌟 OPTIMIZADO: Carga perezosa de la imagen del detalle -->
-                            <img id="jesus-sketch-2" src="/jesus-detail-pencil.png" loading="lazy" decoding="async" alt="Jesús Enseñando" class="w-[90%] h-[90%] object-contain invisible opacity-0 drop-shadow-2xl relative z-10 p-2" style="mask-image: url(#pencil-mask-2); -webkit-mask-image: url(#pencil-mask-2);"/>
+                            <img id="jesus-sketch-2" src="/jesus-detail-pencil.png" loading="lazy" decoding="async" alt="Jesús Enseñando" class="will-change-transform w-[90%] h-[90%] object-contain invisible opacity-0 drop-shadow-2xl relative z-10 p-2" style="mask-image: url(#pencil-mask-2); -webkit-mask-image: url(#pencil-mask-2);"/>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ import Footer from '../components/Footer.astro';
             <section id="detail-section-3" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900">
                 <div class="absolute inset-0 z-10 pointer-events-none">
                     <!-- 🌟 OPTIMIZADO: preload="none" para videos pesados que están muy abajo -->
-                    <video id="jesus-video-3" src="/jesus-scroll.mp4" muted playsinline preload="none" class="w-full h-full object-cover transform-gpu will-change-transform" style="image-rendering: optimizeQuality; transform: translateZ(0);"></video>
+                    <video id="jesus-video-3" src="/jesus-scroll.mp4" poster="/jesus-scroll-poster.webp" muted playsinline preload="none" class="will-change-transform w-full h-full object-cover transform-gpu will-change-transform" style="image-rendering: optimizeQuality; transform: translateZ(0);"></video>
                 </div>
                 <div id="overlay-3" class="absolute inset-0 z-15 bg-gradient-to-t from-smoke-800 via-smoke-800/90 to-transparent invisible opacity-0 pointer-events-none"></div>
                 <div class="max-w-5xl mx-auto px-4 relative z-20 text-center pointer-events-none">
@@ -96,7 +96,7 @@ import Footer from '../components/Footer.astro';
             <section id="detail-section-4" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-800">
                 <div class="absolute inset-0 z-10 pointer-events-none">
                     <!-- 🌟 OPTIMIZADO: preload="none" para videos pesados que están muy abajo -->
-                    <video id="jesus-video-4" src="/jesus-evangelismo-scroll.mp4" muted playsinline preload="none" class="w-full h-full object-cover transform-gpu will-change-transform" style="image-rendering: optimizeQuality; transform: translateZ(0);"></video>
+                    <video id="jesus-video-4" src="/jesus-evangelismo-scroll.mp4" poster="/jesus-evangelismo-scroll-poster.webp" muted playsinline preload="none" class="will-change-transform w-full h-full object-cover transform-gpu will-change-transform" style="image-rendering: optimizeQuality; transform: translateZ(0);"></video>
                 </div>
                 <div id="overlay-4" class="absolute inset-0 z-15 bg-gradient-to-t from-smoke-900 via-smoke-900/90 to-transparent invisible opacity-0 pointer-events-none"></div>
                 <div class="max-w-5xl mx-auto px-4 relative z-20 text-center pointer-events-none">
@@ -155,6 +155,19 @@ import Footer from '../components/Footer.astro';
                 </div>
             </section>
 
+            <!-- 🌟 CONTROLES FLOTANTES (AÑADIDOS) 🌟 -->
+        <div class="fixed bottom-24 md:bottom-28 right-6 z-[60] flex flex-col gap-4 items-end pointer-events-none">
+            <!-- MODO RENDIMIENTO -->
+            <button id="toggle-performance" class="w-12 h-12 md:w-14 md:h-14 bg-smoke-900/90 backdrop-blur-md border border-gold/40 text-gold rounded-full flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-smoke-900 shadow-2xl group relative pointer-events-auto" title="Modo Rendimiento">
+                <i id="perf-icon" class="fa-solid fa-bolt text-lg"></i>
+            </button>
+
+            <!-- VOLVER ARRIBA -->
+            <button id="scroll-to-top" class="w-12 h-12 md:w-14 md:h-14 bg-smoke-900/90 backdrop-blur-md border border-gold/40 text-gold rounded-full flex items-center justify-center opacity-0 invisible translate-y-10 transition-all duration-500 hover:bg-gold hover:text-smoke-900 hover:scale-110 shadow-2xl group pointer-events-auto" title="Volver al inicio">
+                <i class="fa-solid fa-arrow-up text-lg group-hover:-translate-y-1 transition-transform"></i>
+            </button>
+        </div>
+
         </div>
     </main>
     <Footer />
@@ -164,9 +177,48 @@ import Footer from '../components/Footer.astro';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
         gsap.registerPlugin(ScrollTrigger);
 
-        window.onload = () => {
+        document.addEventListener("astro:page-load", () => {
             const header = document.querySelector('header');
             let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
+
+            // 🌟 LÓGICA DE LOS CONTROLES FLOTANTES (AÑADIDA) 🌟
+            const scrollTopBtn = document.getElementById('scroll-to-top');
+            const perfBtn = document.getElementById('toggle-performance');
+            const perfIcon = document.getElementById('perf-icon');
+
+            const updatePerfUI = () => {
+                if (!animationsEnabled) {
+                    perfIcon?.classList.replace('fa-bolt', 'fa-bolt-slash');
+                    perfBtn?.classList.add('bg-gold', 'text-smoke-900');
+                } else {
+                    perfIcon?.classList.replace('fa-bolt-slash', 'fa-bolt');
+                    perfBtn?.classList.remove('bg-gold', 'text-smoke-900');
+                }
+            };
+            updatePerfUI();
+
+            if (perfBtn) {
+                perfBtn.addEventListener('click', () => {
+                    animationsEnabled = !animationsEnabled;
+                    localStorage.setItem('iceva_performance', animationsEnabled ? 'high' : 'low');
+                    window.location.reload();
+                });
+            }
+
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        gsap.to(scrollTopBtn, { autoAlpha: 1, visibility: 'visible', y: 0, duration: 0.5, ease: "back.out(1.7)" });
+                    } else {
+                        gsap.to(scrollTopBtn, { autoAlpha: 0, visibility: 'hidden', y: 40, duration: 0.4 });
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            // 🌟 FIN LÓGICA DE CONTROLES 🌟
 
             if (header) {
                 gsap.set(header, { yPercent: 0, autoAlpha: 1 });
@@ -328,6 +380,6 @@ import Footer from '../components/Footer.astro';
             });
 
             ScrollTrigger.refresh();
-        };
+        });
     </script>
 </Layout>

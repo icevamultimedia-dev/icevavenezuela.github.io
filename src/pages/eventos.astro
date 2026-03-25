@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
             
             <!-- Imagen de Fondo a Pantalla Completa -->
             <div class="absolute inset-0 z-0">
-                <img src="/eventos-hero.jpg" alt="Bikurim 2026" class="w-full h-full object-cover object-center opacity-80" onerror="this.style.display='none'" />
+                <img src="/eventos-hero.webp" alt="Bikurim 2026" class="w-full h-full object-cover object-center opacity-80" onerror="this.style.display='none'" />
                 <!-- Gradiente oscuro inferior y lateral izquierdo para que el texto resalte -->
                 <div class="absolute inset-0 bg-gradient-to-t from-smoke-900 via-smoke-900/60 to-transparent"></div>
                 <div class="absolute inset-0 bg-gradient-to-r from-smoke-900/90 via-smoke-900/40 to-transparent hidden md:block"></div>
@@ -36,10 +36,10 @@ import Footer from '../components/Footer.astro';
                     
                     <!-- 🌟 Botones (Añadido flex-wrap y el botón Registrarme) 🌟 -->
                     <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-6">
-                        <a href="/eventos/bikurim" class="bg-white text-smoke-900 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gold transition-colors duration-300 shadow-xl w-full sm:w-auto text-center">
+                        <a href="/eventos/bikurim" data-astro-prefetch="hover" class="bg-white text-smoke-900 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gold transition-colors duration-300 shadow-xl w-full sm:w-auto text-center">
                             Saber Más
                         </a>
-                        <a href="/registro" class="bg-gold text-smoke-900 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300 shadow-xl w-full sm:w-auto text-center">
+                        <a href="/registro" data-astro-prefetch="hover" class="bg-gold text-smoke-900 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300 shadow-xl w-full sm:w-auto text-center">
                             Registrarme
                         </a>
                         <!-- <a href="#detalles" class="text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center sm:justify-start gap-2 hover:text-gold transition-colors w-full sm:w-auto">
@@ -68,7 +68,7 @@ import Footer from '../components/Footer.astro';
                 <div class="flex flex-col lg:flex-row items-center gap-12 mb-24 gsap-reveal">
                     <div class="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-smoke-800 group cursor-pointer relative">
                         <span class="absolute top-4 left-4 z-10 bg-blue-600 text-white text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded">Destacado</span>
-                        <img src="/evento-1.jpg" loading="lazy" decoding="async" alt="Fiesta de Primicias" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/evento-1.webp" loading="lazy" decoding="async" alt="Fiesta de Primicias" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-smoke-800 flex items-center justify-center -z-10"><i class="fa-solid fa-camera text-4xl text-smoke-700"></i></div>
                     </div>
                     <div class="w-full lg:w-1/2 space-y-6">
@@ -114,7 +114,7 @@ import Footer from '../components/Footer.astro';
                     
                     <!-- Imagen de fondo de la tarjeta -->
                     <div class="absolute inset-0 z-0">
-                        <img src="/registro-bg.jpg" loading="lazy" decoding="async" alt="Registro Eventos" class="w-full h-full object-cover object-center" onerror="this.style.display='none'">
+                        <img src="/registro-bg.webp" loading="lazy" decoding="async" alt="Registro Eventos" class="w-full h-full object-cover object-center" onerror="this.style.display='none'">
                     </div>
                     
                     <!-- Contenido Textual -->
@@ -123,7 +123,7 @@ import Footer from '../components/Footer.astro';
                         <p class="text-gray-100 font-medium mb-8 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                             <!--texto - Ingresa aquí y enterate de los últimos detalles y novedades sobre Bikurim y otras actividades en ICEVA.-->
                         </p>
-                        <a href="/registro" class="inline-block bg-smoke-900/80 border border-smoke-700 text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-smoke-900 transition-colors duration-300 backdrop-blur-sm">
+                        <a href="/registro" data-astro-prefetch="hover" class="inline-block bg-smoke-900/80 border border-smoke-700 text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-smoke-900 transition-colors duration-300 backdrop-blur-sm">
                             Más Información
                         </a>
                     </div>
@@ -152,8 +152,8 @@ import Footer from '../components/Footer.astro';
         import { gsap } from 'gsap';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
         gsap.registerPlugin(ScrollTrigger);
-
-        document.addEventListener('DOMContentLoaded', () => {
+        
+        document.addEventListener("astro:page-load", () => {
             
             const scrollTopBtn = document.getElementById('scroll-to-top');
             const perfBtn = document.getElementById('toggle-performance');

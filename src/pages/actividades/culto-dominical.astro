@@ -16,7 +16,7 @@ import Footer from '../../components/Footer.astro';
             <!-- Imagen de Fondo a Pantalla Completa -->
             <div class="absolute inset-0 z-0">
                 <!-- ⚠️ Recuerda añadir 'culto-hero.jpg' a tu carpeta public/ -->
-                <img src="/culto-hero.jpg" alt="Fondo Culto Dominical" class="w-full h-full object-cover object-center opacity-60" onerror="this.style.display='none'" />
+                <img src="/culto-hero.webp" alt="Fondo Culto Dominical" class="w-full h-full object-cover object-center opacity-60" onerror="this.style.display='none'" />
                 <!-- Gradiente superpuesto para que el texto siga siendo legible -->
                 <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/90 via-smoke-900/60 to-smoke-900"></div>
             </div>
@@ -123,17 +123,17 @@ import Footer from '../../components/Footer.astro';
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Foto 1 -->
                     <div class="gsap-reveal overflow-hidden rounded-2xl relative group h-80 border border-smoke-800 shadow-xl">
-                        <img src="/culto-1.jpg" loading="lazy" decoding="async" alt="Adoración ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/culto-1.webp" loading="lazy" decoding="async" alt="Adoración ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-gradient-to-t from-smoke-900/80 to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
                     </div>
                     <!-- Foto 2 -->
                     <div class="gsap-reveal overflow-hidden rounded-2xl relative group h-80 border border-smoke-800 shadow-xl" style="transition-delay: 100ms;">
-                        <img src="/culto-2.jpg" loading="lazy" decoding="async" alt="Palabra ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/culto-2.webp" loading="lazy" decoding="async" alt="Palabra ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-gradient-to-t from-smoke-900/80 to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
                     </div>
                     <!-- Foto 3 -->
                     <div class="gsap-reveal overflow-hidden rounded-2xl relative group h-80 border border-smoke-800 shadow-xl" style="transition-delay: 200ms;">
-                        <img src="/culto-3.jpg" loading="lazy" decoding="async" alt="Comunidad ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/culto-3.webp" loading="lazy" decoding="async" alt="Comunidad ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-gradient-to-t from-smoke-900/80 to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
                     </div>
                 </div>
@@ -159,7 +159,12 @@ import Footer from '../../components/Footer.astro';
 
 <!-- Script combinado para la cuenta regresiva y el nuevo carrusel de video -->
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+        import { gsap } from 'gsap';
+        import { ScrollTrigger } from 'gsap/ScrollTrigger';
+        gsap.registerPlugin(ScrollTrigger);
+    
+        document.addEventListener("astro:page-load", () => {
+
         // --- LÓGICA DE LA CUENTA REGRESIVA BIKURIM ---
         const targetDate = new Date("Apr 12, 2026 10:00:00").getTime();
 
@@ -236,5 +241,7 @@ import Footer from '../../components/Footer.astro';
                 updateCarousel();
             });
         }
+
+        ScrollTrigger.refresh()
     });
 </script>

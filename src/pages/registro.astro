@@ -73,11 +73,12 @@ import Footer from '../components/Footer.astro';
                             <div class="relative">
                                 <select id="motivo" name="motivo" required class="w-full bg-smoke-900 border border-smoke-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-gold transition-colors shadow-inner appearance-none cursor-pointer">
                                     <option value="" disabled selected>Selecciona una opción...</option>
-                                    <option value="Registro para Evento (Bikurim / Aniversario)">Asistir a Bikurim (Fiesta de Primicias ICEVA 2026)</option>
+                                    <option value="Registro para Evento">Asistir a Bikurim (Fiesta de Primicias ICEVA 2026)</option>
                                     <option value="Petición de Oración">Petición de Oración</option>
                                     <option value="Información sobre Horarios y Actividades">Información de Horarios y Actividades</option>
                                     <option value="Deseo Bautizarme">Deseo Bautizarme</option>
                                     <option value="Integrarme a un Ministerio (Servicio)">Integrarme a un Ministerio</option>
+                                    <option value="Unirme al canal de Whatsapp">Unirme al canal de Whatsapp</option>
                                     <option value="Otro">Otro Motivo</option>
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gold">
@@ -115,7 +116,7 @@ import Footer from '../components/Footer.astro';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
         gsap.registerPlugin(ScrollTrigger);
 
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener("astro:page-load", () => {
             
             // 1. Animaciones de entrada (ScrollTrigger)
             let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
@@ -203,6 +204,8 @@ import Footer from '../components/Footer.astro';
                     });
                 });
             }
+
+            ScrollTrigger.refresh()
 
         });
     </script>

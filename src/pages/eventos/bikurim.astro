@@ -6,7 +6,7 @@ import Footer from '../../components/Footer.astro';
 
 <Layout 
     title="Bikurim 2026 | ICEVA"
-    preloadImage="/bikurim-hero.jpg"
+    preloadImage="/bikurim-hero.webp"
 >
     <Navbar />
     
@@ -17,7 +17,7 @@ import Footer from '../../components/Footer.astro';
             
             <!-- Imagen de Fondo -->
             <div class="absolute inset-0 z-0">
-                <img src="/bikurim-hero.jpg" alt="Fondo Bikurim" class="w-full h-full object-cover object-center opacity-60" onerror="this.style.display='none'" />
+                <img src="/bikurim-hero.webp" alt="Fondo Bikurim" class="w-full h-full object-cover object-center opacity-60" onerror="this.style.display='none'" />
                 <div class="absolute inset-0 bg-gradient-to-t from-smoke-900 via-smoke-900/60 to-transparent"></div>
             </div>
 
@@ -101,7 +101,7 @@ import Footer from '../../components/Footer.astro';
                     <div class="gsap-reveal relative flex items-center justify-center min-h-[500px] md:h-[750px] w-full">
                         <!-- Sube tu imagen del pergamino como 'pergamino-deut26.png' a public/ -->
                         <img 
-                            src="/pergamino-deut26.png" loading="lazy" decoding="async"
+                            src="/pergamino-deut26.webp" loading="lazy" decoding="async"
                             alt="Deuteronomio 26:1-11 en Hebreo" 
                             class="max-w-full max-h-full object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:scale-[1.03] transition-transform duration-500" 
                             onerror="this.style.display='none'"
@@ -118,11 +118,11 @@ import Footer from '../../components/Footer.astro';
                 <!-- Sube tu video como 'bikurim-scroll.mp4' a public/ -->
                 <video 
                     id="bikurim-video-scroll" 
-                    src="/bikurim-scroll.mp4" 
+                    src="/bikurim-scroll.mp4" poster="/bikurim-scroll-poster.webp"
                     muted 
                     playsinline 
                     preload="auto"
-                    class="w-full h-full object-cover transform-gpu will-change-transform"
+                    class="will-change-transform w-full h-full object-cover transform-gpu will-change-transform"
                     style="image-rendering: optimizeQuality; transform: translateZ(0);"
                 ></video>
             </div>
@@ -135,7 +135,7 @@ import Footer from '../../components/Footer.astro';
                     
                     <!-- Imagen de fondo de la tarjeta -->
                     <div class="absolute inset-0 z-0">
-                        <img src="/registro-bg.jpg" loading="lazy" decoding="async" alt="Fondo Evangelístico" class="w-full h-full object-cover object-center opacity-40" onerror="this.style.display='none'">
+                        <img src="/registro-bg.webp" loading="lazy" decoding="async" alt="Fondo Evangelístico" class="w-full h-full object-cover object-center opacity-40" onerror="this.style.display='none'">
                         <!-- Mantenemos un fondo semitransparente AQUÍ para que el texto se pueda leer sobre la foto -->
                         <div class="absolute inset-0 bg-smoke-900/60"></div>
                     </div>
@@ -203,7 +203,7 @@ import Footer from '../../components/Footer.astro';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
         gsap.registerPlugin(ScrollTrigger);
 
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener("astro:page-load", () => {
             
             const scrollTopBtn = document.getElementById('scroll-to-top');
             const perfBtn = document.getElementById('toggle-performance');

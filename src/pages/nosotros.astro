@@ -5,14 +5,14 @@ import Footer from '../components/Footer.astro';
 ---
 
 <!-- 🌟 OPTIMIZADO: Precarga del fondo hero para apertura instantánea -->
-<Layout title="Nuestra Identidad | ICEVA" preloadImage="/nosotros-hero.jpg">
+<Layout title="Nuestra Identidad | ICEVA" preloadImage="/nosotros-hero.webp">
     <Navbar />
     
     <main class="bg-smoke-900 min-h-screen">
         
         <section class="relative min-h-screen flex items-center justify-center pt-40 overflow-hidden border-b border-smoke-800">
             <div class="absolute inset-0 z-0">
-                <img src="/nosotros-hero.jpg" alt="Fondo Quiénes Somos" class="w-full h-full object-cover object-center opacity-60" onerror="this.style.display='none'" />
+                <img src="/nosotros-hero.webp" alt="Fondo Quiénes Somos" class="w-full h-full object-cover object-center opacity-60" onerror="this.style.display='none'" />
                 <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/90 via-smoke-900/60 to-smoke-900"></div>
             </div>
             <div class="flare-bg w-[500px] h-[500px] top-0 left-1/2 transform -translate-x-1/2 opacity-30 z-0"></div>
@@ -57,7 +57,7 @@ import Footer from '../components/Footer.astro';
                     </div>
                     <div class="gsap-reveal relative h-[400px] rounded-2xl overflow-hidden border border-smoke-800 group shadow-2xl">
                         <!-- 🌟 OPTIMIZADO: Carga Perezosa -->
-                        <img src="/mision.jpg" loading="lazy" decoding="async" alt="Misión ICEVA" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/mision.webp" loading="lazy" decoding="async" alt="Misión ICEVA" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-gradient-to-tr from-smoke-900/80 to-transparent"></div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ import Footer from '../components/Footer.astro';
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <div class="gsap-reveal relative h-[400px] rounded-2xl overflow-hidden border border-smoke-700 group shadow-2xl order-2 md:order-1">
                         <!-- 🌟 OPTIMIZADO: Carga Perezosa -->
-                        <img src="/vision.jpg" loading="lazy" decoding="async" alt="Visión ICEVA" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/vision.webp" loading="lazy" decoding="async" alt="Visión ICEVA" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-gradient-to-bl from-smoke-900/80 to-transparent"></div>
                     </div>
                     <div class="gsap-reveal order-1 md:order-2">
