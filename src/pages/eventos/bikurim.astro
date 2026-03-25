@@ -1,0 +1,368 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Bikurim 2026 | ICEVA">
+    <Navbar />
+    
+    <main class="bg-smoke-900 overflow-x-hidden font-sans">
+        
+        <!-- 🌟 CABECERA (Header) 🌟 -->
+        <section class="relative min-h-screen flex flex-col items-center justify-center pt-[220px] pb-16 overflow-hidden border-b border-smoke-800">
+            
+            <!-- Imagen de Fondo -->
+            <div class="absolute inset-0 z-0">
+                <img src="/bikurim-hero.jpg" alt="Fondo Bikurim" class="w-full h-full object-cover object-center opacity-60" onerror="this.style.display='none'" />
+                <div class="absolute inset-0 bg-gradient-to-t from-smoke-900 via-smoke-900/60 to-transparent"></div>
+            </div>
+
+            <!-- Destello -->
+            <div class="flare-bg w-[500px] h-[500px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30 z-0"></div>
+            
+            <!-- Contenido del texto -->
+            <div class="max-w-6xl mx-auto px-4 relative z-10 text-center w-full flex flex-col items-center">
+                <div class="gsap-hero-bikurim invisible opacity-0 translate-y-10 w-full flex flex-col items-center">
+                    <span class="inline-block text-gold tracking-[0.4em] text-xs md:text-sm uppercase mb-6 md:mb-8 font-bold border border-gold px-4 py-1.5 rounded-full shadow-lg">Fiesta de Primicias</span>
+                    
+                    <h1 class="mb-8 md:mb-12 flex justify-center items-center drop-shadow-2xl w-full">
+                        <img src="/bikurim-texto.svg" alt="Bikurim 2026" class="w-full max-w-[80%] sm:max-w-md md:max-w-xl lg:max-w-2xl h-auto max-h-[20vh] md:max-h-[25vh] object-contain" onerror="this.style.display='none'" />
+                    </h1>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 text-gray-300 font-medium text-sm md:text-base tracking-widest uppercase mb-4 drop-shadow-md">
+                        <span class="flex items-center gap-2"><i class="fa-regular fa-calendar text-gold"></i> 19 de Abril</span>
+                        <span class="hidden sm:inline text-gold opacity-50">|</span>
+                        <span class="flex items-center gap-2"><i class="fa-regular fa-clock text-gold"></i> 10:00 AM</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 SECCIÓN 2: ¿QUÉ ES BIKURIM? Y PERGAMINO 🌟 -->
+        <section class="py-24 relative bg-smoke-900 border-b border-smoke-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Textos descriptivos (Izquierda) -->
+                    <div class="gsap-reveal space-y-6">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">¿Qué es Bikurim?</h2>
+                        
+                        <!-- Párrafos Visibles por defecto -->
+                        <div class="space-y-6">
+                            <p class="text-gray-400 font-light leading-relaxed text-base md:text-lg">
+                                "Bikurim" (ביכורים), que se traduce literalmente como "primeros frutos" o "primicias", es una festividad bíblica de primavera. Consistía en llevar al Templo de Jerusalén la primera gavilla (el Omer) de la cosecha de cebada. El sumo sacerdote la mecía delante del Señor como ofrenda de elevación, marcando el inicio oficial de la temporada de recolección.
+                            </p>
+                            <p class="text-gray-400 font-light leading-relaxed text-base md:text-lg">
+                                Esta celebración fue instituida directamente por Dios en el Sinaí, registrada en Levítico 23:9-14. La instrucción era clara: una vez que el pueblo entrara a la Tierra Prometida y comenzaran a sembrar, no podían comer del fruto de su trabajo hasta haber presentado a Dios la primera y mejor porción de la tierra.
+                            </p>
+                        </div>
+
+                        <!-- Párrafos Ocultos (Expandibles) -->
+                        <div id="bikurim-extra-text" class="hidden space-y-6 overflow-hidden">
+                            <p class="text-gray-400 font-light leading-relaxed text-base md:text-lg">
+                                El propósito central de Bikurim es la gratitud, la dependencia y la consagración. Al entregar a Dios el primer fruto antes de asegurar el resto del alimento, el pueblo de Israel demostraba una confianza absoluta en que el Creador proveería para la cosecha completa. Era un recordatorio tangible de que toda bendición y provisión proviene de Su mano.
+                            </p>
+                            <p class="text-gray-400 font-light leading-relaxed text-base md:text-lg">
+                                En el diseño divino, las festividades son "sombras de lo que ha de venir" (Colosenses 2:17). Yeshua es el cumplimiento histórico y espiritual exacto de Bikurim. El apóstol Pablo lo declara en 1 Corintios 15:20: "Mas ahora el Mesías ha resucitado de los muertos; primicias de los que durmieron es hecho".
+                            </p>
+                            <p class="text-gray-400 font-light leading-relaxed text-base md:text-lg">
+                                Yeshua resucitó precisamente el día de la Fiesta de las Primicias (el primer día de la semana, después del día de reposo de Pésaj). Así como la primera gavilla de cebada era presentada a Dios como garantía de que el resto de la cosecha sería abundante y aceptada, la resurrección de Yeshua es la "primicia" que garantiza a todos los creyentes la promesa de nuestra futura resurrección. Él es el primer fruto de una nueva creación.
+                            </p>
+                        </div>
+
+                        <!-- Botón "Leer Más" -->
+                        <div>
+                            <button id="btn-leer-mas" class="inline-flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-widest hover:text-white transition-colors duration-300 focus:outline-none">
+                                <span id="btn-leer-mas-text">Leer más</span>
+                                <i id="btn-leer-mas-icon" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Tarjetas de iconos inferiores -->
+                        <div class="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-smoke-800 p-6 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors">
+                                <i class="fa-solid fa-music text-3xl text-blue-400 mb-4"></i>
+                                <h4 class="text-white font-bold mb-2">Adoración Especial</h4>
+                                <p class="text-xs text-gray-500 font-light">Tiempos de alabanza extendida con el Ministerio ECOS y Danzas.</p>
+                            </div>
+                            <div class="bg-smoke-800 p-6 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors">
+                                <i class="fa-solid fa-book-open text-3xl text-gold mb-4"></i>
+                                <h4 class="text-white font-bold mb-2">Palabra Revelada</h4>
+                                <p class="text-xs text-gray-500 font-light">Un mensaje poderoso de impartición para el nuevo ciclo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pergamino Deuteronomio (Derecha - Tamaño Agrandado) -->
+                    <div class="gsap-reveal relative flex items-center justify-center min-h-[500px] md:h-[750px] w-full">
+                        <!-- Sube tu imagen del pergamino como 'pergamino-deut26.png' a public/ -->
+                        <img 
+                            src="/pergamino-deut26.png" 
+                            alt="Deuteronomio 26:1-11 en Hebreo" 
+                            class="max-w-full max-h-full object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:scale-[1.03] transition-transform duration-500" 
+                            onerror="this.style.display='none'"
+                        >
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 SECCIÓN 3: VIDEO ANIMADO SCROLL (Totalmente nítido, sin opacidad ni overlays oscuros) 🌟 -->
+        <section id="video-scroll-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900">
+            <div class="absolute inset-0 z-10">
+                <!-- Sube tu video como 'bikurim-scroll.mp4' a public/ -->
+                <video 
+                    id="bikurim-video-scroll" 
+                    src="/bikurim-scroll.mp4" 
+                    muted 
+                    playsinline 
+                    preload="auto"
+                    class="w-full h-full object-cover transform-gpu will-change-transform"
+                    style="image-rendering: optimizeQuality; transform: translateZ(0);"
+                ></video>
+            </div>
+        </section>
+
+        <!-- 🌟 SECCIÓN 4: MENSAJE EVANGELÍSTICO Y YESHÚA (Estilo Tarjeta) 🌟 -->
+        <section id="mensaje-evangelistico" class="py-12 md:py-24 relative bg-smoke-900 border-b border-smoke-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="gsap-reveal relative rounded-3xl overflow-hidden border border-smoke-800 shadow-2xl min-h-[400px] flex items-center p-8 md:p-16 lg:p-24">
+                    
+                    <!-- Imagen de fondo de la tarjeta -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="/registro-bg.jpg" alt="Fondo Evangelístico" class="w-full h-full object-cover object-center opacity-40" onerror="this.style.display='none'">
+                        <!-- Mantenemos un fondo semitransparente AQUÍ para que el texto se pueda leer sobre la foto -->
+                        <div class="absolute inset-0 bg-smoke-900/60"></div>
+                    </div>
+                    
+                    <!-- Contenido Textual Evangelístico -->
+                    <div class="relative z-10 max-w-3xl">
+                        <span class="text-gold uppercase tracking-[0.2em] text-xs font-bold font-sans mb-4 block">El misterio revelado</span>
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                            Yeshúa, Nuestra Gran Primicia
+                        </h2>
+                        
+                        <div class="space-y-6 text-gray-200 font-light font-sans leading-relaxed text-base md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                            <p>
+                                A menudo, como creyentes, pasamos por alto el profundo poder espiritual de honrar a Dios con nuestras primicias. No se trata solo de un mandamiento antiguo en Deuteronomio, sino de una hermosa revelación de amor. Yeshúa (Jesús) mismo es descrito en las Escrituras como las <strong class="text-white font-medium italic">"primicias de los que durmieron"</strong> (1 Corintios 15:20).
+                            </p>
+                            <p>
+                                Al consagrar nuestro inicio de año entregando lo primero y lo mejor a Dios, reflejamos el corazón del Padre, quien nos dio a Su único Hijo como la primicia perfecta para nuestra redención. No retuvo lo mejor de Sí, sino que lo entregó por amor a ti.
+                            </p>
+                            <p class="font-medium text-blue-100">
+                                Descubre la profundidad de este misterio. Reconoce a Yeshúa como tu todo, dale el primer lugar en tu vida y permite que este acto de adoración genuina transforme tu familia y tu futuro.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 SECCIÓN 5: INVITACIÓN Y REGISTRO 🌟 -->
+        <section class="py-24 relative bg-blue-900 overflow-hidden">
+            <!-- Patrón de fondo abstracto muy sutil -->
+            <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=')]"></div>
+            
+            <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+                <div class="gsap-reveal">
+                    <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">Ven y adoremos juntos a nuestro creador</h2>
+                    <p class="text-blue-100 text-base md:text-lg font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+                        Queremos asegurarnos de que tengas la mejor experiencia. Si bien la entrada es gratuita, te invitamos a registrar tu asistencia para ayudarnos con la logística del evento.
+                    </p>
+                    <a href="/registro" class="inline-block bg-gold text-smoke-900 px-10 py-4 rounded-full text-xs font-bold uppercase tracking-[0.15em] hover:scale-105 hover:bg-white transition-all duration-300 shadow-2xl">
+                        Registrar mi Asistencia
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 CONTROLES FLOTANTES 🌟 -->
+        <div class="fixed bottom-24 md:bottom-28 right-6 z-[60] flex flex-col gap-4 items-end pointer-events-none">
+            <!-- MODO RENDIMIENTO -->
+            <button id="toggle-performance" class="w-12 h-12 md:w-14 md:h-14 bg-smoke-900/90 backdrop-blur-md border border-gold/40 text-gold rounded-full flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-smoke-900 shadow-2xl group relative pointer-events-auto" title="Modo Rendimiento">
+                <i id="perf-icon" class="fa-solid fa-bolt text-lg"></i>
+            </button>
+
+            <!-- VOLVER ARRIBA -->
+            <button id="scroll-to-top" class="w-12 h-12 md:w-14 md:h-14 bg-smoke-900/90 backdrop-blur-md border border-gold/40 text-gold rounded-full flex items-center justify-center opacity-0 invisible translate-y-10 transition-all duration-500 hover:bg-gold hover:text-smoke-900 hover:scale-110 shadow-2xl group pointer-events-auto" title="Volver al inicio">
+                <i class="fa-solid fa-arrow-up text-lg group-hover:-translate-y-1 transition-transform"></i>
+            </button>
+        </div>
+
+    </main>
+    <Footer />
+
+    <script>
+        import { gsap } from 'gsap';
+        import { ScrollTrigger } from 'gsap/ScrollTrigger';
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const scrollTopBtn = document.getElementById('scroll-to-top');
+            const perfBtn = document.getElementById('toggle-performance');
+            const perfIcon = document.getElementById('perf-icon');
+
+            // 🌟 ESTADO GLOBAL DE RENDIMIENTO 🌟
+            let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
+
+            const updatePerfUI = () => {
+                if (!animationsEnabled) {
+                    perfIcon?.classList.replace('fa-bolt', 'fa-bolt-slash');
+                    perfBtn?.classList.add('bg-gold', 'text-smoke-900');
+                } else {
+                    perfIcon?.classList.replace('fa-bolt-slash', 'fa-bolt');
+                    perfBtn?.classList.remove('bg-gold', 'text-smoke-900');
+                }
+            };
+            updatePerfUI();
+
+            if (perfBtn) {
+                perfBtn.addEventListener('click', () => {
+                    animationsEnabled = !animationsEnabled;
+                    localStorage.setItem('iceva_performance', animationsEnabled ? 'high' : 'low');
+                    window.location.reload();
+                });
+            }
+
+            // 🌟 BOTÓN VOLVER ARRIBA 🌟
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        gsap.to(scrollTopBtn, { autoAlpha: 1, visibility: 'visible', y: 0, duration: 0.5, ease: "back.out(1.7)" });
+                    } else {
+                        gsap.to(scrollTopBtn, { autoAlpha: 0, visibility: 'hidden', y: 40, duration: 0.4 });
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // 🌟 FUNCIONALIDAD "LEER MÁS" (Bikurim) 🌟
+            const btnLeerMas = document.getElementById('btn-leer-mas');
+            const extraText = document.getElementById('bikurim-extra-text');
+            const btnText = document.getElementById('btn-leer-mas-text');
+            const btnIcon = document.getElementById('btn-leer-mas-icon');
+            
+            if (btnLeerMas && extraText && btnText && btnIcon) {
+                let isExpanded = false;
+                
+                btnLeerMas.addEventListener('click', () => {
+                    isExpanded = !isExpanded;
+                    
+                    if (isExpanded) {
+                        // Expandir
+                        extraText.classList.remove('hidden');
+                        gsap.fromTo(extraText, 
+                            { height: 0, opacity: 0 }, 
+                            { 
+                                height: 'auto', 
+                                opacity: 1, 
+                                duration: 0.5, 
+                                ease: "power2.out", 
+                                onComplete: () => ScrollTrigger.refresh() 
+                            }
+                        );
+                        btnText.textContent = 'Leer menos';
+                        btnIcon.style.transform = 'rotate(180deg)';
+                    } else {
+                        // Contraer
+                        gsap.to(extraText, { 
+                            height: 0, 
+                            opacity: 0, 
+                            duration: 0.4, 
+                            ease: "power2.in", 
+                            onComplete: () => {
+                                extraText.classList.add('hidden');
+                                ScrollTrigger.refresh();
+                            } 
+                        });
+                        btnText.textContent = 'Leer más';
+                        btnIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            }
+
+            // 🌟 ANIMACIÓN DEL HERO 🌟
+            if (animationsEnabled) {
+                gsap.to('.gsap-hero-bikurim', {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    delay: 0.2
+                });
+            } else {
+                gsap.set('.gsap-hero-bikurim', { autoAlpha: 1, y: 0 });
+            }
+
+            // 🌟 ANIMACIONES REVEAL AL HACER SCROLL 🌟
+            const reveals = gsap.utils.toArray('.gsap-reveal');
+            reveals.forEach(elem => {
+                if (animationsEnabled) {
+                    gsap.fromTo(elem as HTMLElement, 
+                        { autoAlpha: 0, y: 40 },
+                        {
+                            scrollTrigger: { 
+                                trigger: elem as HTMLElement, 
+                                start: "top 85%", 
+                                toggleActions: "play none none none" 
+                            },
+                            autoAlpha: 1, 
+                            y: 0, 
+                            duration: 1, 
+                            clearProps: "all", 
+                            ease: "power3.out"
+                        }
+                    );
+                } else {
+                    gsap.set(elem as HTMLElement, { autoAlpha: 1, y: 0, clearProps: "all" });
+                }
+            });
+
+            // 🌟 ANIMACIÓN DEL VIDEO SCROLL (Sección 3) 🌟
+            const videoScrollSection = document.getElementById('video-scroll-section');
+            const videoScroll = document.getElementById('bikurim-video-scroll') as HTMLVideoElement;
+
+            if (videoScrollSection && videoScroll) {
+                if (!animationsEnabled) {
+                    gsap.set(videoScroll, { display: 'block' });
+                } else {
+                    const initVideoAnimation = () => {
+                        const videoDuration = videoScroll.duration;
+                        if (!videoDuration || !isFinite(videoDuration)) return; 
+                        videoScroll.pause();
+
+                        ScrollTrigger.create({
+                            trigger: videoScrollSection,
+                            start: "top top",
+                            end: "+=2500", // Determina cuánto scroll se necesita para terminar el video
+                            pin: true,
+                            scrub: 0.5,
+                            anticipatePin: 1,
+                            onUpdate: (self) => {
+                                if (videoScroll.readyState >= 2) {
+                                    const duration = videoScroll.duration || 3;
+                                    videoScroll.currentTime = 0.01 + (self.progress * (duration - 0.1));
+                                }
+                            }
+                        });
+                    };
+
+                    if (videoScroll.readyState >= 2) {
+                        initVideoAnimation();
+                    } else {
+                        videoScroll.addEventListener('loadeddata', initVideoAnimation);
+                    }
+                }
+            }
+
+            ScrollTrigger.refresh();
+        });
+    </script>
+</Layout>

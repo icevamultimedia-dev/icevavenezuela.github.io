@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Próximos Eventos | ICEVA">
+    <Navbar />
+    
+    <main class="bg-smoke-900 overflow-x-hidden font-sans">
+        
+        <!-- 🌟 SECCIÓN 1: HERO EVENTO PRÓXIMO (Estilo Universal Mardi Gras) 🌟 -->
+        <section class="relative h-[85vh] md:h-screen w-full flex items-end pb-24 md:pb-32 px-6 md:px-16 lg:px-24 overflow-hidden border-b border-smoke-800">
+            
+            <!-- Imagen de Fondo a Pantalla Completa -->
+            <div class="absolute inset-0 z-0">
+                <img src="/eventos-hero.jpg" alt="Bikurim 2026" class="w-full h-full object-cover object-center opacity-80" onerror="this.style.display='none'" />
+                <!-- Gradiente oscuro inferior y lateral izquierdo para que el texto resalte -->
+                <div class="absolute inset-0 bg-gradient-to-t from-smoke-900 via-smoke-900/60 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-smoke-900/90 via-smoke-900/40 to-transparent hidden md:block"></div>
+            </div>
+
+            <!-- Contenido alineado abajo a la izquierda -->
+            <div class="relative z-10 w-full max-w-3xl">
+                <div class="gsap-hero-event invisible opacity-0 translate-y-10">
+                    <span class="inline-block bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-6">Próximo Evento</span>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
+                        Bikurim 2026: <br><span class="text-gold font-light">Fiesta de Primicias</span>
+                    </h1>
+                    <p class="text-white font-semibold tracking-widest uppercase mb-6 text-sm md:text-base drop-shadow-md">
+                        19 de Abril, 2026
+                    </p>
+                    <p class="text-gray-200 text-sm md:text-base font-light leading-relaxed max-w-xl mb-10 drop-shadow-md">
+                        Ven y se parte de esta gran celebración en nuestra casa. Fiestas de Primicias 2026. 
+                    </p>
+                    
+                    <!-- 🌟 Botones (Añadido flex-wrap y el botón Registrarme) 🌟 -->
+                    <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-6">
+                        <a href="/eventos/bikurim" class="bg-white text-smoke-900 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gold transition-colors duration-300 shadow-xl w-full sm:w-auto text-center">
+                            Saber Más
+                        </a>
+                        <a href="/registro" class="bg-gold text-smoke-900 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300 shadow-xl w-full sm:w-auto text-center">
+                            Registrarme
+                        </a>
+                        <!-- <a href="#detalles" class="text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center sm:justify-start gap-2 hover:text-gold transition-colors w-full sm:w-auto">
+                            <i class="fa-solid fa-play"></i> Ver Tráiler
+                        </a> Comentario -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 SECCIÓN 2: LISTA DE EVENTOS ANUALES (Estilo Tarjetas Horizontales) 🌟 -->
+        <section id="detalles" class="py-24 md:py-32 relative bg-smoke-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-20 gsap-reveal">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Únete a la Celebración en ICEVA</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+                        Enterate de nuestros principales eventos del año. Explora las diferentes actividades y se parte de nuestra casa. Adoremos a nuestro creador juntos.
+                    </p>
+                    <!--<div class="mt-8"> Comentario
+                        <a href="#" class="text-blue-400 font-semibold text-sm hover:text-white transition-colors underline underline-offset-4">Ver calendario completo</a>
+                    </div>-->
+                </div>
+
+                <!-- Evento 1 (Imagen a la izquierda) -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 mb-24 gsap-reveal">
+                    <div class="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-smoke-800 group cursor-pointer relative">
+                        <span class="absolute top-4 left-4 z-10 bg-blue-600 text-white text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded">Destacado</span>
+                        <img src="/evento-1.jpg" alt="Fiesta de Primicias" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <div class="absolute inset-0 bg-smoke-800 flex items-center justify-center -z-10"><i class="fa-solid fa-camera text-4xl text-smoke-700"></i></div>
+                    </div>
+                    <div class="w-full lg:w-1/2 space-y-6">
+                        <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">Aniversario ICEVA 2026 N37 (Proximamente)</h3>
+                        <p class="text-gray-400 font-light leading-relaxed">
+                            Este año celebramos 37 años de haber iniciado este camino en Dios, 37 años de crecimiento, 37 años de transformación constante. Música, danzas, servicio, palabra de Dios y mucho más.
+                        </p>
+                        <p class="text-xs text-gray-500 italic">PROXIMAMENTE - *Fechas sujetas a confirmación. Válido para toda la familia.</p>
+                        <div class="pt-4">
+                            <a href="https://drive.google.com/drive/folders/181eUiH0BeQjpE2yFWkcNpf-dwBvQ1Fdk?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-blue-500 transition-colors shadow-lg shadow-blue-600/20">
+                                Revive el Aniversario 2025
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evento 2 (Imagen a la derecha) -->
+                <!-- <div class="flex flex-col lg:flex-row-reverse items-center gap-12 mb-24 gsap-reveal">
+                    <div class="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-smoke-800 group cursor-pointer relative">
+                        <img src="/evento-2.jpg" alt="Retiro de Jóvenes" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <div class="absolute inset-0 bg-smoke-800 flex items-center justify-center -z-10"><i class="fa-solid fa-camera text-4xl text-smoke-700"></i></div>
+                    </div>
+                    <div class="w-full lg:w-1/2 space-y-6">
+                        <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">Retiro Juvenil de Verano 2026</h3>
+                        <p class="text-gray-400 font-light leading-relaxed">
+                            Tres días de inmersión total en la presencia de Dios. Dinámicas, juegos, plenarias y tiempos de adoración en vivo diseñados específicamente para encender la pasión de la juventud.
+                        </p>
+                        <div class="pt-4">
+                            <a href="#" class="inline-block border border-smoke-600 text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:border-white hover:bg-white hover:text-smoke-900 transition-all">
+                                Comparte esta info
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </section>
+
+        <!-- 🌟 SECCIÓN 3: TARJETA DE REGISTRO (Estilo Oscuro Fotográfico) 🌟 -->
+        <section id="registro" class="py-12 md:py-24 relative bg-smoke-900 border-b border-smoke-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="gsap-reveal relative rounded-3xl overflow-hidden border border-smoke-800 shadow-2xl min-h-[400px] flex items-center p-8 md:p-16 lg:p-24">
+                    
+                    <!-- Imagen de fondo de la tarjeta -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="/registro-bg.jpg" alt="Registro Eventos" class="w-full h-full object-cover object-center" onerror="this.style.display='none'">
+                    </div>
+                    
+                    <!-- Contenido Textual -->
+                    <div class="relative z-10 max-w-xl">
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Mantente Informado de Todos Nuestros Eventos</h2>
+                        <p class="text-gray-100 font-medium mb-8 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                            <!--texto - Ingresa aquí y enterate de los últimos detalles y novedades sobre Bikurim y otras actividades en ICEVA.-->
+                        </p>
+                        <a href="/registro" class="inline-block bg-smoke-900/80 border border-smoke-700 text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-smoke-900 transition-colors duration-300 backdrop-blur-sm">
+                            Más Información
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 CONTROLES FLOTANTES 🌟 -->
+        <div class="fixed bottom-24 md:bottom-28 right-6 z-[60] flex flex-col gap-4 items-end pointer-events-none">
+            <!-- MODO RENDIMIENTO -->
+            <button id="toggle-performance" class="w-12 h-12 md:w-14 md:h-14 bg-smoke-900/90 backdrop-blur-md border border-gold/40 text-gold rounded-full flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-smoke-900 shadow-2xl group relative pointer-events-auto" title="Modo Rendimiento">
+                <i id="perf-icon" class="fa-solid fa-bolt text-lg"></i>
+            </button>
+
+            <!-- VOLVER ARRIBA -->
+            <button id="scroll-to-top" class="w-12 h-12 md:w-14 md:h-14 bg-smoke-900/90 backdrop-blur-md border border-gold/40 text-gold rounded-full flex items-center justify-center opacity-0 invisible translate-y-10 transition-all duration-500 hover:bg-gold hover:text-smoke-900 hover:scale-110 shadow-2xl group pointer-events-auto" title="Volver al inicio">
+                <i class="fa-solid fa-arrow-up text-lg group-hover:-translate-y-1 transition-transform"></i>
+            </button>
+        </div>
+
+    </main>
+    <Footer />
+
+    <script>
+        import { gsap } from 'gsap';
+        import { ScrollTrigger } from 'gsap/ScrollTrigger';
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const scrollTopBtn = document.getElementById('scroll-to-top');
+            const perfBtn = document.getElementById('toggle-performance');
+            const perfIcon = document.getElementById('perf-icon');
+
+            // 🌟 ESTADO GLOBAL DE RENDIMIENTO 🌟
+            let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
+
+            const updatePerfUI = () => {
+                if (!animationsEnabled) {
+                    perfIcon?.classList.replace('fa-bolt', 'fa-bolt-slash');
+                    perfBtn?.classList.add('bg-gold', 'text-smoke-900');
+                } else {
+                    perfIcon?.classList.replace('fa-bolt-slash', 'fa-bolt');
+                    perfBtn?.classList.remove('bg-gold', 'text-smoke-900');
+                }
+            };
+            updatePerfUI();
+
+            if (perfBtn) {
+                perfBtn.addEventListener('click', () => {
+                    animationsEnabled = !animationsEnabled;
+                    localStorage.setItem('iceva_performance', animationsEnabled ? 'high' : 'low');
+                    window.location.reload();
+                });
+            }
+
+            // 🌟 BOTÓN VOLVER ARRIBA 🌟
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        gsap.to(scrollTopBtn, { autoAlpha: 1, visibility: 'visible', y: 0, duration: 0.5, ease: "back.out(1.7)" });
+                    } else {
+                        gsap.to(scrollTopBtn, { autoAlpha: 0, visibility: 'hidden', y: 40, duration: 0.4 });
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // 🌟 ANIMACIÓN DEL HERO 🌟
+            if (animationsEnabled) {
+                gsap.to('.gsap-hero-event', {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    delay: 0.2
+                });
+            } else {
+                gsap.set('.gsap-hero-event', { autoAlpha: 1, y: 0 });
+            }
+
+            // 🌟 ANIMACIONES REVEAL AL HACER SCROLL 🌟
+            const reveals = gsap.utils.toArray('.gsap-reveal');
+            reveals.forEach(elem => {
+                if (animationsEnabled) {
+                    gsap.fromTo(elem as HTMLElement, 
+                        { autoAlpha: 0, y: 40 },
+                        {
+                            scrollTrigger: { 
+                                trigger: elem as HTMLElement, 
+                                start: "top 85%", 
+                                toggleActions: "play none none none" 
+                            },
+                            autoAlpha: 1, 
+                            y: 0, 
+                            duration: 1, 
+                            clearProps: "all", 
+                            ease: "power3.out"
+                        }
+                    );
+                } else {
+                    gsap.set(elem as HTMLElement, { autoAlpha: 1, y: 0, clearProps: "all" });
+                }
+            });
+
+            ScrollTrigger.refresh();
+        });
+    </script>
+</Layout>

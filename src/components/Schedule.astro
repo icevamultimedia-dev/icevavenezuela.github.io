@@ -1,118 +1,140 @@
 ---
 ---
-<section id="horarios" class="relative py-24 bg-smoke-900 border-t border-smoke-800">
+<section id="horarios" class="relative py-24 bg-smoke-800 border-t border-smoke-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16">
-            <h2 class="gsap-reveal text-sm text-orange-400 tracking-widest uppercase font-semibold mb-2">Agenda</h2>
-            <h3 class="gsap-reveal text-3xl md:text-4xl font-serif text-white">Horario de Actividades</h3>
+            <h2 class="gsap-reveal text-sm text-blue-400 tracking-widest uppercase font-semibold mb-2">Agenda</h2>
+            <h3 class="gsap-reveal text-3xl md:text-4xl font-serif text-blue-400">Horario de Actividades</h3>
         </div>
 
-        <!-- AQUÍ ESTÁ LA MAGIA: Cambiamos lg:grid-cols-3 por lg:grid-cols-4 -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <!-- Tarjeta 1 -->
-            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden">
+            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10 group-hover:bg-gold/10 transition-colors"></div>
                 <div class="w-12 h-12 rounded-full bg-smoke-700 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-sun text-xl"></i>
                 </div>
                 <h4 class="text-xl text-white font-semibold mb-2">Culto Dominical</h4>
-                <p class="text-gray-400 text-sm mb-4">Servicio principal de alabanza, adoración y mensaje de la Palabra.</p>
-                <div class="flex items-center text-orange-400 font-medium">
-                    <i class="fa-regular fa-clock mr-2"></i> Domingos, 10Hrs
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Servicio principal de alabanza, adoración y mensaje de la Palabra.</p>
+                <div class="mt-auto">
+                    <div class="flex items-center text-gold font-medium">
+                        <i class="fa-regular fa-clock mr-2"></i> Domingos, 10Hrs
+                    </div>
                 </div>
             </div>
 
             <!-- Tarjeta 2 -->
-            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden">
+            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10 group-hover:bg-gold/10 transition-colors"></div>
                 <div class="w-12 h-12 rounded-full bg-smoke-700 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-person-dress"></i>
+                    <i class="fa-solid fa-person-dress text-xl"></i>
                 </div>
                 <h4 class="text-xl text-white font-semibold mb-2">Reunión de Mujeres V.I.D.A</h4>
-                <p class="text-gray-400 text-sm mb-4">Reunión de Mujeres de nuestra congregación.</p>
-                <div class="flex items-center text-orange-400 font-medium">
-                    <i class="fa-regular fa-clock mr-2"></i> Lunes, 16Hrs
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Reunión de Mujeres de nuestra congregación.</p>
+                <div class="mt-auto">
+                    <div class="flex items-center text-gold font-medium">
+                        <i class="fa-regular fa-clock mr-2"></i> Lunes, 16Hrs
+                    </div>
                 </div>
             </div>
             
             <!-- Tarjeta 3 -->
-            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden">
+            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10 group-hover:bg-gold/10 transition-colors"></div>
                 <div class="w-12 h-12 rounded-full bg-smoke-700 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-users text-xl"></i>
                 </div>
                 <h4 class="text-xl text-white font-semibold mb-2">Servicio de Oración</h4>
-                <p class="text-gray-400 text-sm mb-4">Un espacio dedicado a la Oración y la lectura de la palabra.</p>
-                <div class="flex items-center text-orange-400 font-medium">
-                    <i class="fa-regular fa-clock mr-2"></i> Martes, 17Hrs
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Un espacio dedicado a la Oración y la lectura de la palabra.</p>
+                <div class="mt-auto">
+                    <div class="flex items-center text-gold font-medium">
+                        <i class="fa-regular fa-clock mr-2"></i> Martes, 17Hrs
+                    </div>
                 </div>
             </div>
 
             <!-- Tarjeta 4 -->
-            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden">
+            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10 group-hover:bg-gold/10 transition-colors"></div>
                 <div class="w-12 h-12 rounded-full bg-smoke-700 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-book-bible"></i>
+                    <i class="fa-solid fa-book-bible text-xl"></i>
                 </div>
                 <h4 class="text-xl text-white font-semibold mb-2">Escuela Bíblica</h4>
-                <p class="text-gray-400 text-sm mb-4">Un espacio dedicado al estudio de la palabra de Dios.</p>
-                <div class="flex items-center text-orange-400 font-medium">
-                    <i class="fa-regular fa-clock mr-2"></i> Miercoles 16Hrs
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Un espacio dedicado al estudio de la palabra de Dios.</p>
+                <div class="mt-auto">
+                    <div class="flex items-center text-gold font-medium">
+                        <i class="fa-regular fa-clock mr-2"></i> Miércoles 16Hrs
+                    </div>
                 </div>
             </div>
 
             <!-- Tarjeta 5 -->
-            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden">
+            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10 group-hover:bg-gold/10 transition-colors"></div>
                 <div class="w-12 h-12 rounded-full bg-smoke-700 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-church"></i>
+                    <i class="fa-solid fa-church text-xl"></i>
                 </div>
                 <h4 class="text-xl text-white font-semibold mb-2">Reunión de casa de paz</h4>
-                <p class="text-gray-400 text-sm mb-4">Reuniones en cada casa de familia de nuestra congregación dividas por sectores en nuestra ciudad. </p>
-                <div class="flex items-center text-orange-400 font-medium">
-                    <i class="fa-regular fa-clock mr-2"></i> Jueves, 18Hrs
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Reuniones en cada casa de familia de nuestra congregación dividas por sectores en nuestra ciudad.</p>
+                <div class="mt-auto">
+                    <div class="flex items-center text-gold font-medium">
+                        <i class="fa-regular fa-clock mr-2"></i> Jueves, 18Hrs
+                    </div>
                 </div>
             </div>
 
             <!-- Tarjeta 6 -->
-            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden">
+            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10 group-hover:bg-gold/10 transition-colors"></div>
                 <div class="w-12 h-12 rounded-full bg-smoke-700 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-seedling"></i>
+                    <i class="fa-solid fa-seedling text-xl"></i>
                 </div>
                 <h4 class="text-xl text-white font-semibold mb-2">Reunión de Jóvenes - Vida Juvenil</h4>
-                <p class="text-gray-400 text-sm mb-4">Profundizamos en las escrituras para crecer espiritualmente como Jóvenes.</p>
-                <div class="flex items-center text-orange-400 font-medium">
-                    <i class="fa-regular fa-clock mr-2"></i> Viernes, 17Hrs
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Profundizamos en las escrituras para crecer espiritualmente como Jóvenes.</p>
+                <div class="mt-auto">
+                    <div class="flex items-center text-gold font-medium">
+                        <i class="fa-regular fa-clock mr-2"></i> Viernes, 17Hrs
+                    </div>
                 </div>
             </div>
 
             <!-- Tarjeta 7 -->
-            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden">
+            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10 group-hover:bg-gold/10 transition-colors"></div>
                 <div class="w-12 h-12 rounded-full bg-smoke-700 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-music text-xl"></i>
                 </div>
                 <h4 class="text-xl text-white font-semibold mb-2">Ensayo - Ministerio ECOS</h4>
-                <p class="text-gray-400 text-sm mb-4">Reunión de ensayos del ministerio de Adoración ECOS</p>
-                <div class="flex items-center text-orange-400 font-medium">
-                    <i class="fa-regular fa-clock mr-2"></i> Sábado, 09Hrs
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Reunión de ensayos del ministerio de Adoración ECOS.</p>
+                <div class="mt-auto">
+                    <div class="flex items-center text-gold font-medium">
+                        <i class="fa-regular fa-clock mr-2"></i> Sábado, 09Hrs
+                    </div>
                 </div>
             </div>
 
             <!-- Tarjeta 8 -->
-            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden">
+            <div class="gsap-card bg-smoke-800 p-8 rounded-2xl border border-smoke-700 hover:border-gold/50 transition-colors group relative overflow-hidden flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10 group-hover:bg-gold/10 transition-colors"></div>
                 <div class="w-12 h-12 rounded-full bg-smoke-700 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-people-robbery"></i>
+                    <i class="fa-solid fa-people-robbery text-xl"></i>
                 </div>
                 <h4 class="text-xl text-white font-semibold mb-2">Ensayo - Ministerio de Danza</h4>
-                <p class="text-gray-400 text-sm mb-4">Reunión de ensayos del ministerio de Danza de nuestra casa</p>
-                <div class="flex items-center text-orange-400 font-medium">
-                    <i class="fa-regular fa-clock mr-2"></i> Sábado, 16Hrs
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Reunión de ensayos del ministerio de Danza de nuestra casa.</p>
+                <div class="mt-auto">
+                    <div class="flex items-center text-gold font-medium">
+                        <i class="fa-regular fa-clock mr-2"></i> Sábado, 16Hrs
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- 🌟 BOTÓN GENERAL AÑADIDO AQUÍ 🌟 -->
+        <!--<div class="mt-16 text-center gsap-reveal">
+            <a href="/actividades" class="inline-block bg-smoke-800 border border-smoke-700 text-white px-8 py-4 rounded-full text-sm font-semibold font-sans hover:border-blue-400 hover:text-blue-400 transition-colors shadow-lg hover:shadow-gold/10">
+                Explora nuestros horarios semanales aquí
+            </a>
+        </div>-->
     </div>
 </section>

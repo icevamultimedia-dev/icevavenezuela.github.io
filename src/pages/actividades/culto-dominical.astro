@@ -1,0 +1,240 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Culto Dominical | ICEVA">
+    <Navbar />
+
+    <!-- Quitamos el padding superior (pt-32) para que la imagen llegue hasta arriba -->
+    <main class="bg-smoke-900 min-h-screen">
+
+        <!-- 🌟 HEADER / CABECERA A PANTALLA COMPLETA 🌟 -->
+        <section class="relative min-h-screen flex items-center justify-center pt-40 overflow-hidden border-b border-smoke-800">
+            
+            <!-- Imagen de Fondo a Pantalla Completa -->
+            <div class="absolute inset-0 z-0">
+                <!-- ⚠️ Recuerda añadir 'culto-hero.jpg' a tu carpeta public/ -->
+                <img src="/culto-hero.jpg" alt="Fondo Culto Dominical" class="w-full h-full object-cover object-center opacity-60" onerror="this.style.display='none'" />
+                <!-- Gradiente superpuesto para que el texto siga siendo legible -->
+                <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/90 via-smoke-900/60 to-smoke-900"></div>
+            </div>
+
+            <!-- Destello de fondo -->
+            <div class="flare-bg w-[500px] h-[500px] top-0 left-1/2 transform -translate-x-1/2 opacity-30 z-0"></div>
+            
+            <!-- Contenedor del texto (centrado) -->
+            <div class="max-w-4xl mx-auto px-4 relative z-10 text-center mt-10">
+                <span class="gsap-reveal block text-blue-400 tracking-[0.2em] text-sm uppercase mb-4 font-semibold">Servicio Principal</span>
+                <h1 class="gsap-reveal text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
+                    <!-- 🌟 Añadimos pr-4 (padding-right) para evitar que la "l" cursiva se corte 🌟 -->
+                    Culto <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-400 pr-4">Dominical</span>
+                </h1>
+                
+                <div class="gsap-reveal flex items-center justify-center text-gray-300 text-lg md:text-xl mb-6 bg-smoke-800/80 backdrop-blur-sm inline-flex px-6 py-3 rounded-full border border-smoke-700 mx-auto shadow-xl">
+                    <i class="fa-regular fa-clock text-gold mr-3"></i>
+                    <span>Domingos, <strong>10:00 AM</strong></span>
+                </div>
+
+                <p class="gsap-reveal text-gray-400 text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto mt-4">
+                    Acompáñanos cada semana en nuestro servicio principal. Un tiempo dedicado a la alabanza, la adoración auténtica, el servicio y el estudio profundo de la Palabra de Dios en comunidad.
+                </p>
+            </div>
+        </section>
+
+        <!-- 🌟 CARRUSEL DE VIDEOS VIMEO (Ahora como Sección 2 y más grande) 🌟 -->
+        <section class="py-24 relative bg-smoke-800 border-b border-smoke-700/50 overflow-hidden">
+            <!-- 🌟 Cambiamos max-w-5xl por max-w-7xl para hacer el reproductor más ancho 🌟 -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="gsap-reveal text-sm text-blue-400 tracking-widest uppercase font-semibold mb-2">Momentos</h2>
+                    <h3 class="gsap-reveal text-3xl md:text-4xl font-serif text-white">Domingos de Fiesta en Dios</h3>
+                    <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">Explora los videos más recientes de nuestra congregación.</p>
+                </div>
+
+                <!-- Contenedor del Carrusel Individual con Flechas -->
+                <div class="gsap-reveal relative w-full group">
+                    
+                    <!-- Pista de videos (Track) -->
+                    <div class="overflow-hidden rounded-2xl border border-smoke-700 shadow-2xl bg-smoke-900">
+                        <div id="video-track" class="flex transition-transform duration-500 ease-in-out">
+                            
+                            <!-- Video 1 -->
+                            <div class="w-full flex-shrink-0 video-slide">
+                                <div class="relative w-full" style="padding-top: 56.25%;">
+                                    <!-- Añadido ?loop=1 -->
+                                    <iframe src="https://player.vimeo.com/video/1172647795?loop=1" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <!-- Video 2 -->
+                            <div class="w-full flex-shrink-0 video-slide">
+                                <div class="relative w-full" style="padding-top: 56.25%;">
+                                    <!-- Añadido ?loop=1 -->
+                                    <iframe src="https://player.vimeo.com/video/1175348634?loop=1" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <!-- Videos adicionales (Comentados para uso futuro) -->
+                            <!-- 
+                            <div class="w-full flex-shrink-0 video-slide">
+                                <div class="relative w-full" style="padding-top: 56.25%;">
+                                    <iframe src="https://player.vimeo.com/video/347119375?color=D4AF37&title=0&byline=0&portrait=0&loop=1" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <div class="w-full flex-shrink-0 video-slide">
+                                <div class="relative w-full" style="padding-top: 56.25%;">
+                                    <iframe src="https://player.vimeo.com/video/347119375?color=D4AF37&title=0&byline=0&portrait=0&loop=1" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <div class="w-full flex-shrink-0 video-slide">
+                                <div class="relative w-full" style="padding-top: 56.25%;">
+                                    <iframe src="https://player.vimeo.com/video/347119375?color=D4AF37&title=0&byline=0&portrait=0&loop=1" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            -->
+
+                        </div>
+                    </div>
+
+                    <!-- Flecha Izquierda (Ahora un poco más grandes: w-16 h-16 en desktop) -->
+                    <button id="btn-prev" class="absolute top-1/2 -left-4 md:-left-8 transform -translate-y-1/2 bg-smoke-900 border border-smoke-700 text-gold w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center hover:bg-gold hover:text-smoke-900 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)] z-20 opacity-90 hover:opacity-100 hover:scale-110">
+                        <i class="fa-solid fa-chevron-left text-base md:text-xl"></i>
+                    </button>
+
+                    <!-- Flecha Derecha (Ahora un poco más grandes: w-16 h-16 en desktop) -->
+                    <button id="btn-next" class="absolute top-1/2 -right-4 md:-right-8 transform -translate-y-1/2 bg-smoke-900 border border-smoke-700 text-gold w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center hover:bg-gold hover:text-smoke-900 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)] z-20 opacity-90 hover:opacity-100 hover:scale-110">
+                        <i class="fa-solid fa-chevron-right text-base md:text-xl"></i>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 GALERÍA DE 3 FOTOS (Ahora como Sección 3) 🌟 -->
+        <section class="py-24 relative bg-smoke-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="gsap-reveal text-3xl md:text-4xl font-serif text-white mb-12">Momentos de Adoración</h2>
+                
+                <!-- Grid de 3 columnas -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Foto 1 -->
+                    <div class="gsap-reveal overflow-hidden rounded-2xl relative group h-80 border border-smoke-800 shadow-xl">
+                        <img src="/culto-1.jpg" alt="Adoración ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-smoke-900/80 to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+                    </div>
+                    <!-- Foto 2 -->
+                    <div class="gsap-reveal overflow-hidden rounded-2xl relative group h-80 border border-smoke-800 shadow-xl" style="transition-delay: 100ms;">
+                        <img src="/culto-2.jpg" alt="Palabra ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-smoke-900/80 to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+                    </div>
+                    <!-- Foto 3 -->
+                    <div class="gsap-reveal overflow-hidden rounded-2xl relative group h-80 border border-smoke-800 shadow-xl" style="transition-delay: 200ms;">
+                        <img src="/culto-3.jpg" alt="Comunidad ICEVA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-smoke-900/80 to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 INVITACIÓN FINAL 🌟 -->
+        <section class="py-24 relative bg-gold text-smoke-900 text-center border-t border-yellow-600">
+            <div class="max-w-4xl mx-auto px-4 relative z-10">
+                <h2 class="gsap-reveal text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">Te esperamos este Domingo</h2>
+                <p class="gsap-reveal text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto opacity-90">
+                    Te invitamos a ser parte de nuestro servicio principal. Ven con tu familia y experimenta la presencia de Dios junto a nosotros.
+                </p>
+                <div class="gsap-reveal inline-flex items-center justify-center bg-smoke-900 text-gold px-8 py-4 rounded-full text-lg md:text-xl font-bold tracking-wider shadow-2xl hover:scale-105 transition-transform duration-300">
+                    <i class="fa-regular fa-clock mr-3"></i> A partir de las 10:00 AM
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <Footer />
+</Layout>
+
+<!-- Script combinado para la cuenta regresiva y el nuevo carrusel de video -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // --- LÓGICA DE LA CUENTA REGRESIVA BIKURIM ---
+        const targetDate = new Date("Apr 12, 2026 10:00:00").getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.querySelectorAll('.countdown-timer').forEach(el => {
+                    (el as HTMLElement).innerText = "¡LA FIESTA HA COMENZADO!";
+                });
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const fDays = String(days).padStart(2, '0');
+            const fHours = String(hours).padStart(2, '0');
+            const fMins = String(minutes).padStart(2, '0');
+            const fSecs = String(seconds).padStart(2, '0');
+
+            const timeString = `${fDays}D ${fHours}H ${fMins}M ${fSecs}S`;
+            
+            document.querySelectorAll('.countdown-timer').forEach(el => {
+                (el as HTMLElement).innerText = timeString;
+            });
+        };
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- LÓGICA DEL CARRUSEL DE VIDEOS (ACTUALIZADA) ---
+        const track = document.getElementById('video-track');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const slides = document.querySelectorAll('.video-slide');
+
+        if (track && btnPrev && btnNext && slides.length > 0) {
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            const updateCarousel = () => {
+                // Movemos el track un 100% a la izquierda por cada índice
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                // 🌟 NUEVO: Detener y reiniciar todos los videos al cambiar de slide 🌟
+                const iframes = document.querySelectorAll('.video-slide iframe');
+                iframes.forEach(iframe => {
+                    // Guardamos la ventana del video en una variable constante
+                    const videoWindow = (iframe as HTMLIFrameElement).contentWindow;
+                    
+                    // Si la ventana del video existe, le enviamos las órdenes
+                    if (videoWindow) {
+                        // Pausar video
+                        videoWindow.postMessage(JSON.stringify({ method: 'pause' }), '*');
+                        // Volver al segundo 0
+                        videoWindow.postMessage(JSON.stringify({ method: 'setCurrentTime', value: 0 }), '*');
+                    }
+                });
+            };
+
+            btnPrev.addEventListener('click', () => {
+                // Si estamos en el primero, nos vamos al último (loop)
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
+                updateCarousel();
+            });
+
+            btnNext.addEventListener('click', () => {
+                // Si estamos en el último, volvemos al primero (loop)
+                currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+        }
+    });
+</script>

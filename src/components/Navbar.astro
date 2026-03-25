@@ -1,22 +1,255 @@
 ---
 ---
-<nav class="fixed w-full z-50 bg-smoke-900/80 backdrop-blur-md border-b border-smoke-700/50 transition-all duration-300 overflow-hidden">
+<header class="fixed w-full z-50 bg-smoke-900/95 backdrop-blur-md border-b border-smoke-700/50 transition-all duration-300 font-sans">
+    
+    <!-- 🌟 TOP BAR SECUNDARIA (Barra de accesos rápidos) 🌟 -->
+    <div class="hidden lg:block w-full bg-[#f4f4f4] border-b border-gray-300 py-2.5 relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-start items-center gap-5">
+            <a href="/encuentra-una-iglesia" class="text-[10px] md:text-[11px] font-bold text-smoke-900 hover:text-gold transition-colors tracking-widest uppercase flex items-center">
+                ENCUENTRA UNA IGLESIA EN SJM
+            </a>
+            <div class="w-px h-3 bg-gray-400"></div>
+            <a href="/nosotros" class="text-[10px] md:text-[11px] font-medium text-gray-600 hover:text-smoke-900 transition-colors tracking-widest uppercase">ICEVA</a>
+            <a href="/jesus" class="text-[10px] md:text-[11px] font-medium text-gray-600 hover:text-smoke-900 transition-colors tracking-widest uppercase">JESÚS</a>
+            <!-- <a href="/#inicio" class="text-[10px] md:text-[11px] font-medium text-gray-600 hover:text-smoke-900 transition-colors tracking-widest uppercase">EQUIPO</a>-->
+            <!-- <a href="/#inicio" class="text-[10px] md:text-[11px] font-medium text-gray-600 hover:text-smoke-900 transition-colors tracking-widest uppercase">MÚSICA</a>-->
+            <a href="/eventos" class="text-[10px] md:text-[11px] font-medium text-gray-600 hover:text-smoke-900 transition-colors tracking-widest uppercase">EVENTOS</a>
+            <!-- <a href="/#inicio" class="text-[10px] md:text-[11px] font-medium text-gray-600 hover:text-smoke-900 transition-colors tracking-widest uppercase">BLOG</a>-->
+        </div>
+    </div>
+    
+
+    <!-- 🌟 BANNER PUBLICITARIO / CUENTA REGRESIVA EN MOVIMIENTO (Tema Bikurim) 🌟 -->
+    <div class="overflow-hidden w-full bg-emerald-500 py-1.5 shadow-[0_4px_15px_rgba(16,185,129,0.3)] relative z-50 cursor-default">
+        <div class="flex w-max animate-marquee text-[11px] font-bold tracking-widest uppercase text-smoke-900 hover:pause-animation">
+            
+            <div class="flex items-center justify-around">
+                <span class="mx-6 flex items-center gap-2">
+                    <i class="fa-solid fa-leaf"></i> BIKURIM / FIESTA DE PRIMICIAS ICEVA 2026 <span class="mx-2 opacity-30">|</span> FALTAN: <span class="countdown-timer bg-smoke-900 text-emerald-400 px-2 py-0.5 rounded font-mono">00D 00H 00M 00S</span>
+                </span>
+                <span class="mx-6 flex items-center gap-2">
+                    <i class="fa-solid fa-leaf"></i> BIKURIM / FIESTA DE PRIMICIAS ICEVA 2026 <span class="mx-2 opacity-30">|</span> FALTAN: <span class="countdown-timer bg-smoke-900 text-emerald-400 px-2 py-0.5 rounded font-mono">00D 00H 00M 00S</span>
+                </span>
+                <span class="mx-6 flex items-center gap-2">
+                    <i class="fa-solid fa-leaf"></i> BIKURIM / FIESTA DE PRIMICIAS ICEVA 2026 <span class="mx-2 opacity-30">|</span> FALTAN: <span class="countdown-timer bg-smoke-900 text-emerald-400 px-2 py-0.5 rounded font-mono">00D 00H 00M 00S</span>
+                </span>
+            </div>
+
+            <div class="flex items-center justify-around">
+                <span class="mx-6 flex items-center gap-2">
+                    <i class="fa-solid fa-leaf"></i> BIKURIM / FIESTA DE PRIMICIAS ICEVA 2026 <span class="mx-2 opacity-30">|</span> FALTAN: <span class="countdown-timer bg-smoke-900 text-emerald-400 px-2 py-0.5 rounded font-mono">00D 00H 00M 00S</span>
+                </span>
+                <span class="mx-6 flex items-center gap-2">
+                    <i class="fa-solid fa-leaf"></i> BIKURIM / FIESTA DE PRIMICIAS ICEVA 2026 <span class="mx-2 opacity-30">|</span> FALTAN: <span class="countdown-timer bg-smoke-900 text-emerald-400 px-2 py-0.5 rounded font-mono">00D 00H 00M 00S</span>
+                </span>
+                <span class="mx-6 flex items-center gap-2">
+                    <i class="fa-solid fa-leaf"></i> BIKURIM / FIESTA DE PRIMICIAS ICEVA 2026 <span class="mx-2 opacity-30">|</span> FALTAN: <span class="countdown-timer bg-smoke-900 text-emerald-400 px-2 py-0.5 rounded font-mono">00D 00H 00M 00S</span>
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 🌟 BANNER DE IMAGEN (Secundario) 🌟 -->
+    <div class="w-full h-12 md:h-16 relative z-40 bg-smoke-900 border-b border-smoke-800/50">
+        <a href="/eventos" class="block w-full h-full">
+            <img 
+                src="/banner-imagen.jpg" 
+                alt="Banner Evento Especial" 
+                class="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity" 
+                onerror="this.style.display='none'"
+            >
+        </a>
+    </div>
+
+    <!-- 🌟 NAVEGACIÓN PRINCIPAL 🌟 -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-            <div class="flex-shrink-0 flex items-center cursor-pointer">
-                <img src="/para-web-1.svg" alt="ICEVA Logo" class="logo-hover h-12 w-auto object-contain">
+        <div class="flex items-center justify-between h-20">
+            
+            <div class="w-1/4 flex-shrink-0 flex items-center cursor-pointer">
+                <a href="/">
+                    <img src="/logo-navbar.svg" alt="ICEVA Logo" class="logo-animado logo-hover h-10 w-auto object-contain">
+                </a>
             </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#inicio" class="text-sm font-medium hover:text-blue-400 transition-colors">Inicio</a>
-                <a href="#horarios" class="text-sm font-medium hover:text-blue-400 transition-colors">Horarios</a>
-                <a href="#galeria" class="text-sm font-medium hover:text-blue-400 transition-colors">Actividades</a>
-                <a href="#contacto" class="text-sm font-medium hover:text-blue-400 transition-colors">Contacto</a>
-            </div>
-            <div class="hidden md:flex">
-                <a href="#contacto" class="px-5 py-2 border border-blue-400 text-blue-400 rounded-full text-sm font-medium hover:bg-blue-400 hover:text-smoke-900 transition-all shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+
+            <nav class="flex-1 hidden md:flex h-full items-center justify-center gap-8">
+                
+                <!-- PESTAÑA: ACERCA DE -->
+                <div class="group h-full flex items-center">
+                    <a href="/#inicio" class="px-2 h-full flex items-center text-[13px] font-medium uppercase tracking-wider text-gray-200 hover:text-blue-400 transition-colors border-b-[3px] border-transparent hover:border-blue-400">
+                        Acerca de
+                    </a>
+                    
+                    <div class="absolute top-full left-0 w-full bg-smoke-800 border-b border-smoke-700/50 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out shadow-2xl">
+                        <ul class="flex justify-center gap-16 py-8">
+                            <li>
+                                <a href="/#inicio" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Bienvenidos</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/nosotros#mision" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Nuestra Visión y Misión</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/nosotros" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Quiénes Somos</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- PESTAÑA: HORARIOS -->
+                <div class="group h-full flex items-center">
+                    <a href="/#horarios" class="px-2 h-full flex items-center text-[13px] font-medium uppercase tracking-wider text-gray-200 hover:text-blue-400 transition-colors border-b-[3px] border-transparent hover:border-blue-400">
+                        Horarios
+                    </a>
+                    
+                    <div class="absolute top-full left-0 w-full bg-smoke-800 border-b border-smoke-700/50 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out shadow-2xl">
+                        <ul class="flex justify-center gap-16 py-8">
+                            <li>
+                                <a href="/actividades/culto-dominical" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Culto Dominical</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/#horarios" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Reunión de Jóvenes</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/#horarios" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Escuela Bíblica</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA: ACTIVIDADES -->
+                <div class="group h-full flex items-center">
+                    <a href="/#galeria" class="px-2 h-full flex items-center text-[13px] font-medium uppercase tracking-wider text-gray-200 hover:text-blue-400 transition-colors border-b-[3px] border-transparent hover:border-blue-400">
+                        Actividades
+                    </a>
+                    
+                    <div class="absolute top-full left-0 w-full bg-smoke-800 border-b border-smoke-700/50 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out shadow-2xl">
+                        <ul class="flex justify-center gap-16 py-8">
+                            <li>
+                                <a href="/#galeria" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Ministerios</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/#galeria" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Galería de Fotos</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/eventos" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Próximos Eventos</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA: CONTACTO -->
+                <div class="group h-full flex items-center">
+                    <a href="/#contacto" class="px-2 h-full flex items-center text-[13px] font-medium uppercase tracking-wider text-gray-200 hover:text-blue-400 transition-colors border-b-[3px] border-transparent hover:border-blue-400">
+                        Contacto
+                    </a>
+                    
+                    <div class="absolute top-full left-0 w-full bg-smoke-800 border-b border-smoke-700/50 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out shadow-2xl">
+                        <ul class="flex justify-center gap-16 py-8">
+                            <li>
+                                <a href="/#contacto" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Escríbenos</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/registro" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Peticiones de Oración</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/encuentra-una-iglesia" class="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors group/link">
+                                    <span>Nuestra Ubicación</span> 
+                                    <i class="fa-solid fa-chevron-right text-[9px] opacity-0 group-hover/link:opacity-100 transition-all transform -translate-x-2 group-hover/link:translate-x-0"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="w-1/4 hidden md:flex justify-end">
+                <a href="/#contacto" class="px-6 py-2 border border-blue-400 text-blue-400 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-blue-400 hover:text-smoke-900 transition-all shadow-[0_0_15px_rgba(96,165,250,0.15)] font-sans">
                     Únete a nosotros
                 </a>
             </div>
         </div>
     </div>
-</nav>
+</header>
+
+<style>
+    .logo-animado { animation: levitar 4s ease-in-out infinite; will-change: transform, filter; }
+    @keyframes levitar {
+        0% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 0 rgba(96, 165, 250, 0)); }
+        50% { transform: translateY(-6px) scale(1.02); filter: drop-shadow(0 8px 15px rgba(96, 165, 250, 0.4)); }
+        100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 0 rgba(96, 165, 250, 0)); }
+    }
+    .animate-marquee { animation: marquee 30s linear infinite; }
+    .hover\:pause-animation:hover .animate-marquee { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // --- LÓGICA DE LA CUENTA REGRESIVA BIKURIM ---
+        const targetDate = new Date("Apr 19, 2026 10:00:00").getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.querySelectorAll('.countdown-timer').forEach(el => {
+                    (el as HTMLElement).innerText = "¡LA FIESTA HA COMENZADO!";
+                });
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const fDays = String(days).padStart(2, '0');
+            const fHours = String(hours).padStart(2, '0');
+            const fMins = String(minutes).padStart(2, '0');
+            const fSecs = String(seconds).padStart(2, '0');
+
+            const timeString = `${fDays}D ${fHours}H ${fMins}M ${fSecs}S`;
+            
+            document.querySelectorAll('.countdown-timer').forEach(el => {
+                (el as HTMLElement).innerText = timeString;
+            });
+        };
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    });
+</script>

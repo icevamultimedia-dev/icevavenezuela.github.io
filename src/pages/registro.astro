@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Registro y Contacto | ICEVA">
+    <Navbar />
+    
+    <main class="bg-smoke-900 min-h-screen pt-56 md:pt-64 lg:pt-72 pb-24 font-sans relative overflow-hidden flex flex-col justify-center">
+        
+        <!-- Destellos de fondo sutiles -->
+        <div class="flare-bg w-[500px] h-[500px] top-0 left-1/2 transform -translate-x-1/2 opacity-20 z-0"></div>
+
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            
+            <!-- 🌟 ENCABEZADO MINIMALISTA 🌟 -->
+            <div class="text-center mb-12 gsap-reveal mt-10 md:mt-16">
+                <span class="text-gold tracking-[0.4em] text-[10px] md:text-xs font-bold uppercase mb-4 block">Conecta con ICEVA</span>
+                <h1 class="text-4xl md:text-5xl font-serif text-white mb-4">Registro General</h1>
+                <p class="text-gray-400 font-light text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+                    Completa el siguiente formulario para asegurar tu lugar en nuestros eventos, dejarnos una petición o solicitar más información.
+                </p>
+            </div>
+
+            <!-- 🌟 FORMULARIO DE REGISTRO 🌟 -->
+            <div class="bg-smoke-800/80 backdrop-blur-md border border-smoke-700 p-8 md:p-12 rounded-3xl shadow-2xl gsap-reveal">
+                <form action="https://formsubmit.co/icevamultimedia@gmail.com" method="POST" accept-charset="UTF-8" class="space-y-6">
+                    
+                    <!-- CONFIGURACIONES OCULTAS FORMSUBMIT -->
+                    <input type="hidden" name="_subject" value="¡Nuevo Registro / Mensaje desde la web de ICEVA!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" value="https://icevavenezuela.vercel.app/registro">
+                    <input type="hidden" name="_autoresponse" value="Hemos recibido tu registro con éxito. Gracias por contactar a la Iglesia Cristiana Evangélica Vida en Abundancia (ICEVA). Un miembro de nuestro equipo procesará tu solicitud y te contactará muy pronto. Bendiciones.">
+
+                    <!-- Fila 1: Nombre y Teléfono -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="nombre" class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required class="w-full bg-smoke-900 border border-smoke-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-gold transition-colors shadow-inner" placeholder="Ej. Juan Pérez">
+                        </div>
+                        <div>
+                            <label for="telefono" class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required pattern="[+0-9 \-()]{10,20}" minlength="10" maxlength="20" title="Ejemplo: +58 414 1234567" class="w-full bg-smoke-900 border border-smoke-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-gold transition-colors shadow-inner" placeholder="+58 414 000 0000">
+                        </div>
+                    </div>
+
+                    <!-- Fila 2: Correo y Motivo (Select) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="email" class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required class="w-full bg-smoke-900 border border-smoke-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-gold transition-colors shadow-inner" placeholder="tu@correo.com">
+                        </div>
+                        <div>
+                            <label for="motivo" class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Motivo del registro</label>
+                            <div class="relative">
+                                <select id="motivo" name="motivo" required class="w-full bg-smoke-900 border border-smoke-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-gold transition-colors shadow-inner appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Selecciona una opción...</option>
+                                    <option value="Registro para Evento (Bikurim / Aniversario)">Asistir a Bikurim (Fiesta de Primicias)</option>
+                                    <option value="Petición de Oración">Petición de Oración</option>
+                                    <option value="Información sobre Horarios y Actividades">Información de Horarios y Actividades</option>
+                                    <option value="Deseo Bautizarme">Deseo Bautizarme</option>
+                                    <option value="Integrarme a un Ministerio (Servicio)">Integrarme a un Ministerio</option>
+                                    <option value="Otro">Otro Motivo</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gold">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensaje (Opcional) -->
+                    <div>
+                        <label for="mensaje" class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
+                            Detalles Adicionales <span class="text-gray-500 font-normal tracking-normal text-[10px] lowercase">(Opcional)</span>
+                        </label>
+                        <textarea id="mensaje" name="mensaje" rows="4" class="w-full bg-smoke-900 border border-smoke-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-gold transition-colors shadow-inner resize-none" placeholder="Escribe aquí cuántas personas te acompañan, los detalles de tu petición o tu consulta..."></textarea>
+                    </div>
+
+                    <!-- Botón de Envío -->
+                    <div class="pt-6 text-center">
+                        <button type="submit" class="inline-block bg-gold text-smoke-900 font-bold uppercase tracking-widest text-sm px-12 py-4 rounded-full hover:scale-105 hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(212,175,55,0.2)] w-full sm:w-auto">
+                            Enviar Registro
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </main>
+    
+    <Footer />
+
+    <!-- 🌟 SCRIPT DE ANIMACIÓN BÁSICA 🌟 -->
+    <script>
+        import { gsap } from 'gsap';
+        import { ScrollTrigger } from 'gsap/ScrollTrigger';
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Si el modo rendimiento lo permite, hacemos un fade in suave del formulario
+            let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
+
+            if (animationsEnabled) {
+                const reveals = gsap.utils.toArray('.gsap-reveal');
+                reveals.forEach((elem, index) => {
+                    gsap.fromTo(elem as HTMLElement, 
+                        { autoAlpha: 0, y: 30 },
+                        { 
+                            autoAlpha: 1, 
+                            y: 0, 
+                            duration: 1, 
+                            delay: index * 0.2, 
+                            clearProps: "all", 
+                            ease: "power3.out" 
+                        }
+                    );
+                });
+            } else {
+                gsap.set('.gsap-reveal', { autoAlpha: 1, y: 0 });
+            }
+        });
+    </script>
+</Layout>

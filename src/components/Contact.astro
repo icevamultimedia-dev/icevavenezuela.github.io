@@ -1,63 +1,53 @@
 ---
 ---
-<section id="contacto" class="py-24 bg-smoke-900 border-t border-smoke-800 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+<!-- 🌟 SECCIÓN DE CONTACTO Y UBICACIÓN MINIMALISTA 🌟 -->
+<section id="contacto" class="py-24 bg-smoke-800 border-t border-smoke-800 overflow-hidden relative">
+    
+    <!-- Elemento decorativo de fondo -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             
-            <div class="gsap-reveal">
-                <h2 class="text-4xl font-serif text-white mb-6">Ponte en contacto</h2>
-                
-                <!-- Añadido accept-charset="UTF-8" para máxima compatibilidad con caracteres especiales -->
-                <form action="https://formsubmit.co/icevamultimedia@gmail.com" method="POST" accept-charset="UTF-8" class="space-y-6">
-                    
-                    <!-- CONFIGURACIONES OCULTAS -->
-                    <input type="hidden" name="_subject" value="¡Nuevo mensaje desde la web de ICEVA!">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
-                    
-                    <!-- REDIRECCIÓN -->
-                    <!-- Recuerda poner aquí tu dominio final de Vercel -->
-                    <input type="hidden" name="_next" value="https://icevavenezuela.vercel.app/#contacto">
-
-                    <!-- EL CORREO AUTOMÁTICO DE AGRADECIMIENTO -->
-                    <input type="hidden" name="_autoresponse" value="Hemos recibido tu mensaje con exito. Gracias por contactar a la Iglesia Cristiana Evangelica Vida en Abundancia (ICEVA). Un miembro de nuestro equipo leera tu peticion y te responderemos muy pronto. Bendiciones.">
-                    
-                    <!-- CAMPOS VISIBLES -->
-                    <div>
-                        <label for="nombre" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Nombre completo</label>
-                        <input type="text" id="nombre" name="nombre" required class="w-full bg-smoke-800 border border-smoke-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold font-sans">
-                    </div>
-                    <div>
-                        <label for="telefono" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Teléfono</label>
-                        <!-- Se añadió pattern, minlength, maxlength y title para la validación -->
-                        <input type="tel" id="telefono" name="telefono" required 
-                            pattern="[+0-9 \-()]{10,20}" 
-                            minlength="10" maxlength="20"
-                            title="Por favor, ingresa un número de teléfono válido (Ejemplo: +58 414 1234567 o 04141234567)"
-                            class="w-full bg-smoke-800 border border-smoke-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold font-sans" 
-                            placeholder="+58 414 000 0000">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Correo electrónico</label>
-                        <input type="email" id="email" name="email" required class="w-full bg-smoke-800 border border-smoke-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold font-sans">
-                    </div>
-                    <div>
-                        <label for="mensaje" class="block text-sm font-medium text-gray-400 mb-2 font-sans">Mensaje o Petición de Oración</label>
-                        <textarea id="mensaje" name="mensaje" rows="4" required class="w-full bg-smoke-800 border border-smoke-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold font-sans"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="w-full bg-blue-950 text-white font-semibold py-4 rounded-lg hover:bg-blue-900 shadow-lg shadow-white/20 font-sans transition-all duration-300">
-                        Enviar Mensaje
-                    </button>
-                </form>
-            </div>
-
-            <div class="gsap-reveal flex flex-col h-full">
-                <h2 class="text-4xl font-serif text-white mb-6">Nuestra Ubicación</h2>
-                <div class="w-full flex-grow rounded-xl overflow-hidden border border-smoke-700 min-h-[300px] mb-8 relative">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1135.252391314313!2d-67.35009993811884!3d9.899787966799751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2aab00548a6753%3A0x28418a91a3db1357!2sICEVA%20Iglesia%20Cristiana!5e0!3m2!1ses!2sve!4v1773715316451!5m2!1ses!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- 📝 Textos y CTA Principal (Izquierda) -->
+            <div class="gsap-reveal flex flex-col justify-center text-center lg:text-left">
+                <span class="text-gold tracking-[0.4em] text-[10px] md:text-xs font-bold uppercase mb-4 block font-sans">Estamos para ti</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-tight">Ponte en contacto</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-10 text-base md:text-lg max-w-lg mx-auto lg:mx-0 font-sans">
+                    Queremos escucharte. Ya sea que necesites oración, información detallada sobre nuestras actividades o registrarte para un evento especial, estamos a un solo clic de distancia.
+                </p>
+                <div>
+                    <a href="/registro" class="inline-block bg-gold text-smoke-900 px-10 py-4 rounded-full text-sm font-bold uppercase tracking-[0.15em] hover:scale-105 hover:bg-white transition-all duration-300 shadow-[0_10px_30px_rgba(212,175,55,0.2)] font-sans">
+                        Ir al Registro General
+                    </a>
                 </div>
             </div>
+
+            <!-- 🗺️ Mapa y CTA Secundario (Derecha) -->
+            <div class="gsap-reveal flex flex-col h-full w-full max-w-xl mx-auto lg:max-w-none">
+                
+                <!-- Contenedor del Mapa -->
+                <div class="w-full rounded-2xl overflow-hidden border border-smoke-700 shadow-2xl relative aspect-[4/3] lg:aspect-auto lg:h-[400px] mb-6 group bg-smoke-800">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1135.252391314313!2d-67.35009993811884!3d9.899787966799751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2aab00548a6753%3A0x28418a91a3db1357!2sICEVA%20Iglesia%20Cristiana!5e0!3m2!1ses!2sve!4v1773715316451!5m2!1ses!2sve" 
+                        class="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-[1.02]" 
+                        style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <!-- Overlay sutil interno -->
+                    <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]"></div>
+                </div>
+                
+                <!-- Botón Secundario: Encuentra una Iglesia -->
+                <a href="/encuentra-una-iglesia" class="w-full flex items-center justify-center gap-3 bg-smoke-800 border border-smoke-700 text-white px-6 py-4.5 rounded-2xl text-xs md:text-sm font-bold uppercase tracking-widest hover:border-blue-400 hover:text-blue-400 hover:bg-smoke-800/80 transition-all duration-300 shadow-lg group font-sans">
+                    <i class="fa-solid fa-church text-lg group-hover:scale-110 transition-transform"></i>
+                    Encuentra una Iglesia en SJM
+                </a>
+            </div>
+
         </div>
     </div>
 </section>

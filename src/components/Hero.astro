@@ -2,36 +2,102 @@
 ---
 <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
     
-    <!-- Imagen de Fondo a Pantalla Completa -->
-    <div class="absolute inset-0 z-0">
-        <img src="/Header.jpg" alt="Fondo ICEVA" class="w-full h-full object-cover object-center opacity-70" onerror="this.style.display='none'" />
+    <!-- Video de Fondo a Pantalla Completa -->
+    <div class="absolute inset-0 z-0 bg-smoke-900">
+        <!-- 🎥 Nombre del video actualizado a video-hero-web.mp4 -->
+        <video 
+            src="/video-hero-web.mp4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            class="w-full h-full object-cover object-center opacity-60"
+        ></video>
         <!-- Gradiente superpuesto -->
-        <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/80 via-smoke-900/60 to-smoke-900"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/90 via-smoke-900/60 to-smoke-900"></div>
     </div>
 
-    <!-- Destellos azules -->
-    <div class="flare-bg w-[500px] h-[500px] top-[-100px] left-[-100px] z-0"></div>
-    <div class="flare-bg w-[600px] h-[600px] bottom-[-200px] right-[-100px] opacity-70 z-0"></div>
+    <!-- Destellos verdes (Retroiluminado actualizado para combinar con el banner) -->
+    <div class="flare-bg w-[500px] h-[500px] top-[-100px] left-[-100px] z-0" style="background: radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%);"></div>
+    <div class="flare-bg w-[600px] h-[600px] bottom-[-200px] right-[-100px] opacity-70 z-0" style="background: radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%);"></div>
     
-    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-10">
-        <span class="gsap-hero block text-blue-200 tracking-[0.2em] text-sm uppercase mb-4 font-semibold font-sans">Iglesia Cristiana Evangélica</span>
+    <!-- Contenedor central más ajustado (max-w-3xl) para un look más limpio -->
+    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto mt-10">
+        <!-- Pre-título con mayor espaciado entre letras (tracking-[0.3em]) y un poco de transparencia -->
+        <span class="gsap-hero block text-blue-200 tracking-[0.3em] text-xs md:text-sm uppercase mb-6 font-medium font-sans opacity-80">
+            Iglesia Cristiana Evangélica
+        </span>
         
-        <!-- Degradado de Dorado a Azul en lugar de naranja -->
-        <h1 class="gsap-hero text-6xl md:text-8xl font-serif text-white mb-6 leading-tight">
+        <!-- Título principal reducido a 5xl/6xl/7xl para máxima elegancia -->
+        <h1 class="gsap-hero text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-tight">
             Vida en <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-500">Abundancia</span>
         </h1>
         
-        <p class="gsap-hero text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light font-sans">
-            Un espacio de fe, esperanza y comunidad. Encuentra propósito, esperanza y una familia real.
+        <!-- Párrafo más corto (max-w-xl), con mayor interlineado (leading-relaxed) -->
+        <p class="gsap-hero text-base md:text-lg text-gray-400 mb-12 max-w-xl mx-auto font-light font-sans leading-relaxed">
+            Un espacio de fe, esperanza y comunidad. Encuentra propósito, esperanza y una familia real. 
             Transformando vidas en Jesús. Bienvenido a tu casa.
         </p>
-        <div class="gsap-hero flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a href="#horarios" class="w-full sm:w-auto px-8 py-4 bg-white text-smoke-900 rounded-full font-semibold font-sans hover:bg-gray-200 transition-colors shadow-lg shadow-white/10">
-                Nuestros Servicios
+        
+        <!-- Botones estilizados -->
+        <div class="gsap-hero flex flex-col sm:flex-row justify-center items-center gap-5">
+            <!-- 🌟 ENLACE AL CULTO DOMINICAL ACTUALIZADO AQUÍ 🌟 -->
+            <a href="/actividades/culto-dominical" class="w-full sm:w-auto px-8 py-3.5 bg-white text-smoke-900 rounded-full text-sm font-semibold font-sans hover:bg-gray-200 transition-colors shadow-lg shadow-white/10 text-center">
+                Servicio Dominical
             </a>
-            <a href="#contacto" class="w-full sm:w-auto px-8 py-4 border border-smoke-700 text-white rounded-full font-semibold font-sans hover:border-blue-400 hover:text-blue-400 transition-colors flex items-center justify-center gap-2">
-                <i class="fa-solid fa-location-dot"></i> Cómo llegar
+            <!-- 🌟 ENLACE A HORARIOS ACTUALIZADO AQUÍ (con el / al principio) 🌟 -->
+            <a href="/#horarios" class="w-full sm:w-auto px-8 py-3.5 border border-smoke-700 text-white rounded-full text-sm font-semibold font-sans hover:border-blue-400 hover:text-blue-400 transition-colors flex items-center justify-center gap-2 text-center">
+                Ver Horarios
             </a>
         </div>
+    </div>
+</section>
+
+<!-- 🌟 BANNER PUBLICITARIO BIKURIM (Movido desde Eventos) 🌟 -->
+<section class="py-12 md:py-20 bg-smoke-900 border-t border-smoke-800 z-10 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="gsap-reveal bg-smoke-800 border border-smoke-700 rounded-3xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 relative overflow-hidden shadow-2xl">
+            
+            <!-- 🌟 NUEVO: Imagen de Fondo del Banner 🌟 -->
+            <div class="absolute inset-0 z-0">
+                <!-- Sube la imagen que quieras usar de fondo como 'banner-bikurim-bg.jpg' a la carpeta public/ -->
+                <img src="/banner-bikurim-bg.jpg" alt="Fondo Banner Bikurim" class="w-full h-full object-cover object-center" onerror="this.style.display='none'" />
+                <!-- Gradiente de superposición (oscuro a la izquierda, más claro a la derecha) para asegurar la lectura del texto -->
+                <div class="absolute inset-0 bg-gradient-to-r from-smoke-900/95 via-smoke-900/80 to-smoke-900/30"></div>
+            </div>
+            
+            <div class="relative z-10 text-center md:text-left mb-8 md:mb-0 md:max-w-xl lg:max-w-2xl">
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-3">
+                    <span class="text-gold font-bold text-4xl md:text-5xl drop-shadow-md font-sans">2026</span>
+                    <span class="text-gray-200 text-xs font-semibold uppercase tracking-widest leading-tight font-sans drop-shadow-md">Ven <br>y adoremos</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight font-sans drop-shadow-md">Asiste a nuestra fiesta de Primicias</h3>
+                <p class="text-gray-300 font-light text-sm md:text-base font-sans drop-shadow-md">
+                    La entrada a nuestras actividades es libre. Regístrate con antelación para asegurar el refrigerio de toda tu familia.
+                </p>
+            </div>
+            
+            <div class="relative z-10 flex-shrink-0">
+                <!-- Enlaza a la página informativa de Bikurim -->
+                <a href="/eventos/bikurim" class="inline-block bg-gold text-smoke-900 px-8 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform duration-300 shadow-[0_10px_20px_rgba(212,175,55,0.2)] text-xs md:text-sm font-sans border border-yellow-400">
+                    Más Información
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 🌟 SECCIÓN MINIMALISTA 🌟 -->
+<section class="relative py-20 md:py-28 bg-smoke-900 border-t border-smoke-800 z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Título Principal -->
+        <h2 class="gsap-reveal text-2xl md:text-3xl lg:text-4xl font-sans font-bold text-white leading-snug md:leading-relaxed mb-6">
+            ICEVA es una iglesia que cree en Yeshúa (Jesús), y tiene la palabra de Elohim (Dios) como su centro.
+        </h2>
+        
+        <!-- Párrafo Descriptivo -->
+        <p class="gsap-reveal text-sm md:text-base text-gray-400 font-light font-sans leading-loose max-w-2xl mx-auto">
+            Agradecidos por el regalo de la salvación que hemos encontrado en Jesús, creemos en la palabra de Dios como nuestro centro de vida, amamos nuestra iglesia local, y caminamos creyendo de que todos necesitan del amor que viene de Dios.
+        </p>
     </div>
 </section>
