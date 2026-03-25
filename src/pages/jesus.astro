@@ -4,54 +4,40 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Jesús | ICEVA">
+<!-- 🌟 OPTIMIZADO: Precarga de la imagen hero principal -->
+<Layout title="Jesús | ICEVA" preloadImage="/jesus-hero.jpg">
     <Navbar />
     
     <main class="bg-smoke-900 overflow-x-hidden">
         
-        <!-- 🌟 SECCIÓN 1: HERO CON ANCLAJE Y DIBUJO DE LÁPIZ (Restaurado) 🌟 -->
+        <!-- 🌟 SECCIÓN 1: HERO (Imágenes críticas, SIN lazy loading) 🌟 -->
         <section id="hero-jesus" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800">
-            
-            <!-- Fondo cinemático -->
             <div class="absolute inset-0 z-0">
+                <!-- Sin loading lazy porque es el LCP -->
                 <img src="/jesus-hero.jpg" alt="Fondo" class="w-full h-full object-cover object-center opacity-20 blur-sm" onerror="this.style.display='none'" />
                 <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/90 via-smoke-900/60 to-smoke-900"></div>
             </div>
 
-            <!-- LA IMAGEN CON MÁSCARA DE TRAZO -->
             <div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none p-4">
                 <div class="relative inline-block">
                     <svg width="0" height="0" class="absolute">
                         <defs>
                             <mask id="pencil-mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-                                <path 
-                                    id="scribble-path"
-                                    d="M-0.2,-0.2 L1.2,-0.2 L-0.2,0 L1.2,0 L-0.2,0.2 L1.2,0.2 L-0.2,0.4 L1.2,0.4 L-0.2,0.6 L1.2,0.6 L-0.2,0.8 L1.2,0.8 L-0.2,1.0 L1.2,1.0 L-0.2,1.2 L1.2,1.2" 
-                                    fill="none" stroke="white" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round"
-                                />
+                                <path id="scribble-path" d="M-0.2,-0.2 L1.2,-0.2 L-0.2,0 L1.2,0 L-0.2,0.2 L1.2,0.2 L-0.2,0.4 L1.2,0.4 L-0.2,0.6 L1.2,0.6 L-0.2,0.8 L1.2,0.8 L-0.2,1.0 L1.2,1.0 L-0.2,1.2 L1.2,1.2" fill="none" stroke="white" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round"/>
                             </mask>
                         </defs>
                     </svg>
-
-                    <img 
-                        id="jesus-sketch" 
-                        src="/jesus-pencil.png"  loading="lazy" decoding="async"
-                        alt="Boceto de Jesús" 
-                        class="w-auto h-[40vh] md:h-[50vh] object-contain invisible opacity-0 p-4"
-                        style="mask-image: url(#pencil-mask); -webkit-mask-image: url(#pencil-mask);"
-                    />
+                    <!-- Al ser el hero, esta imagen tampoco lleva lazy -->
+                    <img id="jesus-sketch" src="/jesus-pencil.png" alt="Boceto de Jesús" class="w-auto h-[40vh] md:h-[50vh] object-contain invisible opacity-0 p-4" style="mask-image: url(#pencil-mask); -webkit-mask-image: url(#pencil-mask);"/>
                 </div>
             </div>
 
             <div class="flare-bg w-[800px] h-[800px] top-[-200px] left-1/2 transform -translate-x-1/2 opacity-20 z-0"></div>
             
-            <!-- Contenido de Texto -->
             <div class="max-w-4xl mx-auto px-4 relative z-20 text-center pointer-events-none">
                 <div id="hero-text-container" class="invisible opacity-0">
                     <span class="text-hero-item block text-blue-400 tracking-[0.3em] text-[10px] md:text-xs uppercase mb-4 font-medium font-sans">El Camino, la Verdad y la Vida</span>
-                    <h1 class="text-hero-item text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-tight drop-shadow-2xl">
-                        Jesús
-                    </h1>
+                    <h1 class="text-hero-item text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-tight drop-shadow-2xl">Jesús</h1>
                     <p class="text-hero-item text-gray-400 text-sm md:text-base font-light leading-relaxed max-w-xl mx-auto font-sans italic">
                         "Yo soy la luz del mundo; el que me sigue, no andará en tinieblas, sino que tendrá la luz de la vida." — Juan 8:12
                     </p>
@@ -59,149 +45,69 @@ import Footer from '../components/Footer.astro';
             </div>
         </section>
 
-        <!-- 🌟 CONTENIDO SIGUIENTE 🌟 -->
         <div id="content-trigger">
-            
-            <!-- 🌟 SECCIÓN 2: DETALLE CON ANCLAJE, DIBUJO Y HOJAS 🌟 -->
+            <!-- 🌟 SECCIÓN 2: DETALLE 🌟 -->
             <section id="detail-section" class="py-24 min-h-screen relative bg-smoke-800 border-b border-smoke-700/50 flex items-center">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                        
-                        <!-- TEXTOS (Izquierda en desktop) -->
                         <div id="section2-texts" class="space-y-8 invisible opacity-0">
-                            <h2 class="text-4xl md:text-5xl font-sans font-bold text-white leading-tight">
-                                Más que un personaje histórico, <span class="text-blue-400">nuestro Salvador.</span>
-                            </h2>
+                            <h2 class="text-4xl md:text-5xl font-sans font-bold text-white leading-tight">Más que un personaje histórico, <span class="text-blue-400">nuestro Salvador.</span></h2>
                             <div class="space-y-6 text-gray-400 font-light font-sans leading-loose text-base md:text-lg">
-                                <p>
-                                    Creemos que Jesús es el Hijo de Dios, quien vino a la tierra para mostrarnos el amor incondicional del Padre y restaurar nuestra relación con Él.
-                                </p>
-                                <p>
-                                    En ICEVA, Jesús no es solo el centro de nuestra doctrina, es el centro de nuestras vidas. Él es el Rey que sirve, el Dios que se hizo hombre para que pudiéramos conocer a Dios.
-                                </p>
+                                <p>Creemos que Jesús es el Hijo de Dios, quien vino a la tierra para mostrarnos el amor incondicional del Padre y restaurar nuestra relación con Él.</p>
+                                <p>En ICEVA, Jesús no es solo el centro de nuestra doctrina, es el centro de nuestras vidas. Él es el Rey que sirve, el Dios que se hizo hombre para que pudiéramos conocer a Dios.</p>
                             </div>
                         </div>
 
-                        <!-- IMAGEN CON TRAZO DE LÁPIZ Y CONTENEDOR DE HOJAS (Derecha en desktop) -->
                         <div class="relative w-full h-[35vh] lg:h-[45vh] flex items-center justify-center pointer-events-none overflow-hidden rounded-2xl">
-                            
-                            <!-- CONTENEDOR DE HOJAS 3D -->
                             <div id="leaves-container" class="absolute inset-0 z-[25] pointer-events-none" style="perspective: 1000px;"></div>
-
                             <svg width="0" height="0" class="absolute">
                                 <defs>
                                     <mask id="pencil-mask-2" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-                                        <path 
-                                            id="scribble-path-2"
-                                            d="M-0.2,-0.2 L1.2,-0.2 L-0.2,0 L1.2,0 L-0.2,0.2 L1.2,0.2 L-0.2,0.4 L1.2,0.4 L-0.2,0.6 L1.2,0.6 L-0.2,0.8 L1.2,0.8 L-0.2,1.0 L1.2,1.0 L-0.2,1.2 L1.2,1.2" 
-                                            fill="none" stroke="white" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round"
-                                        />
+                                        <path id="scribble-path-2" d="M-0.2,-0.2 L1.2,-0.2 L-0.2,0 L1.2,0 L-0.2,0.2 L1.2,0.2 L-0.2,0.4 L1.2,0.4 L-0.2,0.6 L1.2,0.6 L-0.2,0.8 L1.2,0.8 L-0.2,1.0 L1.2,1.0 L-0.2,1.2 L1.2,1.2" fill="none" stroke="white" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round"/>
                                     </mask>
                                 </defs>
                             </svg>
-
-                            <img 
-                                id="jesus-sketch-2" 
-                                src="/jesus-detail-pencil.png"  loading="lazy" decoding="async"
-                                alt="Jesús Enseñando" 
-                                class="w-[90%] h-[90%] object-contain invisible opacity-0 drop-shadow-2xl relative z-10 p-2"
-                                style="mask-image: url(#pencil-mask-2); -webkit-mask-image: url(#pencil-mask-2);"
-                            />
+                            <!-- 🌟 OPTIMIZADO: Carga perezosa de la imagen del detalle -->
+                            <img id="jesus-sketch-2" src="/jesus-detail-pencil.png" loading="lazy" decoding="async" alt="Jesús Enseñando" class="w-[90%] h-[90%] object-contain invisible opacity-0 drop-shadow-2xl relative z-10 p-2" style="mask-image: url(#pencil-mask-2); -webkit-mask-image: url(#pencil-mask-2);"/>
                         </div>
-
                     </div>
                 </div>
             </section>
 
-            <!-- 🌟 SECCIÓN 3: EL AMOR DE DIOS (PANTALLA COMPLETA CON VIDEO SCROLL) 🌟 -->
+            <!-- 🌟 SECCIÓN 3: EL AMOR DE DIOS 🌟 -->
             <section id="detail-section-3" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900">
-                
-                <!-- Fondo oscuro base -->
-                <div class="absolute inset-0 z-0 bg-smoke-900"></div>
-
-                <!-- 🌟 VIDEO SCROLL (Fondo Completo) 🌟 -->
                 <div class="absolute inset-0 z-10 pointer-events-none">
-                    <video 
-                        id="jesus-video-3" 
-                        src="/jesus-scroll.mp4" 
-                        muted 
-                        playsinline 
-                        preload="auto"
-                        class="w-full h-full object-cover transform-gpu will-change-transform"
-                        style="image-rendering: optimizeQuality; transform: translateZ(0);"
-                    ></video>
+                    <!-- 🌟 OPTIMIZADO: preload="none" para videos pesados que están muy abajo -->
+                    <video id="jesus-video-3" src="/jesus-scroll.mp4" muted playsinline preload="none" class="w-full h-full object-cover transform-gpu will-change-transform" style="image-rendering: optimizeQuality; transform: translateZ(0);"></video>
                 </div>
-
-                <!-- Capa de Degradado Cinematográfico de Salida -->
                 <div id="overlay-3" class="absolute inset-0 z-15 bg-gradient-to-t from-smoke-800 via-smoke-800/90 to-transparent invisible opacity-0 pointer-events-none"></div>
-
-                <div class="flare-bg w-[600px] h-[600px] top-[-100px] left-1/2 transform -translate-x-1/2 opacity-10 z-10"></div>
-
-                <!-- TEXTOS -->
                 <div class="max-w-5xl mx-auto px-4 relative z-20 text-center pointer-events-none">
                     <div id="section3-text-container" class="invisible opacity-0">
-                        <h2 class="text-section3-item text-4xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight drop-shadow-2xl invisible opacity-0">
-                            El mayor acto de <span class="text-blue-400">Amor.</span>
-                        </h2>
-                        
+                        <h2 class="text-section3-item text-4xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight drop-shadow-2xl invisible opacity-0">El mayor acto de <span class="text-blue-400">Amor.</span></h2>
                         <div class="space-y-6 text-gray-400 font-light font-sans leading-loose text-base md:text-lg max-w-3xl mx-auto">
-                            <p class="text-section3-item drop-shadow-lg invisible opacity-0">
-                                Dios nos mostró la inmensidad de su amor al no escatimar ni a su propio Hijo, entregándolo por todos nosotros para darnos salvación y vida eterna.
-                            </p>
-                            <p class="text-section3-item drop-shadow-lg invisible opacity-0">
-                                A través de Jesús, la gracia se hizo visible. Su sacrificio en la cruz no solo fue el pago por nuestras faltas, sino el puente definitivo que nos reconcilió con el corazón del Padre. <br><span class="text-white font-medium mt-2 block">No hay amor más grande que este.</span>
-                            </p>
+                            <p class="text-section3-item drop-shadow-lg invisible opacity-0">Dios nos mostró la inmensidad de su amor al no escatimar ni a su propio Hijo, entregándolo por todos nosotros para darnos salvación y vida eterna.</p>
+                            <p class="text-section3-item drop-shadow-lg invisible opacity-0">A través de Jesús, la gracia se hizo visible. Su sacrificio en la cruz no solo fue el pago por nuestras faltas, sino el puente definitivo que nos reconcilió con el corazón del Padre. <br><span class="text-white font-medium mt-2 block">No hay amor más grande que este.</span></p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 🌟 SECCIÓN 4: INVITACIÓN EVANGELÍSTICA (PANTALLA COMPLETA CON VIDEO SCROLL) 🌟 -->
+            <!-- 🌟 SECCIÓN 4: INVITACIÓN 🌟 -->
             <section id="detail-section-4" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-800">
-                
-                <!-- Fondo oscuro base -->
-                <div class="absolute inset-0 z-0 bg-smoke-800"></div>
-
-                <!-- 🌟 VIDEO SCROLL EVANGELISMO (Fondo Completo) 🌟 -->
                 <div class="absolute inset-0 z-10 pointer-events-none">
-                    <video 
-                        id="jesus-video-4" 
-                        src="/jesus-evangelismo-scroll.mp4" 
-                        muted 
-                        playsinline 
-                        preload="auto"
-                        class="w-full h-full object-cover transform-gpu will-change-transform"
-                        style="image-rendering: optimizeQuality; transform: translateZ(0);"
-                    ></video>
+                    <!-- 🌟 OPTIMIZADO: preload="none" para videos pesados que están muy abajo -->
+                    <video id="jesus-video-4" src="/jesus-evangelismo-scroll.mp4" muted playsinline preload="none" class="w-full h-full object-cover transform-gpu will-change-transform" style="image-rendering: optimizeQuality; transform: translateZ(0);"></video>
                 </div>
-
-                <!-- Capa de Degradado Cinematográfico de Salida -->
                 <div id="overlay-4" class="absolute inset-0 z-15 bg-gradient-to-t from-smoke-900 via-smoke-900/90 to-transparent invisible opacity-0 pointer-events-none"></div>
-
-                <div class="flare-bg w-[600px] h-[600px] bottom-[-100px] right-1/2 transform translate-x-1/2 opacity-10 z-10"></div>
-
-                <!-- TEXTOS EVANGELÍSTICOS -->
                 <div class="max-w-5xl mx-auto px-4 relative z-20 text-center pointer-events-none">
                     <div id="section4-text-container" class="invisible opacity-0">
-                        <h2 class="text-section4-item text-4xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight drop-shadow-2xl invisible opacity-0">
-                            Una invitación para <span class="text-gold">ti.</span>
-                        </h2>
-                        
+                        <h2 class="text-section4-item text-4xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight drop-shadow-2xl invisible opacity-0">Una invitación para <span class="text-gold">ti.</span></h2>
                         <div class="space-y-6 text-gray-400 font-light font-sans leading-loose text-base md:text-lg max-w-3xl mx-auto">
-                            <p class="text-section4-item drop-shadow-lg invisible opacity-0">
-                                Quizás has buscado respuestas en muchos lugares, pero hay un vacío que solo Su presencia puede llenar. Dios te conoce, te ama tal como eres y te está esperando con los brazos abiertos.
-                            </p>
-                            <p class="text-section4-item drop-shadow-lg invisible opacity-0">
-                                No importa tu pasado ni las veces que sientas que has fallado. Hoy puedes comenzar de nuevo. Jesús es el camino hacia la paz verdadera y una vida con propósito. <br><span class="text-white font-medium mt-2 block">Da el primer paso hacia Él.</span>
-                            </p>
+                            <p class="text-section4-item drop-shadow-lg invisible opacity-0">Quizás has buscado respuestas en muchos lugares, pero hay un vacío que solo Su presencia puede llenar. Dios te conoce, te ama tal como eres y te está esperando con los brazos abiertos.</p>
                         </div>
-                        
-                        <!-- 🌟 BOTÓN CTA ACTUALIZADO: CANAL DE WHATSAPP 🌟 -->
                         <div class="text-section4-item mt-10 pointer-events-auto invisible opacity-0 flex justify-center">
-                            <!-- ⚠️ Reemplaza TU_CODIGO_DE_CANAL con la URL de tu canal -->
                             <a href="https://whatsapp.com/channel/TU_CODIGO_DE_CANAL" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-3.5 bg-[#25D366] text-white rounded-full text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[#25D366] transition-colors shadow-xl">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                                Únete a nuestro canal
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Únete a Nuestro Canal
                             </a>
                         </div>
                     </div>
@@ -213,23 +119,17 @@ import Footer from '../components/Footer.astro';
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                         <div class="gsap-reveal">
-                            <div class="w-16 h-16 bg-smoke-800 border border-smoke-700 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400">
-                                <i class="fa-solid fa-hands-praying text-xl"></i>
-                            </div>
+                            <div class="w-16 h-16 bg-smoke-800 border border-smoke-700 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400"><i class="fa-solid fa-hands-praying text-xl"></i></div>
                             <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-widest font-sans">Gracia</h3>
                             <p class="text-gray-400 text-sm font-light font-sans">Un regalo inmerecido que nos restaura.</p>
                         </div>
-                        <div class="gsap-reveal" style="transition-delay: 100ms;">
-                            <div class="w-16 h-16 bg-smoke-800 border border-smoke-700 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400">
-                                <i class="fa-solid fa-cross text-xl"></i>
-                            </div>
+                        <div class="gsap-reveal">
+                            <div class="w-16 h-16 bg-smoke-800 border border-smoke-700 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400"><i class="fa-solid fa-cross text-xl"></i></div>
                             <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-widest font-sans">Perdón</h3>
                             <p class="text-gray-400 text-sm font-light font-sans">Libertad total a través de Su sacrificio.</p>
                         </div>
-                        <div class="gsap-reveal" style="transition-delay: 200ms;">
-                            <div class="w-16 h-16 bg-smoke-800 border border-smoke-700 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400">
-                                <i class="fa-solid fa-seedling text-xl"></i>
-                            </div>
+                        <div class="gsap-reveal">
+                            <div class="w-16 h-16 bg-smoke-800 border border-smoke-700 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400"><i class="fa-solid fa-seedling text-xl"></i></div>
                             <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-widest font-sans">Propósito</h3>
                             <p class="text-gray-400 text-sm font-light font-sans">Una nueva vida con sentido eterno.</p>
                         </div>
@@ -239,18 +139,14 @@ import Footer from '../components/Footer.astro';
 
             <!-- 🌟 SECCIÓN 6: VERSÍCULO FINAL 🌟 -->
             <section class="py-32 relative bg-smoke-800 flex items-center justify-center overflow-hidden">
-                <!-- Fondo sutil de profundidad -->
                 <div class="absolute inset-0 z-0">
                     <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-smoke-700/20 via-smoke-800 to-smoke-800"></div>
                 </div>
-                
                 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 gsap-reveal">
                     <i class="fa-solid fa-quote-left text-3xl md:text-4xl text-smoke-700 mb-6 opacity-40"></i>
-                    
                     <h2 class="text-lg md:text-xl lg:text-2xl font-sans font-light text-white leading-relaxed md:leading-relaxed mb-8 drop-shadow-md">
                         "Porque YAHWEH amó tanto al mundo, que dio a su único e incomparable Hijo, para que todos los que en El confíen puedan tener vida eterna."
                     </h2>
-                    
                     <div class="flex items-center justify-center gap-6">
                         <div class="w-10 h-[1px] bg-gold/40"></div>
                         <span class="text-gold font-sans font-bold uppercase tracking-[0.25em] text-xs md:text-sm">Juan 3:16</span>
@@ -260,22 +156,6 @@ import Footer from '../components/Footer.astro';
             </section>
 
         </div>
-
-        <!-- 🌟 CONTROLES FLOTANTES 🌟 -->
-        <div class="fixed bottom-24 md:bottom-28 right-6 z-[60] flex flex-col gap-4 items-end pointer-events-none">
-            
-            <!-- MODO RENDIMIENTO -->
-            <button id="toggle-performance" class="w-12 h-12 md:w-14 md:h-14 bg-smoke-900/90 backdrop-blur-md border border-gold/40 text-gold rounded-full flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-smoke-900 shadow-2xl group relative pointer-events-auto">
-                <i id="perf-icon" class="fa-solid fa-bolt text-lg"></i>
-                <span class="absolute right-full mr-4 bg-smoke-800 text-white text-[10px] py-1 px-3 rounded uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Modo Rendimiento</span>
-            </button>
-
-            <!-- VOLVER ARRIBA -->
-            <button id="scroll-to-top" class="w-12 h-12 md:w-14 md:h-14 bg-smoke-900/90 backdrop-blur-md border border-gold/40 text-gold rounded-full flex items-center justify-center opacity-0 invisible translate-y-10 transition-all duration-500 hover:bg-gold hover:text-smoke-900 hover:scale-110 shadow-2xl group pointer-events-auto">
-                <i class="fa-solid fa-arrow-up text-lg group-hover:-translate-y-1 transition-transform"></i>
-            </button>
-        </div>
-
     </main>
     <Footer />
 
@@ -286,48 +166,16 @@ import Footer from '../components/Footer.astro';
 
         window.onload = () => {
             const header = document.querySelector('header');
-            const scrollTopBtn = document.getElementById('scroll-to-top');
-            const perfBtn = document.getElementById('toggle-performance');
-            const perfIcon = document.getElementById('perf-icon');
-
-            // 🌟 ESTADO GLOBAL DE RENDIMIENTO 🌟
             let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
 
-            const updatePerfUI = () => {
-                if (!animationsEnabled) {
-                    perfIcon?.classList.replace('fa-bolt', 'fa-bolt-slash');
-                    perfBtn?.classList.add('bg-gold', 'text-smoke-900');
-                } else {
-                    perfIcon?.classList.replace('fa-bolt-slash', 'fa-bolt');
-                    perfBtn?.classList.remove('bg-gold', 'text-smoke-900');
-                }
-            };
-            updatePerfUI();
-
-            // 🌟 LÓGICA DEL MENÚ Y BOTÓN VOLVER ARRIBA 🌟
             if (header) {
                 gsap.set(header, { yPercent: 0, autoAlpha: 1 });
-                ScrollTrigger.create({
-                    trigger: "#hero-jesus",
-                    start: "top top",
-                    end: "bottom top",
-                    onLeave: () => {
-                        // Header siempre fijo. Solo animamos el botón de volver arriba
-                        if (scrollTopBtn) gsap.to(scrollTopBtn, { autoAlpha: 1, visibility: 'visible', y: 0, duration: 0.5, ease: "back.out(1.7)" });
-                    },
-                    onEnterBack: () => {
-                        if (scrollTopBtn) gsap.to(scrollTopBtn, { autoAlpha: 0, visibility: 'hidden', y: 40, duration: 0.4 });
-                    }
-                });
             }
 
-            // ==========================================
-            // 🌟 0. HOJAS DINÁMICAS (Sección 2)
-            // ==========================================
+            // Hojas dinámicas optimizadas
             const leavesContainer = document.getElementById('leaves-container');
             if (leavesContainer && animationsEnabled) {
-                const numLeaves = 15;
-                for (let i = 0; i < numLeaves; i++) {
+                for (let i = 0; i < 15; i++) {
                     const leaf = document.createElement('div');
                     leaf.className = 'absolute leaf-item invisible opacity-0';
                     leaf.style.left = `${Math.random() * 100}%`;
@@ -336,14 +184,13 @@ import Footer from '../components/Footer.astro';
                     leaf.style.transform = `scale(${scale})`;
                     const blurAmount = Math.random() > 0.6 ? Math.random() * 5 : 0; 
                     leaf.style.filter = `blur(${blurAmount}px)`;
-                    leaf.innerHTML = `<img src="/hoja-otono.png" alt="Hoja de otoño" class="w-6 h-6 md:w-10 md:h-10 object-contain drop-shadow-2xl opacity-90" onerror="this.style.display='none'" />`;
+                    // 🌟 OPTIMIZADO: Las hojas se cargan de forma perezosa
+                    leaf.innerHTML = `<img src="/hoja-otono.png" loading="lazy" decoding="async" alt="Hoja de otoño" class="w-6 h-6 md:w-10 md:h-10 object-contain drop-shadow-2xl opacity-90" onerror="this.style.display='none'" />`;
                     leavesContainer.appendChild(leaf);
                 }
             }
 
-            // ==========================================
-            // 🌟 1. SECCIÓN 1 (HERO LÁPIZ)
-            // ==========================================
+            // Animaciones Hero
             const sketch = document.getElementById('jesus-sketch');
             const heroSection = document.getElementById('hero-jesus');
             const scribblePath = document.getElementById('scribble-path') as unknown as SVGPathElement;
@@ -373,9 +220,7 @@ import Footer from '../components/Footer.astro';
                 }
             }
 
-            // ==========================================
-            // 🌟 2. SECCIÓN 2 (DETALLE CON HOJAS)
-            // ==========================================
+            // Animaciones Detalle 2
             const sketch2 = document.getElementById('jesus-sketch-2');
             const detailSection = document.getElementById('detail-section');
             const section2Texts = document.getElementById('section2-texts');
@@ -390,7 +235,6 @@ import Footer from '../components/Footer.astro';
                     const pathLength2 = scribblePath2.getTotalLength();
                     gsap.set(scribblePath2, { strokeDasharray: pathLength2, strokeDashoffset: pathLength2 });
                     
-                    // Texto se anima al entrar a la sección de forma estándar
                     gsap.fromTo(section2Texts, 
                         { autoAlpha: 0, y: 40 }, 
                         { scrollTrigger: { trigger: detailSection, start: "top 75%" }, autoAlpha: 1, y: 0, duration: 1, ease: "power3.out" }
@@ -408,174 +252,81 @@ import Footer from '../components/Footer.astro';
                 }
             }
 
-            // ==========================================
-            // 🌟 3. ANIMACIÓN DEL AMOR DE DIOS (Sección 3)
-            // ==========================================
-            const detailSection3 = document.getElementById('detail-section-3');
-            const video3 = document.getElementById('jesus-video-3') as HTMLVideoElement;
-            const textContainer3 = document.getElementById('section3-text-container');
-            const textItems3 = document.querySelectorAll('.text-section3-item');
-            const overlay3 = document.getElementById('overlay-3');
+            // Animaciones Videos 3 y 4
+            [3, 4].forEach(num => {
+                const detailSect = document.getElementById(`detail-section-${num}`);
+                const video = document.getElementById(`jesus-video-${num}`) as HTMLVideoElement;
+                const textContainer = document.getElementById(`section${num}-text-container`);
+                const textItems = document.querySelectorAll(`.text-section${num}-item`);
+                const overlay = document.getElementById(`overlay-${num}`);
 
-            if (detailSection3 && video3 && textContainer3 && overlay3) {
-                if (!animationsEnabled) {
-                    gsap.set(video3, { display: 'none' });
-                    gsap.set(textItems3, { autoAlpha: 1, y: 0 });
-                    gsap.set(textContainer3, { autoAlpha: 1 });
-                    gsap.set(overlay3, { autoAlpha: 1 });
-                } else {
-                    gsap.set(textItems3, { autoAlpha: 0, y: 30 });
-                    gsap.set(textContainer3, { autoAlpha: 1 });
-
-                    const initSection3VideoAnimation = () => {
-                        const videoDuration = video3.duration;
-                        if (!videoDuration || !isFinite(videoDuration)) return; 
-                        video3.pause();
-
-                        const tl3 = gsap.timeline({
-                            scrollTrigger: { 
-                                trigger: detailSection3, 
-                                start: "top top", 
-                                end: "+=2500",
-                                pin: true, 
-                                scrub: 0.5, 
-                                anticipatePin: 1 
-                            }
-                        });
-
-                        tl3.to(textItems3, { autoAlpha: 1, y: 0, stagger: 0.5, duration: 2, ease: "power2.out" })
-                           .to(video3, { opacity: 0.25, duration: 1.5, ease: "power2.inOut" }, "<") 
-                           .to(video3, { scale: 1.05, duration: 1.5 }, "-=1")
-                           .to({}, { duration: 1.5 }) 
-                           .to(overlay3, { autoAlpha: 1, duration: 1.5, ease: "power2.inOut" })
-                           .to(textContainer3, { autoAlpha: 0, y: -20, duration: 1.5, ease: "power2.inOut" }, "<");
-
-                        ScrollTrigger.create({
-                            trigger: detailSection3,
-                            start: "top top",
-                            end: "+=2500",
-                            scrub: 0.5,
-                            onUpdate: (self) => {
-                                if (video3.readyState >= 2) {
-                                    const duration = video3.duration || 3;
-                                    video3.currentTime = 0.01 + (self.progress * (duration - 0.1));
-                                }
-                            }
-                        });
-                    };
-
-                    if (video3.readyState >= 2) {
-                        initSection3VideoAnimation();
+                if (detailSect && video && textContainer && overlay) {
+                    if (!animationsEnabled) {
+                        gsap.set(video, { display: 'none' });
+                        gsap.set(textItems, { autoAlpha: 1, y: 0 });
+                        gsap.set(textContainer, { autoAlpha: 1 });
+                        gsap.set(overlay, { autoAlpha: 1 });
                     } else {
-                        video3.addEventListener('loadeddata', initSection3VideoAnimation);
+                        gsap.set(textItems, { autoAlpha: 0, y: 30 });
+                        gsap.set(textContainer, { autoAlpha: 1 });
+
+                        const initVideoAnim = () => {
+                            const vDuration = video.duration;
+                            if (!vDuration || !isFinite(vDuration)) return; 
+                            video.pause();
+
+                            const tl = gsap.timeline({
+                                scrollTrigger: { trigger: detailSect, start: "top top", end: "+=2500", pin: true, scrub: 0.5, anticipatePin: 1 }
+                            });
+
+                            tl.to(textItems, { autoAlpha: 1, y: 0, stagger: 0.5, duration: 2, ease: "power2.out" })
+                               .to(video, { opacity: 0.25, duration: 1.5, ease: "power2.inOut" }, "<") 
+                               .to(video, { scale: 1.05, duration: 1.5 }, "-=1")
+                               .to({}, { duration: 1.5 }) 
+                               .to(overlay, { autoAlpha: 1, duration: 1.5, ease: "power2.inOut" })
+                               .to(textContainer, { autoAlpha: 0, y: -20, duration: 1.5, ease: "power2.inOut" }, "<");
+
+                            ScrollTrigger.create({
+                                trigger: detailSect, start: "top top", end: "+=2500", scrub: 0.5,
+                                onUpdate: (self) => {
+                                    if (video.readyState >= 2) {
+                                        video.currentTime = 0.01 + (self.progress * ((video.duration || 3) - 0.1));
+                                    }
+                                }
+                            });
+                        };
+                        // Usamos un observer para no cargar el video hasta que el usuario esté cerca
+                        ScrollTrigger.create({
+                            trigger: detailSect,
+                            start: "top 150%", // Empezar a cargar cuando estemos cerca
+                            onEnter: () => {
+                                if(video.getAttribute('preload') === 'none') {
+                                    video.setAttribute('preload', 'auto');
+                                    video.load();
+                                }
+                            },
+                            once: true
+                        });
+                        
+                        if (video.readyState >= 2) initVideoAnim();
+                        else video.addEventListener('loadeddata', initVideoAnim);
                     }
                 }
-            }
+            });
 
-            // ==========================================
-            // 🌟 4. ANIMACIÓN EVANGELÍSTICA (Sección 4)
-            // ==========================================
-            const detailSection4 = document.getElementById('detail-section-4');
-            const video4 = document.getElementById('jesus-video-4') as HTMLVideoElement;
-            const textContainer4 = document.getElementById('section4-text-container');
-            const textItems4 = document.querySelectorAll('.text-section4-item');
-            const overlay4 = document.getElementById('overlay-4');
-
-            if (detailSection4 && video4 && textContainer4 && overlay4) {
-                if (!animationsEnabled) {
-                    gsap.set(video4, { display: 'none' });
-                    gsap.set(textItems4, { autoAlpha: 1, y: 0 });
-                    gsap.set(textContainer4, { autoAlpha: 1 });
-                    gsap.set(overlay4, { autoAlpha: 1 });
-                } else {
-                    gsap.set(textItems4, { autoAlpha: 0, y: 30 });
-                    gsap.set(textContainer4, { autoAlpha: 1 });
-
-                    const initSection4VideoAnimation = () => {
-                        const videoDuration = video4.duration;
-                        if (!videoDuration || !isFinite(videoDuration)) return; 
-                        video4.pause();
-
-                        const tl4 = gsap.timeline({
-                            scrollTrigger: { 
-                                trigger: detailSection4, 
-                                start: "top top", 
-                                end: "+=2500",
-                                pin: true, 
-                                scrub: 0.5, 
-                                anticipatePin: 1 
-                            }
-                        });
-
-                        tl4.to(textItems4, { autoAlpha: 1, y: 0, stagger: 0.5, duration: 2, ease: "power2.out" })
-                           .to(video4, { opacity: 0.25, duration: 1.5, ease: "power2.inOut" }, "<") 
-                           .to(video4, { scale: 1.05, duration: 1.5 }, "-=1")
-                           .to({}, { duration: 1.5 }) 
-                           .to(overlay4, { autoAlpha: 1, duration: 1.5, ease: "power2.inOut" })
-                           .to(textContainer4, { autoAlpha: 0, y: -20, duration: 1.5, ease: "power2.inOut" }, "<");
-
-                        ScrollTrigger.create({
-                            trigger: detailSection4,
-                            start: "top top",
-                            end: "+=2500",
-                            scrub: 0.5,
-                            onUpdate: (self) => {
-                                if (video4.readyState >= 2) {
-                                    const duration = video4.duration || 3;
-                                    video4.currentTime = 0.01 + (self.progress * (duration - 0.1));
-                                }
-                            }
-                        });
-                    };
-
-                    if (video4.readyState >= 2) {
-                        initSection4VideoAnimation();
-                    } else {
-                        video4.addEventListener('loadeddata', initSection4VideoAnimation);
-                    }
-                }
-            }
-
-            // 🌟 EVENT LISTENERS CONTROLES 🌟
-            if (perfBtn) {
-                perfBtn.addEventListener('click', () => {
-                    animationsEnabled = !animationsEnabled;
-                    localStorage.setItem('iceva_performance', animationsEnabled ? 'high' : 'low');
-                    window.location.reload();
-                });
-            }
-
-            if (scrollTopBtn) {
-                scrollTopBtn.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-
-            // Animaciones Reveal Básicas (Solución Definitiva para textos que desaparecen)
             const reveals = gsap.utils.toArray('.gsap-reveal');
             reveals.forEach(elem => {
                 if (animationsEnabled) {
                     gsap.fromTo(elem as HTMLElement, 
                         { autoAlpha: 0, y: 30 },
                         {
-                            scrollTrigger: { 
-                                trigger: elem as HTMLElement, 
-                                start: "top 95%", 
-                                toggleActions: "play none none none" 
-                            },
-                            autoAlpha: 1, 
-                            y: 0, 
-                            duration: 1, 
-                            clearProps: "all", // Limpia las propiedades para evitar conflictos tras la animación
-                            ease: "power3.out"
+                            scrollTrigger: { trigger: elem as HTMLElement, start: "top 95%", toggleActions: "play none none none" },
+                            autoAlpha: 1, y: 0, duration: 1, clearProps: "all", ease: "power3.out"
                         }
                     );
-                } else {
-                    gsap.set(elem as HTMLElement, { autoAlpha: 1, y: 0, clearProps: "all" });
-                }
+                } else gsap.set(elem as HTMLElement, { autoAlpha: 1, y: 0, clearProps: "all" });
             });
 
-            // Refrescamos ScrollTrigger una vez construido todo el DOM
             ScrollTrigger.refresh();
         };
     </script>

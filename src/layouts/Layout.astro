@@ -7,13 +7,15 @@ interface Props {
     title?: string;
     description?: string;
     image?: string;
+    preloadImage?: string; /* 🌟 NUEVO: Propiedad para precargar la imagen principal 🌟 */
 }
 
 // 🌟 CONFIGURACIÓN SEO Y REDES SOCIALES 🌟
 const { 
     title = "ICEVA | Iglesia Cristiana Evangélica Vida en Abundancia",
     description = "Un espacio de fe, esperanza y comunidad. Minimalismo en el diseño, profundidad en el espíritu. Bienvenido a tu casa.",
-    image = "https://icevavenezuela.vercel.app/hero-fondo.jpg" 
+    image = "https://icevavenezuela.vercel.app/hero-fondo.jpg",
+    preloadImage
 } = Astro.props;
 ---
 
@@ -25,16 +27,17 @@ const {
         <link rel="icon" type="image/svg+xml" href="/para-web-1.svg" />
         
         <!-- 🚀 OPTIMIZACIÓN DE VELOCIDAD: Preconexiones Globales 🚀 -->
-        <!-- Fuentes -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <!-- Mapas, Vimeo y Formularios -->
         <link rel="preconnect" href="https://www.google.com">
         <link rel="preconnect" href="https://player.vimeo.com">
         <link rel="preconnect" href="https://formsubmit.co">
         <link rel="dns-prefetch" href="https://www.google.com">
         <link rel="dns-prefetch" href="https://player.vimeo.com">
         
+        <!-- 🚀 LCP OPTIMIZATION: Precarga de la imagen de fondo principal 🚀 -->
+        {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
+
         <!-- Etiquetas SEO Básicas -->
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -54,19 +57,12 @@ const {
         <meta property="twitter:image" content={image} />
 
         <Analytics />
-
-        <script is:inline>
-            function speedInsightsBeforeSend(data){
-            console.log("Speed Insights before send", data)
-            return data;
-            }
-        </script>
         <SpeedInsights />
         
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
         
-        <!-- FontAwesome -->
+        <!-- FontAwesome diferido -->
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     </head>
