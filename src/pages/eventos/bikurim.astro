@@ -98,7 +98,7 @@ import Footer from '../../components/Footer.astro';
                     <div class="gsap-reveal relative flex items-center justify-center min-h-[500px] md:h-[750px] w-full">
                         <!-- Sube tu imagen del pergamino como 'pergamino-deut26.png' a public/ -->
                         <img 
-                            src="/pergamino-deut26.png" 
+                            src="/pergamino-deut26.png" loading="lazy" decoding="async"
                             alt="Deuteronomio 26:1-11 en Hebreo" 
                             class="max-w-full max-h-full object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:scale-[1.03] transition-transform duration-500" 
                             onerror="this.style.display='none'"
@@ -132,7 +132,7 @@ import Footer from '../../components/Footer.astro';
                     
                     <!-- Imagen de fondo de la tarjeta -->
                     <div class="absolute inset-0 z-0">
-                        <img src="/registro-bg.jpg" alt="Fondo Evangelístico" class="w-full h-full object-cover object-center opacity-40" onerror="this.style.display='none'">
+                        <img src="/registro-bg.jpg" loading="lazy" decoding="async" alt="Fondo Evangelístico" class="w-full h-full object-cover object-center opacity-40" onerror="this.style.display='none'">
                         <!-- Mantenemos un fondo semitransparente AQUÍ para que el texto se pueda leer sobre la foto -->
                         <div class="absolute inset-0 bg-smoke-900/60"></div>
                     </div>
