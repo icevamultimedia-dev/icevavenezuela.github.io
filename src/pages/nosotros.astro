@@ -83,7 +83,7 @@ import Footer from '../components/Footer.astro';
 
                     <!-- Imagen Representativa (Opcional) -->
                     <div class="gsap-reveal relative h-[400px] rounded-2xl overflow-hidden border border-smoke-800 group shadow-2xl">
-                        <img src="/mision.jpg" alt="Misión ICEVA" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/mision.jpg" loading="lazy" decoding="async" alt="Misión ICEVA" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <!-- Gradiente para que no quede vacía si no hay foto -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-smoke-900/80 to-transparent"></div>
                     </div>
@@ -100,7 +100,7 @@ import Footer from '../components/Footer.astro';
                     
                     <!-- Imagen Representativa (Opcional) -->
                     <div class="gsap-reveal relative h-[400px] rounded-2xl overflow-hidden border border-smoke-700 group shadow-2xl order-2 md:order-1">
-                        <img src="/vision.jpg" alt="Visión ICEVA" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/vision.jpg" loading="lazy" decoding="async" alt="Visión ICEVA" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-gradient-to-bl from-smoke-900/80 to-transparent"></div>
                     </div>
 

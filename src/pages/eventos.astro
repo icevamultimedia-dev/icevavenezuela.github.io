@@ -68,7 +68,7 @@ import Footer from '../components/Footer.astro';
                 <div class="flex flex-col lg:flex-row items-center gap-12 mb-24 gsap-reveal">
                     <div class="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-smoke-800 group cursor-pointer relative">
                         <span class="absolute top-4 left-4 z-10 bg-blue-600 text-white text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded">Destacado</span>
-                        <img src="/evento-1.jpg" alt="Fiesta de Primicias" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/evento-1.jpg" loading="lazy" decoding="async" alt="Fiesta de Primicias" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-smoke-800 flex items-center justify-center -z-10"><i class="fa-solid fa-camera text-4xl text-smoke-700"></i></div>
                     </div>
                     <div class="w-full lg:w-1/2 space-y-6">
@@ -88,7 +88,7 @@ import Footer from '../components/Footer.astro';
                 <!-- Evento 2 (Imagen a la derecha) -->
                 <!-- <div class="flex flex-col lg:flex-row-reverse items-center gap-12 mb-24 gsap-reveal">
                     <div class="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-smoke-800 group cursor-pointer relative">
-                        <img src="/evento-2.jpg" alt="Retiro de Jóvenes" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
+                        <img src="/evento-2.jpg" loading="lazy" decoding="async" alt="Retiro de Jóvenes" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'">
                         <div class="absolute inset-0 bg-smoke-800 flex items-center justify-center -z-10"><i class="fa-solid fa-camera text-4xl text-smoke-700"></i></div>
                     </div>
                     <div class="w-full lg:w-1/2 space-y-6">
@@ -114,7 +114,7 @@ import Footer from '../components/Footer.astro';
                     
                     <!-- Imagen de fondo de la tarjeta -->
                     <div class="absolute inset-0 z-0">
-                        <img src="/registro-bg.jpg" alt="Registro Eventos" class="w-full h-full object-cover object-center" onerror="this.style.display='none'">
+                        <img src="/registro-bg.jpg" loading="lazy" decoding="async" alt="Registro Eventos" class="w-full h-full object-cover object-center" onerror="this.style.display='none'">
                     </div>
                     
                     <!-- Contenido Textual -->

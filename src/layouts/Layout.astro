@@ -13,8 +13,7 @@ interface Props {
 const { 
     title = "ICEVA | Iglesia Cristiana Evangélica Vida en Abundancia",
     description = "Un espacio de fe, esperanza y comunidad. Minimalismo en el diseño, profundidad en el espíritu. Bienvenido a tu casa.",
-    // CRÍTICO: Para redes sociales, la URL de la imagen DEBE ser absoluta (completa con https://)
-    image = "https://icevavenezuela.vercel.app/para-web-1.svg" 
+    image = "https://icevavenezuela.vercel.app/hero-fondo.jpg" 
 } = Astro.props;
 ---
 
@@ -24,6 +23,17 @@ const {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/para-web-1.svg" />
+        
+        <!-- 🚀 OPTIMIZACIÓN DE VELOCIDAD: Preconexiones Globales 🚀 -->
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- Mapas, Vimeo y Formularios -->
+        <link rel="preconnect" href="https://www.google.com">
+        <link rel="preconnect" href="https://player.vimeo.com">
+        <link rel="preconnect" href="https://formsubmit.co">
+        <link rel="dns-prefetch" href="https://www.google.com">
+        <link rel="dns-prefetch" href="https://player.vimeo.com">
         
         <!-- Etiquetas SEO Básicas -->
         <title>{title}</title>
@@ -53,125 +63,73 @@ const {
         </script>
         <SpeedInsights />
         
-        <!-- Google Fonts (Solo Montserrat) -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
         
-        <!-- FontAwesome (Librería de iconos reparada) -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- FontAwesome -->
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     </head>
     
     <body class="bg-smoke-900 text-gray-200 font-sans antialiased selection:bg-gold selection:text-smoke-900">
         
-        <!-- Elemento para el Cursor Magnético -->
         <div class="cursor-aura"></div>
 
         <slot />
 
-        <!-- Script Nativo de Astro: Empaquetado y optimizado por Vite -->
         <script>
             import Lenis from 'lenis';
             import { gsap } from 'gsap';
             import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-            // 1. Inicializar Lenis (Scroll Suave)
+            // 1. Inicializar Lenis
             const lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             });
 
-            // 2. Conectar Lenis con GSAP ScrollTrigger
             gsap.registerPlugin(ScrollTrigger);
             lenis.on('scroll', ScrollTrigger.update);
             
-            gsap.ticker.add((time) => { 
-                lenis.raf(time * 1000);
-            });
+            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
             gsap.ticker.lagSmoothing(0);
 
-            // 3. Animación Inicial de la Primera Pantalla (HERO)
-            gsap.from('.gsap-hero', {
-                y: 50,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.2, 
-                ease: "power3.out",
-                delay: 0.2 
-            });
+            // 2. Animación Inicial
+            gsap.from('.gsap-hero', { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
 
-            // 4. Animaciones GSAP Globales de Scroll
+            // 3. Animaciones Globales
             const reveals = gsap.utils.toArray('.gsap-reveal');
             if (reveals.length > 0) {
                 reveals.forEach(elem => {
-                    gsap.from(elem as Element, {
-                        scrollTrigger: { trigger: elem as Element, start: "top 85%" },
-                        y: 40, opacity: 0, duration: 1, ease: "power3.out"
-                    });
+                    gsap.from(elem as Element, { scrollTrigger: { trigger: elem as Element, start: "top 85%" }, y: 40, opacity: 0, duration: 1, ease: "power3.out" });
                 });
             }
 
-            // 5. Animaciones de las Tarjetas
             const cards = gsap.utils.toArray('.gsap-card');
             if (cards.length > 0) {
-                gsap.from(cards, {
-                    scrollTrigger: { trigger: '#horarios', start: "top 75%" },
-                    y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)"
-                });
+                gsap.from(cards, { scrollTrigger: { trigger: '#horarios', start: "top 75%" }, y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)" });
             }
 
-            // 6. Animaciones de la Galería
             const galleryItems = gsap.utils.toArray('.gsap-gallery');
             if (galleryItems.length > 0) {
-                gsap.from(galleryItems, {
-                    scrollTrigger: { trigger: '#galeria', start: "top 80%" },
-                    y: 30, scale: 0.95, opacity: 0, duration: 1, stagger: 0.15, ease: "power2.out"
-                });
+                gsap.from(galleryItems, { scrollTrigger: { trigger: '#galeria', start: "top 80%" }, y: 30, scale: 0.95, opacity: 0, duration: 1, stagger: 0.15, ease: "power2.out" });
             }
 
-            // 🌟 7. LÓGICA DEL CURSOR MAGNÉTICO (AURA) 🌟
+            // 4. Lógica del cursor
             const aura = document.querySelector('.cursor-aura');
-            // Verificamos si existe y si estamos en un dispositivo de escritorio
             if (aura && window.matchMedia("(pointer: fine)").matches) {
-                // Centrar el punto del cursor
                 gsap.set(aura, { xPercent: -50, yPercent: -50 });
+                let xTo = gsap.quickTo(aura, "x", {duration: 0.3, ease: "power3"}), yTo = gsap.quickTo(aura, "y", {duration: 0.3, ease: "power3"});
 
-                // .quickTo es una función avanzada de GSAP para seguir posiciones X e Y a máxima velocidad
-                let xTo = gsap.quickTo(aura, "x", {duration: 0.3, ease: "power3"}),
-                    yTo = gsap.quickTo(aura, "y", {duration: 0.3, ease: "power3"});
+                window.addEventListener("mousemove", e => { xTo(e.clientX); yTo(e.clientY); });
 
-                window.addEventListener("mousemove", e => {
-                    xTo(e.clientX);
-                    yTo(e.clientY);
-                });
-
-                // Detectar cuando el ratón pasa por encima de un botón, enlace o logo
                 const hoverTargets = document.querySelectorAll('a, button, .logo-hover, input, textarea');
-                
                 hoverTargets.forEach(target => {
-                    target.addEventListener('mouseenter', () => {
-                        // Efecto de expansión: Escala x2.5, se rellena de dorado translúcido y quita el borde duro
-                        gsap.to(aura, { 
-                            scale: 2.5, 
-                            backgroundColor: "rgba(212, 175, 55, 0.15)", 
-                            borderColor: "rgba(212, 175, 55, 0)",
-                            duration: 0.3 
-                        });
-                    });
-                    
-                    target.addEventListener('mouseleave', () => {
-                        // Vuelve a la normalidad
-                        gsap.to(aura, { 
-                            scale: 1, 
-                            backgroundColor: "transparent",
-                            borderColor: "#D4AF37",
-                            duration: 0.3 
-                        });
-                    });
+                    target.addEventListener('mouseenter', () => { gsap.to(aura, { scale: 2.5, backgroundColor: "rgba(212, 175, 55, 0.15)", borderColor: "rgba(212, 175, 55, 0)", duration: 0.3 }); });
+                    target.addEventListener('mouseleave', () => { gsap.to(aura, { scale: 1, backgroundColor: "transparent", borderColor: "#D4AF37", duration: 0.3 }); });
                 });
             }
 
-            // 8. Refrescar GSAP para asegurar cálculos de altura exactos
             ScrollTrigger.refresh();
         </script>
     </body>
