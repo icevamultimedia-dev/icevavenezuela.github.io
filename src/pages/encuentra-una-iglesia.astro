@@ -48,9 +48,8 @@ import Footer from '../components/Footer.astro';
         </nav>
         
         <!-- 🌟 1. HERO ESTÁTICO (Rápido y Minimalista) 🌟 -->
-        <section id="hero-mapas" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800">
+        <section id="hero-mapas" class="relative h-[100svh] w-full flex items-center justify-center overflow-hidden border-b border-smoke-800">
             <div class="absolute inset-0 z-0 bg-smoke-900">
-                <!-- Fallback a una imagen oscura y limpia -->
                 <img src="/video-mapa-hero-poster.webp" alt="Mapas San Juan de los Morros" class="w-full h-full object-cover object-center opacity-30" onerror="this.src='/nosotros-hero.jpg'">
                 <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/90 via-smoke-900/40 to-smoke-900"></div>
             </div>
@@ -71,7 +70,7 @@ import Footer from '../components/Footer.astro';
             </div>
         </section>
 
-        <!-- 🌟 CONTENEDOR DE LOS MAPAS (VERSIÓN LIGERA) 🌟 -->
+        <!-- 🌟 CONTENEDOR DE LOS MAPAS 🌟 -->
         <div id="mapas-trigger">
             
             <!-- SECTOR 1 -->
@@ -81,35 +80,41 @@ import Footer from '../components/Footer.astro';
                 </h2>
             </section>
 
-            <section id="mapa-1-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div id="mapa-1-image-layer" class="absolute inset-0 z-30 image-layer">
-                    <img src="/mapa-1-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Centro" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
-                    
-                    <div class="mapa-1-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
-                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
-                        <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">1.66 km | Los Samanes → ICEVA</span></div>
-                    </div>
+            <!-- OPTIMIZADO: flex-col para apilar el mapa arriba y el banner abajo en móviles -->
+            <section id="mapa-1-section" class="relative h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
+                
+                <div id="mapa-1-image-layer" class="relative w-full aspect-[4/3] md:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:w-full lg:h-full z-30 image-layer overflow-hidden border-y border-smoke-700 lg:border-none shadow-2xl lg:shadow-none">
+                    <img src="/mapa-1-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Centro" class="absolute inset-0 w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
                     
                     <!-- Marcadores -->
-                    <div class="mapa-1-marker absolute top-[10%] left-[15%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-tree"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">La plaza de los samanes</div>
+                    <div class="mapa-1-marker absolute top-[10%] left-[15%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-tree text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">La plaza de los samanes</div>
                     </div>
-                    <div class="mapa-1-marker absolute top-[20%] left-[22%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-pizza-slice"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Restaurante TropiPizza</div>
+                    <div class="mapa-1-marker absolute top-[20%] left-[22%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-pizza-slice text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Restaurante TropiPizza</div>
                     </div>
-                    <div class="mapa-1-marker absolute top-[30%] left-[34%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Hospital Israel Ranuárez Balza</div>
+                    <div class="mapa-1-marker absolute top-[30%] left-[34%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Hospital Israel Ranuárez Balza</div>
                     </div>
-                    <div class="mapa-1-marker absolute top-[38%] left-[39%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium">Semáforo del hospital</div>
+                    <div class="mapa-1-marker absolute top-[38%] left-[39%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Semáforo del hospital</div>
                     </div>
-                    <div class="mapa-1-marker absolute top-[86%] left-[78%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold font-sans">Iglesia ICEVA</div>
+                    <div class="mapa-1-marker absolute top-[86%] left-[78%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin active:scale-95">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church text-[12px] md:text-sm"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[9px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold font-sans text-center leading-tight">Iglesia ICEVA</div>
+                    </div>
+                </div>
+
+                <!-- Banner de Distancia (Fuera de la imagen en móviles) -->
+                <div class="mapa-1-distance relative mt-4 lg:mt-0 lg:absolute lg:bottom-10 lg:left-10 lg:translate-x-0 w-[90%] sm:w-auto z-50 bg-smoke-800/95 backdrop-blur-md border border-gold/30 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
+                    <div class="w-8 h-8 md:w-12 md:h-12 shrink-0 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route text-sm md:text-lg"></i></div>
+                    <div class="flex flex-col text-left">
+                        <span class="text-[8px] md:text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans leading-tight">Distancia Estimada</span>
+                        <span class="text-white font-bold text-[11px] sm:text-sm md:text-base tracking-tight leading-tight">1.66 km | Los Samanes → ICEVA</span>
                     </div>
                 </div>
             </section>
@@ -121,33 +126,36 @@ import Footer from '../components/Footer.astro';
                 </h2>
             </section>
 
-            <section id="mapa-2-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div id="mapa-2-image-layer" class="absolute inset-0 z-30 image-layer">
-                    <img src="/mapa-2-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Sur" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
-                    <div class="mapa-2-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
-                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
-                        <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">1.68 km | Plaza Bolívar → ICEVA</span></div>
+            <section id="mapa-2-section" class="relative h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
+                
+                <div id="mapa-2-image-layer" class="relative w-full aspect-[4/3] md:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:w-full lg:h-full z-30 image-layer overflow-hidden border-y border-smoke-700 lg:border-none shadow-2xl lg:shadow-none">
+                    <img src="/mapa-2-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Sur" class="absolute inset-0 w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
+                    
+                    <div class="mapa-2-marker absolute top-[12%] left-[25%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-monument text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Plaza Bolívar</div>
                     </div>
-                    <div class="mapa-2-marker absolute top-[12%] left-[25%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-monument"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Plaza Bolívar</div>
+                    <div class="mapa-2-marker absolute top-[20%] left-[48%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-road text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Carretera Nacional Troncal 2</div>
                     </div>
-                    <div class="mapa-2-marker absolute top-[20%] left-[48%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-road"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Carretera Nacional Troncal 2</div>
+                    <div class="mapa-2-marker absolute top-[35%] left-[18%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Hospital Israel Ranuárez Balza</div>
                     </div>
-                    <div class="mapa-2-marker absolute top-[35%] left-[18%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Hospital Israel Ranuárez Balza</div>
+                    <div class="mapa-2-marker absolute top-[42%] left-[23%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Semáforo del hospital</div>
                     </div>
-                    <div class="mapa-2-marker absolute top-[42%] left-[23%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Semáforo del hospital</div>
+                    <div class="mapa-2-marker absolute top-[78%] left-[74%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin active:scale-95">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church text-[12px] md:text-sm"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[9px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold font-sans text-center leading-tight">Iglesia ICEVA</div>
                     </div>
-                    <div class="mapa-2-marker absolute top-[78%] left-[74%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold font-sans">Iglesia ICEVA</div>
-                    </div>
+                </div>
+
+                <div class="mapa-2-distance relative mt-4 lg:mt-0 lg:absolute lg:bottom-10 lg:left-10 lg:translate-x-0 w-[90%] sm:w-auto z-50 bg-smoke-800/95 backdrop-blur-md border border-gold/30 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
+                    <div class="w-8 h-8 md:w-12 md:h-12 shrink-0 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route text-sm md:text-lg"></i></div>
+                    <div class="flex flex-col text-left"><span class="text-[8px] md:text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans leading-tight">Distancia Estimada</span><span class="text-white font-bold text-[11px] sm:text-sm md:text-base tracking-tight leading-tight">1.68 km | Plaza Bolívar → ICEVA</span></div>
                 </div>
             </section>
 
@@ -158,33 +166,36 @@ import Footer from '../components/Footer.astro';
                 </h2>
             </section>
 
-            <section id="mapa-3-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div id="mapa-3-image-layer" class="absolute inset-0 z-30 image-layer">
-                    <img src="/mapa-3-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Este" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
-                    <div class="mapa-3-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
-                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
-                        <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">4.12 km | Banco Obrero → ICEVA</span></div>
+            <section id="mapa-3-section" class="relative h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
+                
+                <div id="mapa-3-image-layer" class="relative w-full aspect-[4/3] md:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:w-full lg:h-full z-30 image-layer overflow-hidden border-y border-smoke-700 lg:border-none shadow-2xl lg:shadow-none">
+                    <img src="/mapa-3-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Este" class="absolute inset-0 w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
+                    
+                    <div class="mapa-3-marker absolute top-[8%] left-[48%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-building text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Sector Banco Obrero</div>
                     </div>
-                    <div class="mapa-3-marker absolute top-[8%] left-[48%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-building"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Sector Banco Obrero</div>
+                    <div class="mapa-3-marker absolute top-[22%] left-[78%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-landmark text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">La Villa Olímpica</div>
                     </div>
-                    <div class="mapa-3-marker absolute top-[22%] left-[78%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-landmark"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">La Villa Olímpica</div>
+                    <div class="mapa-3-marker absolute top-[46%] left-[50%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Hospital Israel Ranuárez Balza</div>
                     </div>
-                    <div class="mapa-3-marker absolute top-[46%] left-[50%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Hospital Israel Ranuárez Balza</div>
+                    <div class="mapa-3-marker absolute top-[53%] left-[49%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Semáforo del hospital</div>
                     </div>
-                    <div class="mapa-3-marker absolute top-[53%] left-[49%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Semáforo del hospital</div>
+                    <div class="mapa-3-marker absolute top-[83%] left-[38%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin active:scale-95">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church text-[12px] md:text-sm"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[9px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold text-center leading-tight">Iglesia ICEVA</div>
                     </div>
-                    <div class="mapa-3-marker absolute top-[83%] left-[38%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold">Iglesia ICEVA</div>
-                    </div>
+                </div>
+
+                <div class="mapa-3-distance relative mt-4 lg:mt-0 lg:absolute lg:bottom-10 lg:left-10 lg:translate-x-0 w-[90%] sm:w-auto z-50 bg-smoke-800/95 backdrop-blur-md border border-gold/30 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
+                    <div class="w-8 h-8 md:w-12 md:h-12 shrink-0 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route text-sm md:text-lg"></i></div>
+                    <div class="flex flex-col text-left"><span class="text-[8px] md:text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans leading-tight">Distancia Estimada</span><span class="text-white font-bold text-[11px] sm:text-sm md:text-base tracking-tight leading-tight">4.12 km | Banco Obrero → ICEVA</span></div>
                 </div>
             </section>
 
@@ -195,33 +206,36 @@ import Footer from '../components/Footer.astro';
                 </h2>
             </section>
 
-            <section id="mapa-4-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div id="mapa-4-image-layer" class="absolute inset-0 z-30 image-layer">
-                    <img src="/mapa-4-static.webp" loading="lazy" decoding="async" alt="Mapa Sector La Gloria" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
-                    <div class="mapa-4-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
-                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
-                        <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">2.40 km | Los Llanos → ICEVA</span></div>
+            <section id="mapa-4-section" class="relative h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
+                
+                <div id="mapa-4-image-layer" class="relative w-full aspect-[4/3] md:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:w-full lg:h-full z-30 image-layer overflow-hidden border-y border-smoke-700 lg:border-none shadow-2xl lg:shadow-none">
+                    <img src="/mapa-4-static.webp" loading="lazy" decoding="async" alt="Mapa Sector La Gloria" class="absolute inset-0 w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
+                    
+                    <div class="mapa-4-marker absolute top-[10%] left-[15%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-building text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Sector Los Llanos</div>
                     </div>
-                    <div class="mapa-4-marker absolute top-[10%] left-[15%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-building"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Sector Los Llanos</div>
+                    <div class="mapa-4-marker absolute top-[20%] left-[70%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-road text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Av. Los Llanos</div>
                     </div>
-                    <div class="mapa-4-marker absolute top-[20%] left-[70%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-road"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Av. Los Llanos</div>
+                    <div class="mapa-4-marker absolute top-[25%] left-[50%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-road text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Carretera Nacional Troncal 2</div>
                     </div>
-                    <div class="mapa-4-marker absolute top-[25%] left-[50%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-road"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Carretera Nacional Troncal 2</div>
+                    <div class="mapa-4-marker absolute top-[45%] left-[85%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Semáforo del hospital</div>
                     </div>
-                    <div class="mapa-4-marker absolute top-[45%] left-[85%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Semáforo del hospital</div>
+                    <div class="mapa-4-marker absolute top-[85%] left-[35%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin active:scale-95">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church text-[12px] md:text-sm"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[9px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold text-center leading-tight">Iglesia ICEVA</div>
                     </div>
-                    <div class="mapa-4-marker absolute top-[85%] left-[35%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold">Iglesia ICEVA</div>
-                    </div>
+                </div>
+
+                <div class="mapa-4-distance relative mt-4 lg:mt-0 lg:absolute lg:bottom-10 lg:left-10 lg:translate-x-0 w-[90%] sm:w-auto z-50 bg-smoke-800/95 backdrop-blur-md border border-gold/30 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
+                    <div class="w-8 h-8 md:w-12 md:h-12 shrink-0 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route text-sm md:text-lg"></i></div>
+                    <div class="flex flex-col text-left"><span class="text-[8px] md:text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans leading-tight">Distancia Estimada</span><span class="text-white font-bold text-[11px] sm:text-sm md:text-base tracking-tight leading-tight">2.40 km | Los Llanos → ICEVA</span></div>
                 </div>
             </section>
 
@@ -232,37 +246,40 @@ import Footer from '../components/Footer.astro';
                 </h2>
             </section>
 
-            <section id="mapa-5-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div id="mapa-5-image-layer" class="absolute inset-0 z-30 image-layer">
-                    <img src="/mapa-5-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Terminal" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
-                    <div class="mapa-5-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
-                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
-                        <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">5.70 km | El Terminal → ICEVA</span></div>
+            <section id="mapa-5-section" class="relative h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
+                
+                <div id="mapa-5-image-layer" class="relative w-full aspect-[4/3] md:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:w-full lg:h-full z-30 image-layer overflow-hidden border-y border-smoke-700 lg:border-none shadow-2xl lg:shadow-none">
+                    <img src="/mapa-5-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Terminal" class="absolute inset-0 w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
+                    
+                    <div class="mapa-5-marker absolute top-[4%] left-[35%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-bus text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium text-center leading-tight">Terminal de pasajeros</div>
                     </div>
-                    <div class="mapa-5-marker absolute top-[4%] left-[35%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-bus"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium">Terminal de pasajeros</div>
+                    <div class="mapa-5-marker absolute top-[5%] left-[23%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-yellow-500 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(234,179,8,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-landmark text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium text-center leading-tight">La Villa Olímpica</div>
                     </div>
-                    <div class="mapa-5-marker absolute top-[5%] left-[23%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(234,179,8,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-landmark"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium">La Villa Olímpica</div>
+                    <div class="mapa-5-marker absolute top-[12%] left-[58%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-road text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Carretera Nacional</div>
                     </div>
-                    <div class="mapa-5-marker absolute top-[12%] left-[58%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-road"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Carretera Nacional</div>
+                    <div class="mapa-5-marker absolute top-[54%] left-[39%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Hospital Israel Ranuárez Balza</div>
                     </div>
-                    <div class="mapa-5-marker absolute top-[54%] left-[39%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Hospital Israel Ranuárez Balza</div>
+                    <div class="mapa-5-marker absolute top-[58%] left-[43%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Semáforo del hospital</div>
                     </div>
-                    <div class="mapa-5-marker absolute top-[58%] left-[43%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Semáforo del hospital</div>
+                    <div class="mapa-5-marker absolute top-[76%] left-[63%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin active:scale-95">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church text-[12px] md:text-sm"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[9px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold font-sans text-center leading-tight">Iglesia ICEVA</div>
                     </div>
-                    <div class="mapa-5-marker absolute top-[76%] left-[63%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold font-sans">Iglesia ICEVA</div>
-                    </div>
+                </div>
+
+                <div class="mapa-5-distance relative mt-4 lg:mt-0 lg:absolute lg:bottom-10 lg:left-10 lg:translate-x-0 w-[90%] sm:w-auto z-50 bg-smoke-800/95 backdrop-blur-md border border-gold/30 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
+                    <div class="w-8 h-8 md:w-12 md:h-12 shrink-0 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route text-sm md:text-lg"></i></div>
+                    <div class="flex flex-col text-left"><span class="text-[8px] md:text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans leading-tight">Distancia Estimada</span><span class="text-white font-bold text-[11px] sm:text-sm md:text-base tracking-tight leading-tight">5.70 km | El Terminal → ICEVA</span></div>
                 </div>
             </section>
 
@@ -273,33 +290,36 @@ import Footer from '../components/Footer.astro';
                 </h2>
             </section>
 
-            <section id="mapa-6-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div id="mapa-6-image-layer" class="absolute inset-0 z-30 image-layer">
-                    <img src="/mapa-6-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Aeropuerto" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
-                    <div class="mapa-6-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
-                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
-                        <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">4.53 km | El Aeropuerto → ICEVA</span></div>
+            <section id="mapa-6-section" class="relative h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
+                
+                <div id="mapa-6-image-layer" class="relative w-full aspect-[4/3] md:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:w-full lg:h-full z-30 image-layer overflow-hidden border-y border-smoke-700 lg:border-none shadow-2xl lg:shadow-none">
+                    <img src="/mapa-6-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Aeropuerto" class="absolute inset-0 w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
+                    
+                    <div class="mapa-6-marker absolute top-[12%] left-[32%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-plane text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg text-center font-medium font-sans leading-tight">Aeropuerto San Juan de Los Morros<br>Airport SVJM</div>
                     </div>
-                    <div class="mapa-6-marker absolute top-[12%] left-[32%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-plane"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg text-center font-medium font-sans">Aeropuerto San Juan de Los Morros<br>Airport SVJM</div>
+                    <div class="mapa-6-marker absolute top-[22%] left-[80%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-landmark text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">La Villa Olímpica</div>
                     </div>
-                    <div class="mapa-6-marker absolute top-[22%] left-[80%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(34,197,94,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-landmark"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">La Villa Olímpica</div>
+                    <div class="mapa-6-marker absolute top-[44%] left-[54%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_10px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Hospital Israel Ranuárez Balza</div>
                     </div>
-                    <div class="mapa-6-marker absolute top-[44%] left-[54%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(239,68,68,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-hospital"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Hospital Israel Ranuárez Balza</div>
+                    <div class="mapa-6-marker absolute top-[48%] left-[52%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin active:scale-95">
+                        <div class="w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_10px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light text-[10px] md:text-xs"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[8px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans text-center leading-tight">Semáforo del hospital</div>
                     </div>
-                    <div class="mapa-6-marker absolute top-[48%] left-[52%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-traffic-light"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">Semáforo del hospital</div>
+                    <div class="mapa-6-marker absolute top-[80%] left-[34%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin active:scale-95">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church text-[12px] md:text-sm"></i></div>
+                        <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 bg-smoke-800/95 backdrop-blur-sm border border-smoke-700 px-2 py-1 rounded md:rounded-lg text-[9px] md:text-[10px] text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold font-sans text-center leading-tight">Iglesia ICEVA</div>
                     </div>
-                    <div class="mapa-6-marker absolute top-[80%] left-[34%] flex flex-col items-center pointer-events-auto cursor-pointer group z-50 marker-pin">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-church"></i></div>
-                        <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs font-sans text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-bold font-sans">Iglesia ICEVA</div>
-                    </div>
+                </div>
+
+                <div class="mapa-6-distance relative mt-4 lg:mt-0 lg:absolute lg:bottom-10 lg:left-10 lg:translate-x-0 w-[90%] sm:w-auto z-50 bg-smoke-800/95 backdrop-blur-md border border-gold/30 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
+                    <div class="w-8 h-8 md:w-12 md:h-12 shrink-0 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route text-sm md:text-lg"></i></div>
+                    <div class="flex flex-col text-left"><span class="text-[8px] md:text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans leading-tight">Distancia Estimada</span><span class="text-white font-bold text-[11px] sm:text-sm md:text-base tracking-tight leading-tight">4.53 km | El Aeropuerto → ICEVA</span></div>
                 </div>
             </section>
 
@@ -422,7 +442,7 @@ import Footer from '../components/Footer.astro';
                 if (markers.length) gsap.set(markers, { opacity: 0, scale: 0, y: 20 });
                 if (distBadge) gsap.set(distBadge, { opacity: 0, y: 30 });
 
-                // Crear el Pin (Más corto, ya que no hay que reproducir un video)
+                // Crear el Pin
                 const tl = gsap.timeline({ 
                     scrollTrigger: { 
                         trigger: section, 
