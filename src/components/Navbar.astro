@@ -217,7 +217,7 @@
 </style>
 
 <script>
-    document.addEventListener("astro:page-load", () => {
+    document.addEventListener("DOMContentLoaded", () => {
         // --- LÓGICA DE LA CUENTA REGRESIVA BIKURIM ---
         const targetDate = new Date("Apr 19, 2026 10:00:00").getTime();
 
@@ -251,7 +251,5 @@
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
-
-        ScrollTrigger.refresh()
     });
 </script>

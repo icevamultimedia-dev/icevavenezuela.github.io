@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
@@ -23,8 +22,6 @@ const {
 <!doctype html>
 <html lang="es">
     <head>
-        <ClientRouter />
-
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/para-web-1.svg" />
@@ -80,11 +77,6 @@ const {
             import Lenis from 'lenis';
             import { gsap } from 'gsap';
             import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-            // 🌟 AQUÍ COLOCAS EL LIMPIADOR 🌟
-        document.addEventListener("astro:before-swap", () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        });
 
             // 1. Inicializar Lenis
             const lenis = new Lenis({

@@ -363,7 +363,7 @@ import Footer from '../components/Footer.astro';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
         gsap.registerPlugin(ScrollTrigger);
 
-        document.addEventListener("astro:page-load", () => {
+        window.onload = () => {
             const header = document.querySelector('header');
             const scrollTopBtn = document.getElementById('scroll-to-top');
             const perfBtn = document.getElementById('toggle-performance');
@@ -505,8 +505,6 @@ import Footer from '../components/Footer.astro';
                     }
                 });
             });
-
-            ScrollTrigger.refresh()
-        });
+        };
     </script>
 </Layout>

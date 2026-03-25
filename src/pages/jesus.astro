@@ -177,7 +177,7 @@ import Footer from '../components/Footer.astro';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
         gsap.registerPlugin(ScrollTrigger);
 
-        document.addEventListener("astro:page-load", () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const header = document.querySelector('header');
             let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
 

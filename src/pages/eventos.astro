@@ -152,8 +152,8 @@ import Footer from '../components/Footer.astro';
         import { gsap } from 'gsap';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
         gsap.registerPlugin(ScrollTrigger);
-        
-        document.addEventListener("astro:page-load", () => {
+
+        document.addEventListener('DOMContentLoaded', () => {
             
             const scrollTopBtn = document.getElementById('scroll-to-top');
             const perfBtn = document.getElementById('toggle-performance');

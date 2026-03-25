@@ -159,12 +159,7 @@ import Footer from '../../components/Footer.astro';
 
 <!-- Script combinado para la cuenta regresiva y el nuevo carrusel de video -->
 <script>
-        import { gsap } from 'gsap';
-        import { ScrollTrigger } from 'gsap/ScrollTrigger';
-        gsap.registerPlugin(ScrollTrigger);
-    
-        document.addEventListener("astro:page-load", () => {
-
+    document.addEventListener("DOMContentLoaded", () => {
         // --- LÓGICA DE LA CUENTA REGRESIVA BIKURIM ---
         const targetDate = new Date("Apr 12, 2026 10:00:00").getTime();
 
@@ -241,7 +236,5 @@ import Footer from '../../components/Footer.astro';
                 updateCarousel();
             });
         }
-
-        ScrollTrigger.refresh()
     });
 </script>
