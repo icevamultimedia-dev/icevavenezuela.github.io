@@ -47,11 +47,12 @@ import Footer from '../components/Footer.astro';
             </a>
         </nav>
         
-        <!-- 🌟 1. HERO 🌟 -->
+        <!-- 🌟 1. HERO ESTÁTICO (Rápido y Minimalista) 🌟 -->
         <section id="hero-mapas" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800">
             <div class="absolute inset-0 z-0 bg-smoke-900">
-                <video src="/video-mapa-hero.mp4" poster="/video-mapa-hero-poster.webp" autoplay loop muted playsinline class="w-full h-full object-cover object-center"></video>
-                <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/80 via-smoke-900/40 to-smoke-900"></div>
+                <!-- Fallback a una imagen oscura y limpia -->
+                <img src="/video-mapa-hero-poster.webp" alt="Mapas San Juan de los Morros" class="w-full h-full object-cover object-center opacity-30" onerror="this.src='/nosotros-hero.jpg'">
+                <div class="absolute inset-0 bg-gradient-to-b from-smoke-900/90 via-smoke-900/40 to-smoke-900"></div>
             </div>
             <div class="flare-bg w-[800px] h-[800px] top-[-200px] left-1/2 transform -translate-x-1/2 opacity-20 z-0"></div>
             <div class="max-w-4xl mx-auto px-4 relative z-20 text-center">
@@ -70,7 +71,7 @@ import Footer from '../components/Footer.astro';
             </div>
         </section>
 
-        <!-- 🌟 CONTENEDOR DE LOS MAPAS ANIMADOS 🌟 -->
+        <!-- 🌟 CONTENEDOR DE LOS MAPAS (VERSIÓN LIGERA) 🌟 -->
         <div id="mapas-trigger">
             
             <!-- SECTOR 1 -->
@@ -81,16 +82,15 @@ import Footer from '../components/Footer.astro';
             </section>
 
             <section id="mapa-1-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div class="absolute inset-0 z-10 pointer-events-none video-container">
-                    <video id="mapa-1-video" src="/mapa-1-scroll.mp4" poster="/mapa-1-poster.webp" muted playsinline preload="auto" class="will-change-transform w-full h-full object-cover transform-gpu"></video>
-                </div>
-                <div id="mapa-1-overlay" class="absolute inset-0 z-20 bg-smoke-900 opacity-0 pointer-events-none overlay-layer"></div>
-                <div id="mapa-1-image-layer" class="absolute inset-0 z-30 opacity-0 pointer-events-none image-layer">
-                    <img src="/mapa-1-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Centro" class="w-full h-full object-cover" />
+                <div id="mapa-1-image-layer" class="absolute inset-0 z-30 image-layer">
+                    <img src="/mapa-1-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Centro" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
+                    
                     <div class="mapa-1-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
                         <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
                         <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">1.66 km | Los Samanes → ICEVA</span></div>
                     </div>
+                    
+                    <!-- Marcadores -->
                     <div class="mapa-1-marker absolute top-[10%] left-[15%] flex flex-col items-center pointer-events-auto cursor-pointer group z-40 marker-pin">
                         <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-smoke-900 shadow-[0_0_15px_rgba(250,204,21,0.6)] group-hover:scale-110 transition-transform relative z-10"><i class="fa-solid fa-tree"></i></div>
                         <div class="absolute top-full mt-2 bg-smoke-800/90 backdrop-blur-sm border border-smoke-700 px-3 py-1.5 rounded text-xs text-white whitespace-nowrap pointer-events-none z-20 shadow-lg font-medium font-sans">La plaza de los samanes</div>
@@ -122,12 +122,8 @@ import Footer from '../components/Footer.astro';
             </section>
 
             <section id="mapa-2-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div class="absolute inset-0 z-10 pointer-events-none video-container">
-                    <video id="mapa-2-video" src="/mapa-2-scroll.mp4" poster="/mapa-2-poster.webp" muted playsinline preload="auto" class="will-change-transform w-full h-full object-cover transform-gpu"></video>
-                </div>
-                <div id="mapa-2-overlay" class="absolute inset-0 z-20 bg-smoke-900 opacity-0 pointer-events-none overlay-layer"></div>
-                <div id="mapa-2-image-layer" class="absolute inset-0 z-30 opacity-0 pointer-events-none image-layer">
-                    <img src="/mapa-2-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Sur" class="w-full h-full object-cover" />
+                <div id="mapa-2-image-layer" class="absolute inset-0 z-30 image-layer">
+                    <img src="/mapa-2-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Sur" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
                     <div class="mapa-2-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
                         <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
                         <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">1.68 km | Plaza Bolívar → ICEVA</span></div>
@@ -163,12 +159,8 @@ import Footer from '../components/Footer.astro';
             </section>
 
             <section id="mapa-3-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div class="absolute inset-0 z-10 pointer-events-none video-container">
-                    <video id="mapa-3-video" src="/mapa-3-scroll.mp4" poster="/mapa-3-poster.webp" muted playsinline preload="auto" class="will-change-transform w-full h-full object-cover transform-gpu"></video>
-                </div>
-                <div id="mapa-3-overlay" class="absolute inset-0 z-20 bg-smoke-900 opacity-0 pointer-events-none overlay-layer"></div>
-                <div id="mapa-3-image-layer" class="absolute inset-0 z-30 opacity-0 pointer-events-none image-layer">
-                    <img src="/mapa-3-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Este" class="w-full h-full object-cover" />
+                <div id="mapa-3-image-layer" class="absolute inset-0 z-30 image-layer">
+                    <img src="/mapa-3-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Este" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
                     <div class="mapa-3-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
                         <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
                         <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">4.12 km | Banco Obrero → ICEVA</span></div>
@@ -204,12 +196,8 @@ import Footer from '../components/Footer.astro';
             </section>
 
             <section id="mapa-4-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div class="absolute inset-0 z-10 pointer-events-none video-container">
-                    <video id="mapa-4-video" src="/mapa-4-scroll.mp4" poster="/mapa-4-poster.webp" muted playsinline preload="auto" class="will-change-transform w-full h-full object-cover transform-gpu"></video>
-                </div>
-                <div id="mapa-4-overlay" class="absolute inset-0 z-20 bg-smoke-900 opacity-0 pointer-events-none overlay-layer"></div>
-                <div id="mapa-4-image-layer" class="absolute inset-0 z-30 opacity-0 pointer-events-none image-layer">
-                    <img src="/mapa-4-static.webp" loading="lazy" decoding="async" alt="Mapa Sector La Gloria" class="w-full h-full object-cover" />
+                <div id="mapa-4-image-layer" class="absolute inset-0 z-30 image-layer">
+                    <img src="/mapa-4-static.webp" loading="lazy" decoding="async" alt="Mapa Sector La Gloria" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
                     <div class="mapa-4-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
                         <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
                         <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">2.40 km | Los Llanos → ICEVA</span></div>
@@ -245,12 +233,8 @@ import Footer from '../components/Footer.astro';
             </section>
 
             <section id="mapa-5-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div class="absolute inset-0 z-10 pointer-events-none video-container">
-                    <video id="mapa-5-video" src="/mapa-5-scroll.mp4" poster="/mapa-5-poster.webp" muted playsinline preload="auto" class="will-change-transform w-full h-full object-cover transform-gpu"></video>
-                </div>
-                <div id="mapa-5-overlay" class="absolute inset-0 z-20 bg-smoke-900 opacity-0 pointer-events-none overlay-layer"></div>
-                <div id="mapa-5-image-layer" class="absolute inset-0 z-30 opacity-0 pointer-events-none image-layer">
-                    <img src="/mapa-5-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Terminal" class="w-full h-full object-cover" />
+                <div id="mapa-5-image-layer" class="absolute inset-0 z-30 image-layer">
+                    <img src="/mapa-5-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Terminal" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
                     <div class="mapa-5-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
                         <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
                         <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">5.70 km | El Terminal → ICEVA</span></div>
@@ -290,12 +274,8 @@ import Footer from '../components/Footer.astro';
             </section>
 
             <section id="mapa-6-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900 map-section">
-                <div class="absolute inset-0 z-10 pointer-events-none video-container">
-                    <video id="mapa-6-video" src="/mapa-6-scroll.mp4" poster="/mapa-6-poster.webp" muted playsinline preload="auto" class="will-change-transform w-full h-full object-cover transform-gpu"></video>
-                </div>
-                <div id="mapa-6-overlay" class="absolute inset-0 z-20 bg-smoke-900 opacity-0 pointer-events-none overlay-layer"></div>
-                <div id="mapa-6-image-layer" class="absolute inset-0 z-30 opacity-0 pointer-events-none image-layer">
-                    <img src="/mapa-6-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Aeropuerto" class="w-full h-full object-cover" />
+                <div id="mapa-6-image-layer" class="absolute inset-0 z-30 image-layer">
+                    <img src="/mapa-6-static.webp" loading="lazy" decoding="async" alt="Mapa Sector Aeropuerto" class="w-full h-full object-cover transform scale-[1.15] image-zoom origin-center will-change-transform" onerror="this.style.display='none'" />
                     <div class="mapa-6-distance absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-50 bg-smoke-800/90 backdrop-blur-md border border-gold/30 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-4 opacity-0 translate-y-10 distance-badge">
                         <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold"><i class="fa-solid fa-route"></i></div>
                         <div class="flex flex-col text-left"><span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold font-sans">Distancia Estimada</span><span class="text-white font-bold text-sm md:text-base tracking-tight">4.53 km | El Aeropuerto → ICEVA</span></div>
@@ -323,20 +303,14 @@ import Footer from '../components/Footer.astro';
                 </div>
             </section>
 
-            <!-- 🌟 SECCIÓN FINAL DE TEXTO 🌟 -->
+            <!-- FINAL MESSAGE -->
             <section id="final-message" class="relative py-32 md:py-48 bg-smoke-900 flex items-center justify-center overflow-hidden border-t border-smoke-800 section-target">
                 <div class="absolute top-12 left-12 w-8 h-8 rounded-full border border-gold/40 hidden lg:block opacity-40"></div>
                 <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
                     <div class="gsap-reveal mb-8 opacity-20"><i class="fa-solid fa-quote-left text-3xl text-smoke-600"></i></div>
                     <h2 class="gsap-reveal text-xl md:text-2xl lg:text-3xl font-light text-white leading-relaxed tracking-wide mb-12">"Ven y adoremos juntos a nuestro <span class="text-white font-normal italic">Abba Kadosh</span>."</h2>
-                    <div class="gsap-reveal flex items-center justify-center gap-6">
-                        <div class="w-12 md:w-20 h-px bg-gold/40"></div>
-                        <span class="text-gold font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs whitespace-nowrap font-sans">Te Esperamos</span>
-                        <div class="w-12 md:w-20 h-px bg-gold/40"></div>
-                    </div>
                 </div>
             </section>
-
         </div>
 
         <!-- 🌟 CONTROLES FLOTANTES 🌟 -->
@@ -363,15 +337,14 @@ import Footer from '../components/Footer.astro';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
         gsap.registerPlugin(ScrollTrigger);
 
-        window.onload = () => {
+        document.addEventListener("DOMContentLoaded", () => {
             const header = document.querySelector('header');
+            const sideNav = document.getElementById('side-nav');
+            const navDots = document.querySelectorAll('.nav-dot');
             const scrollTopBtn = document.getElementById('scroll-to-top');
             const perfBtn = document.getElementById('toggle-performance');
             const perfIcon = document.getElementById('perf-icon');
-            const sideNav = document.getElementById('side-nav');
-            const navDots = document.querySelectorAll('.nav-dot');
 
-            // 🌟 ESTADO GLOBAL DE RENDIMIENTO 🌟
             let animationsEnabled = localStorage.getItem('iceva_performance') !== 'low';
 
             const updatePerfUI = () => {
@@ -385,33 +358,27 @@ import Footer from '../components/Footer.astro';
             };
             updatePerfUI();
 
-            // 🌟 LÓGICA DEL MENÚ, SIDE NAV Y BOTÓN VOLVER ARRIBA 🌟
             if (header) {
                 gsap.set(header, { yPercent: 0, autoAlpha: 1 });
                 ScrollTrigger.create({
-                    trigger: "#hero-mapas",
-                    start: "top top",
-                    end: "bottom top",
+                    trigger: "#hero-mapas", start: "top top", end: "bottom top",
                     onLeave: () => {
                         gsap.to(header, { yPercent: -100, autoAlpha: 0, duration: 0.3 });
-                        if (scrollTopBtn) gsap.to(scrollTopBtn, { autoAlpha: 1, visibility: 'visible', y: 0, duration: 0.5, ease: "back.out(1.7)" });
                         if (sideNav) gsap.to(sideNav, { autoAlpha: 1, visibility: 'visible', duration: 0.5 });
+                        if (scrollTopBtn) gsap.to(scrollTopBtn, { autoAlpha: 1, visibility: 'visible', y: 0, duration: 0.5, ease: "back.out(1.7)" });
                     },
                     onEnterBack: () => {
                         gsap.to(header, { yPercent: 0, autoAlpha: 1, duration: 0.3 });
-                        if (scrollTopBtn) gsap.to(scrollTopBtn, { autoAlpha: 0, visibility: 'hidden', y: 40, duration: 0.4 });
                         if (sideNav) gsap.to(sideNav, { autoAlpha: 0, visibility: 'hidden', duration: 0.5 });
+                        if (scrollTopBtn) gsap.to(scrollTopBtn, { autoAlpha: 0, visibility: 'hidden', y: 40, duration: 0.4 });
                     }
                 });
             }
 
-            // 🌟 ACTUALIZAR PUNTO ACTIVO EN SIDE NAV 🌟
             const sections = gsap.utils.toArray('.section-target');
             sections.forEach((section, i) => {
                 ScrollTrigger.create({
-                    trigger: section as HTMLElement,
-                    start: "top 60%",
-                    end: "bottom 60%",
+                    trigger: section as HTMLElement, start: "top 60%", end: "bottom 60%",
                     onToggle: self => {
                         if (self.isActive) {
                             navDots.forEach(dot => dot.querySelector('.dot-inner')?.classList.remove('bg-gold', 'scale-150', 'border-transparent'));
@@ -435,76 +402,81 @@ import Footer from '../components/Footer.astro';
                 }
             });
 
-            // 🌟 LÓGICA DE REVELACIÓN CORREGIDA 🌟
-            const reveals = gsap.utils.toArray('.gsap-reveal');
-            reveals.forEach(elem => {
-                gsap.from(elem as HTMLElement, {
-                    scrollTrigger: { trigger: elem as HTMLElement, start: "top 95%", toggleActions: "play none none none" },
-                    y: 30, autoAlpha: 0, duration: 1, clearProps: "all", ease: "power2.out"
-                });
-            });
-
-            // 🌟 LÓGICA MAESTRA DE MAPAS 🌟
+            // 🌟 LÓGICA MINIMALISTA DE MAPAS (IMAGENES Y ANIMACIONES) 🌟
             const initMapSequence = (index: number) => {
                 const section = document.getElementById(`mapa-${index}-section`);
-                const video = document.getElementById(`mapa-${index}-video`) as HTMLVideoElement;
-                const overlay = document.getElementById(`mapa-${index}-overlay`);
-                const imageLayer = document.getElementById(`mapa-${index}-image-layer`);
+                const imageZoom = section?.querySelector('.image-zoom');
                 const markers = document.querySelectorAll(`.mapa-${index}-marker`);
                 const distBadge = document.querySelector(`.mapa-${index}-distance`);
-                if (!section || !video || !overlay || !imageLayer || markers.length === 0) return;
+                
+                if (!section || !imageZoom) return;
 
                 if (!animationsEnabled) {
-                    gsap.set([overlay, imageLayer], { autoAlpha: 1 });
-                    gsap.set(markers, { opacity: 1, scale: 1, y: 0 });
-                    gsap.set(distBadge, { opacity: 1, y: 0 });
-                    gsap.set(video, { display: 'none' });
+                    gsap.set(imageZoom, { scale: 1 });
+                    if (markers.length) gsap.set(markers, { opacity: 1, scale: 1, y: 0 });
+                    if (distBadge) gsap.set(distBadge, { opacity: 1, y: 0 });
                     return;
                 }
-
-                gsap.set(video, { display: 'block' });
-                gsap.set(markers, { opacity: 0, scale: 0, y: 20 });
+                
+                // Preparar elementos ocultos
+                if (markers.length) gsap.set(markers, { opacity: 0, scale: 0, y: 20 });
                 if (distBadge) gsap.set(distBadge, { opacity: 0, y: 30 });
-                gsap.set([overlay, imageLayer], { autoAlpha: 0 });
 
-                const setupTimeline = () => {
-                    const videoDuration = video.duration;
-                    if (!videoDuration || !isFinite(videoDuration)) return; 
-                    video.pause();
-                    const tl = gsap.timeline({ scrollTrigger: { trigger: section, start: "top top", end: "+=3000", pin: true, scrub: 1, anticipatePin: 1 } });
-                    tl.fromTo(video, { currentTime: 0.01 }, { currentTime: videoDuration - 0.1, duration: 4, ease: "none" });
-                    tl.to(overlay, { autoAlpha: 1, duration: 1 }, "+=0.2")
-                      .to(imageLayer, { autoAlpha: 1, duration: 1 }, "<")
-                      .set(imageLayer, { pointerEvents: "auto" }) 
-                      .to(markers, { opacity: 1, scale: 1, y: 0, duration: 1.2, stagger: 0.2, ease: "back.out(1.4)" }, "-=0.5");
-                    if (distBadge) tl.to(distBadge, { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" }, "<");
-                    tl.to({}, { duration: 1.5 });
-                };
+                // Crear el Pin (Más corto, ya que no hay que reproducir un video)
+                const tl = gsap.timeline({ 
+                    scrollTrigger: { 
+                        trigger: section, 
+                        start: "top top", 
+                        end: "+=1200", 
+                        pin: true, 
+                        scrub: 1, 
+                        anticipatePin: 1 
+                    } 
+                });
 
-                if (video.readyState >= 2) setupTimeline();
-                else video.addEventListener('loadeddata', () => { setupTimeline(); ScrollTrigger.refresh(); });
+                // 1. Zoom Out Suave de la imagen
+                tl.to(imageZoom, { scale: 1, duration: 2, ease: "power1.out" });
+
+                // 2. Aparecen los marcadores saltando
+                if (markers.length) tl.to(markers, { opacity: 1, scale: 1, y: 0, duration: 1.2, stagger: 0.15, ease: "back.out(1.4)" }, "-=1.5");
+                
+                // 3. Aparece el banner de distancia
+                if (distBadge) tl.to(distBadge, { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" }, "-=1");
+                
+                tl.to({}, { duration: 0.5 }); // Pausa final para estabilizar
             };
 
-            setTimeout(() => {
-                for(let i=1; i<=6; i++) initMapSequence(i);
-                ScrollTrigger.refresh();
-            }, 500);
+            setTimeout(() => { 
+                for(let i=1; i<=6; i++) initMapSequence(i); 
+                ScrollTrigger.refresh(); 
+            }, 100);
 
-            // Event Listeners
-            if (perfBtn) perfBtn.addEventListener('click', () => { animationsEnabled = !animationsEnabled; localStorage.setItem('iceva_performance', animationsEnabled ? 'high' : 'low'); window.location.reload(); });
-            if (scrollTopBtn) scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-            
-            // Navegación suave para los dots
             navDots.forEach(dot => {
                 dot.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = dot.getAttribute('href');
                     const targetElem = document.querySelector(targetId!);
-                    if (targetElem) {
-                        targetElem.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    if (targetElem) targetElem.scrollIntoView({ behavior: 'smooth' });
                 });
             });
-        };
+
+            // Animaciones Reveal (Títulos)
+            const reveals = gsap.utils.toArray('.gsap-reveal');
+            reveals.forEach(elem => {
+                if (animationsEnabled) {
+                    gsap.fromTo(elem as HTMLElement, 
+                        { autoAlpha: 0, y: 40 },
+                        {
+                            scrollTrigger: { trigger: elem as HTMLElement, start: "top 85%", toggleActions: "play none none none" },
+                            autoAlpha: 1, y: 0, duration: 1, clearProps: "all", ease: "power3.out"
+                        }
+                    );
+                } else gsap.set(elem as HTMLElement, { autoAlpha: 1, y: 0, clearProps: "all" });
+            });
+
+            // Event Listeners UI
+            if (perfBtn) perfBtn.addEventListener('click', () => { animationsEnabled = !animationsEnabled; localStorage.setItem('iceva_performance', animationsEnabled ? 'high' : 'low'); window.location.reload(); });
+            if (scrollTopBtn) scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        });
     </script>
 </Layout>
