@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Página no encontrada | ICEVA">
+    <Navbar />
+    
+    <main class="bg-smoke-900 min-h-screen flex items-center justify-center pt-20 relative overflow-hidden font-sans">
+        
+        <!-- Destellos de fondo para dar profundidad -->
+        <div class="flare-bg w-[300px] h-[300px] md:w-[500px] md:h-[500px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 z-0 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-smoke-800/40 via-smoke-900 to-smoke-900 z-0"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-2xl mx-auto gsap-reveal">
+            
+            <!-- Gran número 404 (Degradado Azul a Vinotinto Institucional ICEVA) -->
+            <h1 class="text-[120px] md:text-[180px] font-serif font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#00285C] to-[#630F22] leading-normal py-8 mb-2 drop-shadow-[0_10px_30px_rgba(99,15,34,0.5)] select-none">
+                404
+            </h1>
+            
+            <!-- Mensaje -->
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 tracking-wide drop-shadow-md">
+                Página no encontrada
+            </h2>
+            <p class="text-gray-400 text-sm md:text-lg font-light mb-10 leading-relaxed max-w-lg mx-auto">
+                Lo sentimos, la página que intentas buscar no existe, ha sido movida o se encuentra temporalmente fuera de servicio.
+            </p>
+            
+            <!-- Botón de regreso -->
+            <a href="/" class="inline-flex items-center justify-center bg-transparent border border-gold text-gold font-bold uppercase tracking-widest text-xs px-8 py-4 rounded-full hover:bg-gold hover:text-smoke-900 transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:scale-105">
+                <i class="fa-solid fa-arrow-left mr-3 text-sm"></i> Volver al Inicio
+            </a>
+
+        </div>
+    </main>
+    
+    <Footer />
+
+    <script>
+        import { gsap } from 'gsap';
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Animación de entrada suave
+            gsap.fromTo('.gsap-reveal', 
+                { opacity: 0, y: 50, scale: 0.95 }, 
+                { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "back.out(1.5)" }
+            );
+        });
+    </script>
+</Layout>

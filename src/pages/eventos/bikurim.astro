@@ -26,7 +26,8 @@ import Footer from '../../components/Footer.astro';
             
             <!-- Contenido del texto -->
             <div class="max-w-6xl mx-auto px-4 relative z-10 text-center w-full flex flex-col items-center">
-                <div class="gsap-hero-bikurim invisible opacity-0 translate-y-10 w-full flex flex-col items-center">
+                <!-- 🌟 OPTIMIZADO: will-change-transform añadido para 60fps 🌟 -->
+                <div class="gsap-hero-bikurim will-change-transform invisible opacity-0 translate-y-10 w-full flex flex-col items-center">
                     <span class="inline-block text-gold tracking-[0.4em] text-xs md:text-sm uppercase mb-6 md:mb-8 font-bold border border-gold px-4 py-1.5 rounded-full shadow-lg">Fiesta de Primicias</span>
                     
                     <h1 class="mb-8 md:mb-12 flex justify-center items-center drop-shadow-2xl w-full">
@@ -48,7 +49,8 @@ import Footer from '../../components/Footer.astro';
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     
                     <!-- Textos descriptivos (Izquierda) -->
-                    <div class="gsap-reveal space-y-6">
+                    <!-- 🌟 OPTIMIZADO: will-change-transform añadido 🌟 -->
+                    <div class="gsap-reveal will-change-transform space-y-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">¿Qué es Bikurim?</h2>
                         
                         <!-- Párrafos Visibles por defecto -->
@@ -98,8 +100,8 @@ import Footer from '../../components/Footer.astro';
                     </div>
 
                     <!-- Pergamino Deuteronomio (Derecha - Tamaño Agrandado) -->
-                    <div class="gsap-reveal relative flex items-center justify-center min-h-[500px] md:h-[750px] w-full">
-                        <!-- Sube tu imagen del pergamino como 'pergamino-deut26.png' a public/ -->
+                    <!-- 🌟 OPTIMIZADO: will-change-transform añadido 🌟 -->
+                    <div class="gsap-reveal will-change-transform relative flex items-center justify-center min-h-[500px] md:h-[750px] w-full">
                         <img 
                             src="/pergamino-deut26.webp" loading="lazy" decoding="async"
                             alt="Deuteronomio 26:1-11 en Hebreo" 
@@ -115,14 +117,14 @@ import Footer from '../../components/Footer.astro';
         <!-- 🌟 SECCIÓN 3: VIDEO ANIMADO SCROLL (Totalmente nítido, sin opacidad ni overlays oscuros) 🌟 -->
         <section id="video-scroll-section" class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-smoke-800 bg-smoke-900">
             <div class="absolute inset-0 z-10">
-                <!-- Sube tu video como 'bikurim-scroll.mp4' a public/ -->
+                <!-- 🌟 OPTIMIZADO: Clases limpiadas para no duplicar will-change-transform 🌟 -->
                 <video 
                     id="bikurim-video-scroll" 
                     src="/bikurim-scroll.mp4" poster="/bikurim-scroll-poster.webp"
                     muted 
                     playsinline 
                     preload="auto"
-                    class="will-change-transform w-full h-full object-cover transform-gpu will-change-transform"
+                    class="w-full h-full object-cover transform-gpu will-change-transform"
                     style="image-rendering: optimizeQuality; transform: translateZ(0);"
                 ></video>
             </div>
@@ -131,7 +133,8 @@ import Footer from '../../components/Footer.astro';
         <!-- 🌟 SECCIÓN 4: MENSAJE EVANGELÍSTICO Y YESHÚA (Estilo Tarjeta) 🌟 -->
         <section id="mensaje-evangelistico" class="py-12 md:py-24 relative bg-smoke-900 border-b border-smoke-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="gsap-reveal relative rounded-3xl overflow-hidden border border-smoke-800 shadow-2xl min-h-[400px] flex items-center p-8 md:p-16 lg:p-24">
+                <!-- 🌟 OPTIMIZADO: will-change-transform añadido 🌟 -->
+                <div class="gsap-reveal will-change-transform relative rounded-3xl overflow-hidden border border-smoke-800 shadow-2xl min-h-[400px] flex items-center p-8 md:p-16 lg:p-24">
                     
                     <!-- Imagen de fondo de la tarjeta -->
                     <div class="absolute inset-0 z-0">
@@ -170,7 +173,8 @@ import Footer from '../../components/Footer.astro';
             <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=')]"></div>
             
             <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-                <div class="gsap-reveal">
+                <!-- 🌟 OPTIMIZADO: will-change-transform añadido 🌟 -->
+                <div class="gsap-reveal will-change-transform">
                     <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">Ven y adoremos juntos a nuestro creador</h2>
                     <p class="text-blue-100 text-base md:text-lg font-light mb-10 max-w-2xl mx-auto leading-relaxed">
                         Queremos asegurarnos de que tengas la mejor experiencia. Si bien la entrada es gratuita, te invitamos a registrar tu asistencia para ayudarnos con la logística del evento.
