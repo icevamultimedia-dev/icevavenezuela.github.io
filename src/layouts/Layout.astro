@@ -59,8 +59,9 @@ const schema = {
         <link rel="dns-prefetch" href="https://www.google.com">
         <link rel="dns-prefetch" href="https://player.vimeo.com">
         
-        <!-- Precarga de LCP (Imágenes Principales) -->
-        {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
+        <!-- 🚀 OPTIMIZACIÓN DE VELOCIDAD (LCP) 🚀 -->
+        <!-- Precarga de LCP (Imágenes Principales) con Prioridad Alta -->
+        {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
         <title>{title}</title>
         <meta name="description" content={description} />
