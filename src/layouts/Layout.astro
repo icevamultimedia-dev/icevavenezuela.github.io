@@ -7,7 +7,7 @@ interface Props {
     title?: string;
     description?: string;
     image?: string;
-    preloadImage?: string; /* 🌟 NUEVO: Propiedad para precargar la imagen principal 🌟 */
+    preloadImage?: string;
 }
 
 // 🌟 CONFIGURACIÓN SEO Y REDES SOCIALES 🌟
@@ -17,6 +17,27 @@ const {
     image = "https://icevavenezuela.vercel.app/hero-fondo.jpg",
     preloadImage
 } = Astro.props;
+
+// 🌟 NUEVO: URL Canónica y Datos Estructurados para Google 🌟
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://icevavenezuela.vercel.app/');
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Church",
+    "name": "Iglesia Cristiana Evangélica Vida en Abundancia",
+    "alternateName": "ICEVA",
+    "url": "https://icevavenezuela.vercel.app/",
+    "logo": "https://icevavenezuela.vercel.app/para-web-1.svg",
+    "image": image,
+    "description": description,
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Morera, calle la gloria, al frente de la cancha del Mahomo",
+        "addressLocality": "San Juan De Los Morros",
+        "addressRegion": "Guárico",
+        "addressCountry": "VE"
+    }
+};
 ---
 
 <!doctype html>
@@ -26,7 +47,10 @@ const {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/para-web-1.svg" />
         
-        <!-- 🚀 OPTIMIZACIÓN DE VELOCIDAD: Preconexiones Globales 🚀 -->
+        <!-- URL Canónica para evitar contenido duplicado en buscadores -->
+        <link rel="canonical" href={canonicalURL} />
+        
+        <!-- 🚀 OPTIMIZACIÓN DE VELOCIDAD 🚀 -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://www.google.com">
@@ -35,34 +59,37 @@ const {
         <link rel="dns-prefetch" href="https://www.google.com">
         <link rel="dns-prefetch" href="https://player.vimeo.com">
         
-        <!-- 🚀 LCP OPTIMIZATION: Precarga de la imagen de fondo principal 🚀 -->
+        <!-- Precarga de LCP (Imágenes Principales) -->
         {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
 
-        <!-- Etiquetas SEO Básicas -->
         <title>{title}</title>
         <meta name="description" content={description} />
+        
+        <!-- Etiquetas SEO Avanzadas -->
+        <meta name="keywords" content="iglesia, evangélica, cristiana, ICEVA, San Juan de los Morros, Guárico, Venezuela, adoración, culto, Dios, Jesús" />
+        <meta name="author" content="Iglesia ICEVA" />
+        <meta name="robots" content="index, follow" />
 
-        <!-- 🚀 OPEN GRAPH (Facebook, WhatsApp, LinkedIn) 🚀 -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://icevavenezuela.vercel.app/" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
 
-        <!-- 🚀 TWITTER CARDS (X, Telegram, Discord) 🚀 -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://icevavenezuela.vercel.app/" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={image} />
 
+        <!-- 🌟 SCHEMA.ORG / JSON-LD PARA GOOGLE 🌟 -->
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
         <Analytics />
         <SpeedInsights />
         
-        <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
         
-        <!-- FontAwesome diferido -->
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     </head>
@@ -78,55 +105,68 @@ const {
             import { gsap } from 'gsap';
             import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-            // 1. Inicializar Lenis
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            // 🌟 INICIALIZADOR CLÁSICO (Sin ClientRouter) 🌟
+            document.addEventListener("DOMContentLoaded", () => {
+                
+                // 1. Inicializar Lenis
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                });
+
+                gsap.registerPlugin(ScrollTrigger);
+                lenis.on('scroll', ScrollTrigger.update);
+                
+                gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+                gsap.ticker.lagSmoothing(0);
+
+                // 2. Animación Inicial
+                gsap.from('.gsap-hero', { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
+
+                // 3. Animaciones Globales
+                const reveals = gsap.utils.toArray('.gsap-reveal');
+                if (reveals.length > 0) {
+                    reveals.forEach(elem => {
+                        gsap.fromTo(elem as Element, 
+                            { autoAlpha: 0, y: 40 },
+                            { scrollTrigger: { trigger: elem as Element, start: "top 85%" }, autoAlpha: 1, y: 0, duration: 1, ease: "power3.out" }
+                        );
+                    });
+                }
+
+                const cards = gsap.utils.toArray('.gsap-card');
+                if (cards.length > 0) {
+                    gsap.fromTo(cards, 
+                        { opacity: 0, y: 50 },
+                        { scrollTrigger: { trigger: '#horarios', start: "top 75%" }, y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)" }
+                    );
+                }
+
+                const galleryItems = gsap.utils.toArray('.gsap-gallery');
+                if (galleryItems.length > 0) {
+                    gsap.fromTo(galleryItems, 
+                        { opacity: 0, y: 30, scale: 0.95 },
+                        { scrollTrigger: { trigger: '#galeria', start: "top 80%" }, y: 0, scale: 1, opacity: 1, duration: 1, stagger: 0.15, ease: "power2.out" }
+                    );
+                }
+
+                // 4. Lógica del cursor
+                const aura = document.querySelector('.cursor-aura') as HTMLElement;
+                if (aura && window.matchMedia("(pointer: fine)").matches) {
+                    gsap.set(aura, { xPercent: -50, yPercent: -50 });
+                    let xTo = gsap.quickTo(aura, "x", {duration: 0.3, ease: "power3"}), yTo = gsap.quickTo(aura, "y", {duration: 0.3, ease: "power3"});
+
+                    window.addEventListener("mousemove", e => { xTo(e.clientX); yTo(e.clientY); });
+
+                    const hoverTargets = document.querySelectorAll('a, button, .logo-hover, input, textarea');
+                    hoverTargets.forEach(target => {
+                        target.addEventListener('mouseenter', () => { gsap.to(aura, { scale: 2.5, backgroundColor: "rgba(212, 175, 55, 0.15)", borderColor: "rgba(212, 175, 55, 0)", duration: 0.3 }); });
+                        target.addEventListener('mouseleave', () => { gsap.to(aura, { scale: 1, backgroundColor: "transparent", borderColor: "#D4AF37", duration: 0.3 }); });
+                    });
+                }
+
+                ScrollTrigger.refresh();
             });
-
-            gsap.registerPlugin(ScrollTrigger);
-            lenis.on('scroll', ScrollTrigger.update);
-            
-            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-            gsap.ticker.lagSmoothing(0);
-
-            // 2. Animación Inicial
-            gsap.from('.gsap-hero', { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
-
-            // 3. Animaciones Globales
-            const reveals = gsap.utils.toArray('.gsap-reveal');
-            if (reveals.length > 0) {
-                reveals.forEach(elem => {
-                    gsap.from(elem as Element, { scrollTrigger: { trigger: elem as Element, start: "top 85%" }, y: 40, opacity: 0, duration: 1, ease: "power3.out" });
-                });
-            }
-
-            const cards = gsap.utils.toArray('.gsap-card');
-            if (cards.length > 0) {
-                gsap.from(cards, { scrollTrigger: { trigger: '#horarios', start: "top 75%" }, y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)" });
-            }
-
-            const galleryItems = gsap.utils.toArray('.gsap-gallery');
-            if (galleryItems.length > 0) {
-                gsap.from(galleryItems, { scrollTrigger: { trigger: '#galeria', start: "top 80%" }, y: 30, scale: 0.95, opacity: 0, duration: 1, stagger: 0.15, ease: "power2.out" });
-            }
-
-            // 4. Lógica del cursor
-            const aura = document.querySelector('.cursor-aura');
-            if (aura && window.matchMedia("(pointer: fine)").matches) {
-                gsap.set(aura, { xPercent: -50, yPercent: -50 });
-                let xTo = gsap.quickTo(aura, "x", {duration: 0.3, ease: "power3"}), yTo = gsap.quickTo(aura, "y", {duration: 0.3, ease: "power3"});
-
-                window.addEventListener("mousemove", e => { xTo(e.clientX); yTo(e.clientY); });
-
-                const hoverTargets = document.querySelectorAll('a, button, .logo-hover, input, textarea');
-                hoverTargets.forEach(target => {
-                    target.addEventListener('mouseenter', () => { gsap.to(aura, { scale: 2.5, backgroundColor: "rgba(212, 175, 55, 0.15)", borderColor: "rgba(212, 175, 55, 0)", duration: 0.3 }); });
-                    target.addEventListener('mouseleave', () => { gsap.to(aura, { scale: 1, backgroundColor: "transparent", borderColor: "#D4AF37", duration: 0.3 }); });
-                });
-            }
-
-            ScrollTrigger.refresh();
         </script>
     </body>
 </html>
